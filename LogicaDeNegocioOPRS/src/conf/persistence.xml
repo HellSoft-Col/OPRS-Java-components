@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="LogicaDeNegocioOPRSPU" transaction-type="JTA">
+    <jta-data-source>jdbc/oprs_db</jta-data-source>
+    <class>co.edu.javeriana.entities.Customer</class>
+    <class>co.edu.javeriana.entities.Document</class>
+    <class>co.edu.javeriana.entities.Owner</class>
+    <class>co.edu.javeriana.entities.PaymentForm</class>
+    <class>co.edu.javeriana.entities.Property</class>
+    <class>co.edu.javeriana.entities.Rent</class>
+    <class>co.edu.javeriana.entities.VisitingList</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <shared-cache-mode>ALL</shared-cache-mode>
+    <properties/>
+  </persistence-unit>
+</persistence>
