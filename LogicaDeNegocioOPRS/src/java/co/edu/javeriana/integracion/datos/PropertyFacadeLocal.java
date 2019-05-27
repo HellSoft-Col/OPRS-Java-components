@@ -12,7 +12,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Local
 public interface PropertyFacadeLocal {
@@ -33,4 +33,7 @@ public interface PropertyFacadeLocal {
     
     public List<Property> findByRentRange(BigDecimal minimal, BigDecimal maximal);
     
+    public List<Property> findByCedula(String cedula);
+   
+    public List<Property> findByRentRangeAndCedula(String cedula, BigDecimal minimal, BigDecimal maximal);
 }

@@ -26,7 +26,7 @@ import javax.ws.rs.PUT;
 /**
  * REST Web Service
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Path("serachProperty")
 public class serachPropertyService {
@@ -56,7 +56,6 @@ public class serachPropertyService {
     @POST
     @Consumes({"application/xml", "application/json"})
     public List<Property> searchProperties(PropertyQueryDTO search) {
-        
         return this.facadeBuscarPropiedad.searchProperty(search);
     }
     

@@ -5,16 +5,13 @@
  */
 package co.edu.javeriana.facades;
 
-import co.edu.javeriana.dtos.PropertyQueryDTO;
-import co.edu.javeriana.entities.Property;
-import java.util.List;
 import javax.ejb.Remote;
 
 /**
  *
- * @author HellSoft
+ * @author sistemas
  */
 @Remote
-public interface FacadeBuscarPropiedadRemote {
-    public List<Property> searchProperty(PropertyQueryDTO params);
+public interface LoginFacadeRemote {
+    
 }

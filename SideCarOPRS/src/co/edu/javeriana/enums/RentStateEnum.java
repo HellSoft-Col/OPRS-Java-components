@@ -7,7 +7,7 @@ package co.edu.javeriana.enums;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 public enum RentStateEnum {
     FIRMADO(1),TERMINADO(2),EN_CONTRATO(3),EXPIRADO(4);

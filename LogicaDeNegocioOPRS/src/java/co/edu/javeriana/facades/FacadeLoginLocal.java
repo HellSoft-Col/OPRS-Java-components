@@ -5,16 +5,13 @@
  */
 package co.edu.javeriana.facades;
 
-import co.edu.javeriana.dtos.PropertyQueryDTO;
-import co.edu.javeriana.entities.Property;
-import java.util.List;
 import javax.ejb.Local;
 
 /**
  *
- * @author HellSoft
+ * @author sistemas
  */
 @Local
-public interface FacadeBuscarPropiedadLocal {
-    public List<Property> searchProperty(PropertyQueryDTO params);
+public interface FacadeLoginLocal {
+    
 }

@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Stateless
 public class DocumentFacade extends AbstractFacade<Document> implements DocumentFacadeLocal {

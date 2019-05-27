@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Entity
 @Table(name = "PROPERTY")
@@ -37,9 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Property.findByAddress", query = "SELECT p FROM Property p WHERE p.address = :address"),
     @NamedQuery(name = "Property.findByRoomsNumber", query = "SELECT p FROM Property p WHERE p.roomsNumber = :roomsNumber"),
     @NamedQuery(name = "Property.findByRent", query = "SELECT p FROM Property p WHERE p.rent = :rent"),
-    @NamedQuery(name = "Property.findByOwnerId", query = "SELECT p FROM Property p WHERE p.propertyPK.ownerId = :ownerId"),
+    @NamedQuery(name = "Property.findByOwnerId", query = "SELECT p.address, p.location, p.rent, p.roomsNumber, p.type FROM Property p WHERE p.propertyPK.ownerId = :ownerId"),
     @NamedQuery(name = "Property.findByLocation", query = "SELECT p FROM Property p WHERE p.location = :location"),
-    @NamedQuery(name = "Property.findByRentRange", query = "SELECT p FROM Property p WHERE p.rent >= :minumrent AND p.rent <= :maximalrent")})
+    @NamedQuery(name = "Property.findByRentRange", query = "SELECT p.address, p.location, p.rent, p.roomsNumber, p.type FROM Property p WHERE p.rent >= :minumrent AND p.rent <= :maximalrent")})
 public class Property implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId

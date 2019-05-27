@@ -7,7 +7,7 @@ package co.edu.javeriana.enums;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 public enum VisitingListStateEnum {
     ACTIVA(1),REMOVIDA(2);

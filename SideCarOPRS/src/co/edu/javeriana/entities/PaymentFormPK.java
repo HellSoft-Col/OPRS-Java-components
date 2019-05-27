@@ -13,7 +13,7 @@ import javax.persistence.Embeddable;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Embeddable
 public class PaymentFormPK implements Serializable {

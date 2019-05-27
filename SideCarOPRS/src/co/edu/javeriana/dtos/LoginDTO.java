@@ -3,28 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package co.edu.javeriana.dtos;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
+import java.io.Serializable;
 
 /**
  *
- * @author HellSoft
+ * @author sistemas
  */
-@Named("ctrlEventosLogin")
-@ManagedBean
-@SessionScoped
-public class CtrlEventosLogin {
-
-    /**
-     * Creates a new instance of CtrlEventosLogin
-     */
+public class LoginDTO implements Serializable{
     private String username;
     private String password;
     
-    public CtrlEventosLogin() {
+    public LoginDTO() {
     }
 
     public String getUsername() {

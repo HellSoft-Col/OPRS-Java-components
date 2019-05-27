@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Entity
 @Table(name = "CUSTOMER")
@@ -49,7 +49,7 @@ public class Customer implements Serializable {
     private String lastName;
     @Column(name = "NDI")
     private String ndi;
-    @Column(name = "e-mail")
+    @Column(name = "CORREO")
     private String eMail;
     @Column(name = "USERNAME")
     private String username;

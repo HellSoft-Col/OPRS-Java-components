@@ -11,10 +11,14 @@
         <h:form>
             <h1><h:outputText value="Iniciar Sesión"/></h1>
             <h:panelGrid columns="2">
-                <h:outputLabel value="Usuario: " for="user"/>
-                <h:inputText id="user" value=" " title="Usuario"/>
+                <h:outputLabel value="Usuario: " for="username"/>
+                <h:inputText id="username" value="#{ctrlEventosLogin.username}" title="Usuario"/>
+                <h:message for="username"></h:message>
+		<br></br><br></br>
                 <h:outputLabel value="Contraseña: " for="password"/>
-                <h:inputText id="password" value=" " title="Contrasena"/>
+                <h:inputText id="password" value="#{ctrlEventosLogin.password}"  title="Contrasena"/>
+                <h:message for="password"></h:message>
+		<br></br><br></br>
             </h:panelGrid>
             <h:commandButton id="iniciar" value="Iniciar"
                              action =" "/>

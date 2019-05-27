@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 public class PropertyQueryDTO implements Serializable{
     private String location; 
@@ -17,8 +17,12 @@ public class PropertyQueryDTO implements Serializable{
     private int roomsNumber;
     private float minimalRent;
     private float maximalRent;
+    private String cedulaProp;
 
     public PropertyQueryDTO() {
+        this.cedulaProp = null;
+        this.minimalRent = -1;
+        this.maximalRent = -1;
     }
 
     public String getLocation() {
@@ -60,6 +64,14 @@ public class PropertyQueryDTO implements Serializable{
     public void setMaximalRent(float maximalRent) {
         this.maximalRent = maximalRent;
     }
-    
+
+    public String getCedulaProp() {
+        return cedulaProp;
+    }
+
+    public void setCedulaProp(String cedulaProp) {
+        this.cedulaProp = cedulaProp;
+    }
+   
     
 }
