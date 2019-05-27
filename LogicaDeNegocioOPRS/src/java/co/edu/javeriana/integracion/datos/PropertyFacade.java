@@ -6,19 +6,26 @@
 package co.edu.javeriana.integracion.datos;
 
 import co.edu.javeriana.entities.Property;
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Stateless
 public class PropertyFacade extends AbstractFacade<Property> implements PropertyFacadeLocal {
+    @EJB
+    private OwnerFacadeLocal ownerFacade;
     @PersistenceContext(unitName = "LogicaDeNegocioOPRSPU")
     private EntityManager em;
 
@@ -29,15 +36,48 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
     
     @Override
     public List<Property> findByRentRange(BigDecimal minimal, BigDecimal maximal) {
-        TypedQuery<Property> consultaPropiedades = em.createNamedQuery("Property.findByRentRange", Property.class);
+        
+        Query consultaPropiedades = em.createNamedQuery("Property.findByRentRange");
         consultaPropiedades.setParameter("minumrent", minimal);
         consultaPropiedades.setParameter("maximalrent", maximal);
-        return consultaPropiedades.getResultList();
+        List<Object[]> result_list = consultaPropiedades.getResultList();
+        List<Property> result_set = new ArrayList<Property>();
+        for(Object[] obj: result_list){
+            Property p = new Property();
+            p.setAddress(obj[0].toString());
+            p.setLocation(obj[1].toString());
+            p.setRent(new BigDecimal(obj[2].toString()));
+            p.setRoomsNumber(new BigInteger(obj[3].toString()));
+            p.setType(new BigInteger(obj[4].toString()));
+            result_set.add(p);
+        }
+        
+        return result_set;
+    
     }
 
     
     public PropertyFacade() {
         super(Property.class);
+    }
+
+    @Override
+    public List<Property> findByCedula(String cedula) {
+        return new ArrayList<Property>(ownerFacade.findByCedula(cedula).getPropertyCollection());    
+    }
+
+    @Override
+    public List<Property> findByRentRangeAndCedula(String cedula, BigDecimal minimal, BigDecimal maximal) {
+        List<Property> properties = new ArrayList<Property>(ownerFacade.findByCedula(cedula).getPropertyCollection());
+        List<Property> result = new ArrayList<Property>();
+        
+        for (Property p: properties){
+            if( p.getRent().compareTo(minimal) >= 0 && p.getRent().compareTo(maximal) <= 0){
+                result.add(p);
+            }
+        }
+        
+        return result;
     }
     
 }

@@ -11,7 +11,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 @Named("ctrlEventosLogin")
 @ManagedBean

@@ -20,7 +20,7 @@ import javax.ws.rs.client.WebTarget;
  *        client.close();
  * </pre>
  *
- * @author sistemas
+ * @author HellSoft
  */
 public class ProxyBP {
     private WebTarget webTarget;

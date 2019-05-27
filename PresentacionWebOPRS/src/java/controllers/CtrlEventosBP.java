@@ -20,7 +20,7 @@ import proxies.ProxyBP;
 
 /**
  *
- * @author sistemas
+ * |@author HellSoft
  */
 @Named(value = "ctrlEventosBP")
 @ManagedBean
