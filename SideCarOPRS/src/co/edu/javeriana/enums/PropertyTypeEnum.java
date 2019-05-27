@@ -7,7 +7,7 @@ package co.edu.javeriana.enums;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 public enum PropertyTypeEnum {
     CASA(1),APARTAMENTO(2);
