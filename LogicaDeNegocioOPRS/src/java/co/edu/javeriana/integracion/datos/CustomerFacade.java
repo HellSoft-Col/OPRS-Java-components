@@ -23,9 +23,15 @@ public class CustomerFacade extends AbstractFacade<Customer> implements Customer
     protected EntityManager getEntityManager() {
         return em;
     }
+    
 
     public CustomerFacade() {
         super(Customer.class);
+    }
+
+    @Override
+    public Customer findByLogin(String username, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
