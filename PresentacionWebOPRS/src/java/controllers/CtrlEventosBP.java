@@ -6,10 +6,17 @@
 package controllers;
 
 import co.edu.javeriana.dtos.PropertyQueryDTO;
+import co.edu.javeriana.entities.Property;
 import co.edu.javeriana.enums.PropertyTypeEnum;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
+import proxies.ProxyBP;
 
 /**
  *
@@ -19,27 +26,17 @@ import javax.inject.Named;
 @ManagedBean
 @SessionScoped
 public class CtrlEventosBP {
-
+     
     private PropertyQueryDTO dtoProperty;
-    private PropertyTypeEnum propertyType;
-    private String location;
-    private String numRooms;
+    private String idCard;
     private String minRent;
     private String maxRent;
     
     public CtrlEventosBP() {
     }
     
-    public PropertyTypeEnum getPropertyType() {
-        return propertyType;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public String getNumRooms() {
-        return numRooms;
+    public String getIdCard() {
+        return idCard;
     }
 
     public String getMinRent() {
@@ -50,14 +47,42 @@ public class CtrlEventosBP {
         return maxRent;
     }
 
-    public PropertyQueryDTO createDtoProperty() {
+    public void setDtoProperty(PropertyQueryDTO dtoProperty) {
+        this.dtoProperty = dtoProperty;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public void setMinRent(String minRent) {
+        this.minRent = minRent;
+    }
+
+    public void setMaxRent(String maxRent) {
+        this.maxRent = maxRent;
+    }
+    
+
+    public List<Property>  createDtoProperty() {
         PropertyQueryDTO dtoP = new PropertyQueryDTO();
-        dtoP.setLocation(location);
-        dtoP.setPropertyType(propertyType.getValue());
-        dtoP.setRoomsNumber(new Integer(this.numRooms));
+        dtoP.setCedulaProp(idCard);
         dtoP.setMinimalRent(new Integer(this.minRent));
         dtoP.setMaximalRent(new Integer(this.maxRent));
-        return dtoProperty;
+        
+        Type listTypeProperty = new TypeToken<ArrayList<Property>>() {}.getType();
+        
+        Gson gson = new Gson();
+	String dtoJson = gson.toJson(dtoP);
+        
+        ProxyBP proxyBp = new ProxyBP();
+        String response = proxyBp.searchProperties_JSON(dtoJson, String.class);
+        List<Property> result = gson.fromJson(response, listTypeProperty);
+        
+        
+        return result;
     }
+    
+    
     
 }
