@@ -10,7 +10,7 @@ import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 @ManagedBean
 @RequestScoped

@@ -11,7 +11,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Local
 public interface OwnerFacadeLocal {
@@ -30,4 +30,5 @@ public interface OwnerFacadeLocal {
 
     int count();
     
+    Owner findByCedula(String cedula);
 }

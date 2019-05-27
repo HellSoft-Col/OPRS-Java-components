@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Stateless
 public class PaymentFormFacade extends AbstractFacade<PaymentForm> implements PaymentFormFacadeLocal {

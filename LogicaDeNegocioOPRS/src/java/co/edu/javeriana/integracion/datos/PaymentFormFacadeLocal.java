@@ -11,7 +11,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Local
 public interface PaymentFormFacadeLocal {

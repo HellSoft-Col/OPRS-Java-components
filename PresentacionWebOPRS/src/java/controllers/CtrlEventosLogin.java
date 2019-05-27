@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 @ManagedBean
 @SessionScoped

@@ -13,7 +13,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author sistemas
+ * |@author HellSoft
  */
 @Named(value = "ctrlEventosBP")
 @ManagedBean
