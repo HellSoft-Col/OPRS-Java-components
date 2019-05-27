@@ -35,6 +35,15 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
         return consultaPropiedades.getResultList();
     }
 
+    public boolean addProperty(Property property){
+        try{
+            em.persist(property);
+        }
+        catch(Exception ex){
+            return false;
+        }
+        return true;
+    }
     
     public PropertyFacade() {
         super(Property.class);

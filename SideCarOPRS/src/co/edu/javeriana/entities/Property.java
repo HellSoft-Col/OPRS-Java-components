@@ -86,8 +86,8 @@ public class Property implements Serializable {
         this.location = location;
     }
 
-    public Property(BigInteger id, BigInteger ownerId) {
-        this.propertyPK = new PropertyPK(id, ownerId);
+    public Property(BigInteger ownerId) {
+        this.propertyPK = new PropertyPK(ownerId);
     }
 
     public PropertyPK getPropertyPK() {
