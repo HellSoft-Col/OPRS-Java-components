@@ -23,11 +23,13 @@ public interface CustomerFacadeLocal {
     void remove(Customer customer);
 
     Customer find(Object id);
-
+    
+    Customer findByLogin(String username, String password);
+    
     List<Customer> findAll();
 
     List<Customer> findRange(int[] range);
 
     int count();
-    
+   
 }

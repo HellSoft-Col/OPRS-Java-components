@@ -11,22 +11,15 @@
         <h:form>
             <h1><h:outputText value="Buscar propiedad"/></h1>
             <h:panelGrid columns="2">
-                <h:outputLabel value="Locación:" for="location"/>
-                <h:inputText id="location" value="#{ctrlEventosBP.location}" title="Locacion"/>
-                <h:outputLabel value="Tipo de propiedad:" for="type"/>
-                <h:selectOneListbox id="type" value="#{ctrlEventosBP.propertyType}">
-                    <f:selectItem itemValue = "1" itemLabel = "CASA" /> 
-                    <f:selectItem itemValue = "2" itemLabel = "APARTAMENTO" /> 
-                </h:selectOneListbox>
-                <h:outputLabel value="Número de cuartos: " for="num_rooms"/>
-                <h:inputText id="num_rooms" value=" " title="Rooms"/>
+                <h:outputLabel value="Cédula del propietario:" for="cedula"/>
+                <h:inputText id="cedula" value="#{ctrlEventosBP.idCard}" title="Locacion"/>
                 <h:outputLabel value="Costo mínimo de renta:  " for="minRent"/>
-                <h:inputText id="minRent" value=" " title="Min_rent"/>
+                <h:inputText id="minRent" value="#{ctrlEventosBP.minRent}" title="Min_rent"/>
                 <h:outputLabel value="Costo máximo de renta:  " for="maxRent"/>
-                <h:inputText id="maxRent" value=" " title="Max_rent"/>
+                <h:inputText id="maxRent" value="#{ctrlEventosBP.maxRent}" title="Max_rent"/>
             </h:panelGrid>
             <h:commandButton id="buscar" value="Buscar"
-                             action =" "/>
+                             action ="#{ctrlEventosBP.createDtoProperty}"/>
             
         </h:form>
      </f:view>
