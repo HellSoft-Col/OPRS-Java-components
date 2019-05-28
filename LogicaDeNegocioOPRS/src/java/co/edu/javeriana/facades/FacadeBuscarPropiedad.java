@@ -44,6 +44,8 @@ public class FacadeBuscarPropiedad implements FacadeBuscarPropiedadRemote, Facad
 
         } else if (params.getCedulaProp() != null && (params.getMaximalRent() == -1 && params.getMinimalRent() == -1)) {
             result = propertyFacade.findByCedula(params.getCedulaProp());
+        }else{
+            result = propertyFacade.findAllDTO();
         }
         
         return result;

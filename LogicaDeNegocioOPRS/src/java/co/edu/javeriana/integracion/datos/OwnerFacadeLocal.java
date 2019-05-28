@@ -34,4 +34,6 @@ public interface OwnerFacadeLocal {
     Owner findByCedula(String cedula);
     
     LoginDTO findByLogin(String username, String password);
+
+    public Owner findById(int id);
 }

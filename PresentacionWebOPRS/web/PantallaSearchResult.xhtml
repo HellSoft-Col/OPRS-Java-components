@@ -9,53 +9,42 @@
     <h:body>
        <f:view>
 
-            <h:form>
-                <h1><h:outputText value="List"/></h1>
-                <h:dataTable value="#{ctrlEventosBP.createDtoProperty()}" var="item">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Id"/>
-                        </f:facet>
-                        <h:outputText value="#{item.propertyPK.id}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Type"/>
-                        </f:facet>
-                        <h:outputText value="#{item.type}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Address"/>
-                        </f:facet>
-                        <h:outputText value="#{item.address}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="RoomsNumber"/>
-                        </f:facet>
-                        <h:outputText value="#{item.roomsNumber}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Rent"/>
-                        </f:facet>
-                        <h:outputText value="#{item.rent}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Location"/>
-                        </f:facet>
-                        <h:outputText value="#{item.location}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Owner"/>
-                        </f:facet>
-                        <h:outputText value="#{item.owner}"/>
-                    </h:column>
-                </h:dataTable>
-            </h:form>
+           <h:form>
+               <h1><h:outputText value="List"/></h1>
+               <h:dataTable value="#{ctrlEventosBP.properties}" var="item">
+                   <h:column>
+                       <f:facet name="header">
+                           <h:outputText value="Direccion"/>
+                       </f:facet>
+                       <h:outputText value="#{item.address}"/>
+                   </h:column>
+                   <h:column>
+                       <f:facet name="header">
+                           <h:outputText value="Locacion"/>
+                       </f:facet>
+                       <h:outputText value="#{item.location}"/>
+                   </h:column>
+                   <h:column>
+                       <f:facet name="header">
+                           <h:outputText value="Renta"/>
+                       </f:facet>
+                       <h:outputText value="#{item.rent}"/>
+                   </h:column>
+                   <h:column>
+                       <f:facet name="header">
+                           <h:outputText value="No. Habitaciones"/>
+                       </f:facet>
+                       <h:outputText value="#{item.roomsNumber}"/>
+                   </h:column>
+                   <h:column>
+                       <f:facet name="header">
+                           <h:outputText value="Tipo"/>
+                       </f:facet>
+                       <h:outputText value="#{ctrlEventosBP.propertyTypeName(item.type)}"/>
+                   </h:column>
+               </h:dataTable>
+           </h:form>
+           
         </f:view>
 
     </h:body>
