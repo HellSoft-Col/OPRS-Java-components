@@ -5,6 +5,7 @@
  */
 package co.edu.javeriana.integracion.datos;
 
+import co.edu.javeriana.dtos.RentDTO;
 import co.edu.javeriana.entities.Rent;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,7 @@ public interface RentFacadeLocal {
     List<Rent> findRange(int[] range);
 
     int count();
+    
+    public List<RentDTO> findRentTransactions();
     
 }

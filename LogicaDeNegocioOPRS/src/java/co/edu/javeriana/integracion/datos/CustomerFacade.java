@@ -9,6 +9,7 @@ import co.edu.javeriana.entities.Customer;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -33,5 +34,12 @@ public class CustomerFacade extends AbstractFacade<Customer> implements Customer
     public Customer findByLogin(String username, String password) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public Customer findById(int id) {
+        TypedQuery<Customer> consultaCustomer = em.createNamedQuery("Customer.findById",Customer.class);
+        consultaCustomer.setParameter("id", id);
+        return consultaCustomer.getSingleResult();
+    } 
     
 }

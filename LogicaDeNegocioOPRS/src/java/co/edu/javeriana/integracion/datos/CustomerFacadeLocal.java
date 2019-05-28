@@ -31,5 +31,7 @@ public interface CustomerFacadeLocal {
     List<Customer> findRange(int[] range);
 
     int count();
+
+    public Customer findById(int id);
    
 }
