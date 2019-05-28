@@ -12,6 +12,7 @@ import co.edu.javeriana.integracion.IntegradorColaCorreoLocal;
 import co.edu.javeriana.integracion.datos.OwnerFacadeLocal;
 import co.edu.javeriana.integracion.datos.PropertyFacade;
 import co.edu.javeriana.integracion.datos.PropertyFacadeLocal;
+import java.math.BigInteger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -40,15 +41,21 @@ public class FacadeAgregarPropiedad implements FacadeAgregarPropiedadRemote {
         Owner owner = ownerFacade.findById(1);
         mailMessage.setTo(owner.getEMail());
         mailMessage.setSubject("Notificación OPRS");
+        String type;
+        if(property.getType() == BigInteger.valueOf(1))
+            type = "Casa";
+        else
+            type = "Apartamento";
         if(result){
             mailMessage.setBody(
-                    "Éxito al añadir la propiedad "+ property.getType()
+                    "Éxito al añadir la propiedad "+ type
                             +" en "+property.getAddress()+" de "+property.getLocation());
         }
         else{
             mailMessage.setBody(
-                    "No se pudo añadir la propiedad "+ property.getType()
-                            +" en "+property.getAddress()+" de "+property.getLocation());
+                    "No se pudo añadir la propiedad "+ type
+                            +" en "+property.getAddress()+" de "+property.getLocation()+
+                            " por error interno del sistema");
         }
         integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessage);
         return result;

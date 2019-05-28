@@ -7,25 +7,31 @@
         <title>Añadir Propiedad</title>
     </h:head>
     <h:body>
+        <h1>Crear Propiedad</h1>
          <h:form id="apForm" styleClass="formPosition">
             <div class="form-group">
-                <h:outputLabel value="Type " />
-                <h:inputText id="pType" value="#{ctrlEventosAP.type}" styleClass="form-control" />
+                <h:outputLabel value="Tipo: " />
+                <h:selectOneMenu id="pType" value="#{ctrlEventosAP.type}">
+                    <f:selectItem itemValue="1" itemLabel="Casa" />
+                    <f:selectItem itemValue="2" itemLabel="Apartamento" />                   
+                </h:selectOneMenu>
             </div>
             <div class="form-group">
-                <h:outputLabel value="Address " />
+                <h:outputLabel value="Dirección: " />
                 <h:inputText id="pAddress" value="#{ctrlEventosAP.address}" styleClass="form-control" />
             </div>
             <div class="form-group">
-                <h:outputLabel value="Location " />
-                <h:inputText id="pLocation" value="#{ctrlEventosAP.location}" styleClass="form-control" />
+                <h:outputLabel value="Ubicación: " />
+                <h:selectOneMenu id="pLocation" value="#{ctrlEventosAP.location}">
+                    <f:selectItems value="#{ctrlEventosAP.locationNames}" var="location" itemValue="#{location}" itemLabel="#{location}"/>
+                </h:selectOneMenu>
             </div>
             <div class="form-group">
-                <h:outputLabel value="Rooms " />
+                <h:outputLabel value="Habitaciones: " />
                 <h:inputText id="pRooms" value="#{ctrlEventosAP.rooms}" styleClass="form-control" />
             </div>
             <div class="form-group">
-                <h:outputLabel value="Rent " />
+                <h:outputLabel value="Renta: " />
                 <h:inputText id="pRent" value="#{ctrlEventosAP.rent}" styleClass="form-control" />
             </div>
             <div>
