@@ -54,6 +54,17 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
 
     }
 
+    public boolean addProperty(Property property){
+        try{
+            em.persist(property);
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+            return false;
+        }
+        return true;
+    }
+    
     public PropertyFacade() {
         super(Property.class);
     }

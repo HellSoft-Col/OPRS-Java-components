@@ -44,4 +44,11 @@ public class OwnerFacade extends AbstractFacade<Owner> implements OwnerFacadeLoc
         
     }
     
+    @Override
+    public Owner findById(int id) {
+        TypedQuery<Owner> consultaOwner = em.createNamedQuery("Owner.findById",Owner.class);
+        consultaOwner.setParameter("id", id);
+        return consultaOwner.getSingleResult();
+    }
+    
 }
