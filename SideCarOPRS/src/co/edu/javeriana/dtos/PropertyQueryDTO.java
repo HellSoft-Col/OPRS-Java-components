@@ -6,11 +6,17 @@
 package co.edu.javeriana.dtos;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author HellSoft
  */
+
+
 public class PropertyQueryDTO implements Serializable{
     private String location; 
     private int propertyType;
@@ -28,7 +34,7 @@ public class PropertyQueryDTO implements Serializable{
     public String getLocation() {
         return location;
     }
-
+    
     public void setLocation(String location) {
         this.location = location;
     }
@@ -36,7 +42,7 @@ public class PropertyQueryDTO implements Serializable{
     public int getPropertyType() {
         return propertyType;
     }
-
+    
     public void setPropertyType(int propertyType) {
         this.propertyType = propertyType;
     }
@@ -44,7 +50,7 @@ public class PropertyQueryDTO implements Serializable{
     public int getRoomsNumber() {
         return roomsNumber;
     }
-
+    
     public void setRoomsNumber(int roomsNumber) {
         this.roomsNumber = roomsNumber;
     }
@@ -52,7 +58,7 @@ public class PropertyQueryDTO implements Serializable{
     public float getMinimalRent() {
         return minimalRent;
     }
-
+    
     public void setMinimalRent(float minimalRent) {
         this.minimalRent = minimalRent;
     }
@@ -60,7 +66,7 @@ public class PropertyQueryDTO implements Serializable{
     public float getMaximalRent() {
         return maximalRent;
     }
-
+    
     public void setMaximalRent(float maximalRent) {
         this.maximalRent = maximalRent;
     }
@@ -68,10 +74,9 @@ public class PropertyQueryDTO implements Serializable{
     public String getCedulaProp() {
         return cedulaProp;
     }
-
+    
     public void setCedulaProp(String cedulaProp) {
         this.cedulaProp = cedulaProp;
     }
    
-    
 }

@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Customer.findByNdi", query = "SELECT c FROM Customer c WHERE c.ndi = :ndi"),
     @NamedQuery(name = "Customer.findByEMail", query = "SELECT c FROM Customer c WHERE c.eMail = :eMail"),
     @NamedQuery(name = "Customer.findByUsername", query = "SELECT c FROM Customer c WHERE c.username = :username"),
-    @NamedQuery(name = "Customer.findByPassword", query = "SELECT c FROM Customer c WHERE c.password = :password")})
+    @NamedQuery(name = "Customer.findByPassword", query = "SELECT c FROM Customer c WHERE c.password = :password"),
+    @NamedQuery(name = "Customer.findByLogin", query = "SELECT c.username, c.password FROM Customer c WHERE c.username = :username AND c.password = :password ")})
 public class Customer implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation

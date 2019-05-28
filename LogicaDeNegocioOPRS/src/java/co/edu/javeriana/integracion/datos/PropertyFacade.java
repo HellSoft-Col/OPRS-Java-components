@@ -5,6 +5,8 @@
  */
 package co.edu.javeriana.integracion.datos;
 
+import co.edu.javeriana.dtos.PropertyDTO;
+import co.edu.javeriana.entities.Owner;
 import co.edu.javeriana.entities.Property;
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
@@ -24,6 +26,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class PropertyFacade extends AbstractFacade<Property> implements PropertyFacadeLocal {
+
     @EJB
     private OwnerFacadeLocal ownerFacade;
     @PersistenceContext(unitName = "LogicaDeNegocioOPRSPU")
@@ -33,27 +36,22 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
     @Override
-    public List<Property> findByRentRange(BigDecimal minimal, BigDecimal maximal) {
-        
+    public List<PropertyDTO> findByRentRange(BigDecimal minimal, BigDecimal maximal) {
+
         Query consultaPropiedades = em.createNamedQuery("Property.findByRentRange");
         consultaPropiedades.setParameter("minumrent", minimal);
         consultaPropiedades.setParameter("maximalrent", maximal);
         List<Object[]> result_list = consultaPropiedades.getResultList();
-        List<Property> result_set = new ArrayList<Property>();
-        for(Object[] obj: result_list){
-            Property p = new Property();
-            p.setAddress(obj[0].toString());
-            p.setLocation(obj[1].toString());
-            p.setRent(new BigDecimal(obj[2].toString()));
-            p.setRoomsNumber(new BigInteger(obj[3].toString()));
-            p.setType(new BigInteger(obj[4].toString()));
+        List<PropertyDTO> result_set = new ArrayList<PropertyDTO>();
+        for (Object[] obj : result_list) {
+            PropertyDTO p = new PropertyDTO(obj[0].toString(), obj[1].toString(), new BigDecimal(obj[2].toString()), new BigInteger(obj[3].toString()), new BigInteger(obj[4].toString()));
             result_set.add(p);
         }
-        
+
         return result_set;
-    
+
     }
 
     public boolean addProperty(Property property){
@@ -72,22 +70,35 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
     }
 
     @Override
-    public List<Property> findByCedula(String cedula) {
-        return new ArrayList<Property>(ownerFacade.findByCedula(cedula).getPropertyCollection());    
+    public List<PropertyDTO> findByCedula(String cedula) {
+
+        TypedQuery<PropertyDTO> consultaOwner = em.createNamedQuery("Property.findByOwnerNDI", PropertyDTO.class);
+        consultaOwner.setParameter("ownerNdi", cedula);
+        return consultaOwner.getResultList();
     }
 
     @Override
-    public List<Property> findByRentRangeAndCedula(String cedula, BigDecimal minimal, BigDecimal maximal) {
-        List<Property> properties = new ArrayList<Property>(ownerFacade.findByCedula(cedula).getPropertyCollection());
-        List<Property> result = new ArrayList<Property>();
-        
-        for (Property p: properties){
-            if( p.getRent().compareTo(minimal) >= 0 && p.getRent().compareTo(maximal) <= 0){
+    public List<PropertyDTO> findByRentRangeAndCedula(String cedula, BigDecimal minimal, BigDecimal maximal) {
+
+        TypedQuery<PropertyDTO> consultaOwner = em.createNamedQuery("Property.findByOwnerNDI", PropertyDTO.class);
+        consultaOwner.setParameter("ownerNdi", cedula);
+        List<PropertyDTO> result_p = consultaOwner.getResultList();
+
+        List<PropertyDTO> result = new ArrayList<PropertyDTO>();
+
+        for (PropertyDTO p : result_p) {
+            if (p.getRent().compareTo(minimal) >= 0 && p.getRent().compareTo(maximal) <= 0) {
                 result.add(p);
             }
         }
-        
+
         return result;
     }
-    
+
+    @Override
+    public List<PropertyDTO> findAllDTO() {
+        TypedQuery<PropertyDTO> findAll = em.createNamedQuery("Property.findAllDTO", PropertyDTO.class);
+        return findAll.getResultList();
+    }
+
 }

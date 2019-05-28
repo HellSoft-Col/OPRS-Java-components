@@ -5,6 +5,7 @@
  */
 package co.edu.javeriana.facades;
 
+import co.edu.javeriana.dtos.PropertyDTO;
 import co.edu.javeriana.dtos.PropertyQueryDTO;
 import co.edu.javeriana.entities.Property;
 import co.edu.javeriana.integracion.datos.PropertyFacade;
@@ -28,9 +29,9 @@ public class FacadeBuscarPropiedad implements FacadeBuscarPropiedadRemote, Facad
     private PropertyFacadeLocal propertyFacade;
 
     @Override
-    public List<Property> searchProperty(PropertyQueryDTO params) {
+    public List<PropertyDTO> searchProperty(PropertyQueryDTO params) {
 
-        List<Property> result = new ArrayList<>();
+        List<PropertyDTO> result = new ArrayList<PropertyDTO>();
         if (params.getCedulaProp() != null && (params.getMaximalRent() != -1 && params.getMinimalRent() != -1)) {
             BigDecimal min = new BigDecimal(Float.toString(params.getMinimalRent()));
             BigDecimal max = new BigDecimal(Float.toString(params.getMaximalRent()));
@@ -43,8 +44,10 @@ public class FacadeBuscarPropiedad implements FacadeBuscarPropiedadRemote, Facad
 
         } else if (params.getCedulaProp() != null && (params.getMaximalRent() == -1 && params.getMinimalRent() == -1)) {
             result = propertyFacade.findByCedula(params.getCedulaProp());
+        }else{
+            result = propertyFacade.findAllDTO();
         }
-
+        
         return result;
     }
 

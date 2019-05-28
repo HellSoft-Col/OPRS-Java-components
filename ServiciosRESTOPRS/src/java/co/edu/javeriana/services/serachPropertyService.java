@@ -5,10 +5,13 @@
  */
 package co.edu.javeriana.services;
 
+import co.edu.javeriana.dtos.PropertyDTO;
 import co.edu.javeriana.dtos.PropertyQueryDTO;
 import co.edu.javeriana.entities.Property;
 import co.edu.javeriana.facades.FacadeBuscarPropiedadRemote;
+import com.google.gson.Gson;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -22,6 +25,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -54,9 +59,12 @@ public class serachPropertyService {
     }
     
     @POST
-    @Consumes({"application/xml", "application/json"})
-    public List<Property> searchProperties(PropertyQueryDTO search) {
-        return this.facadeBuscarPropiedad.searchProperty(search);
+    @Consumes("application/json")
+    public Response searchProperties(PropertyQueryDTO search) {
+        Gson gson = new Gson();
+        List<PropertyDTO> res =  this.facadeBuscarPropiedad.searchProperty(search);
+        String json = gson.toJson(res);
+        return Response.ok(json, MediaType.APPLICATION_JSON).build();
     }
     
     /**

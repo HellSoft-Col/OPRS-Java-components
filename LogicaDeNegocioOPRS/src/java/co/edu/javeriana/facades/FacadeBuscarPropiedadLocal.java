@@ -5,6 +5,7 @@
  */
 package co.edu.javeriana.facades;
 
+import co.edu.javeriana.dtos.PropertyDTO;
 import co.edu.javeriana.dtos.PropertyQueryDTO;
 import co.edu.javeriana.entities.Property;
 import java.util.List;
@@ -16,5 +17,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface FacadeBuscarPropiedadLocal {
-    public List<Property> searchProperty(PropertyQueryDTO params);
+    public List<PropertyDTO> searchProperty(PropertyQueryDTO params);
 }
