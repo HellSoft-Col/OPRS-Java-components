@@ -37,4 +37,6 @@ public interface PropertyFacadeLocal {
     public List<PropertyDTO> findByCedula(String cedula);
    
     public List<PropertyDTO> findByRentRangeAndCedula(String cedula, BigDecimal minimal, BigDecimal maximal);
+
+    public List<PropertyDTO> findAllDTO();
 }

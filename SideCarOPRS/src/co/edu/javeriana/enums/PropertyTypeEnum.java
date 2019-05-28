@@ -27,5 +27,14 @@ public enum PropertyTypeEnum {
         return APARTAMENTO.getValue();
     }
     
+    public String getName(PropertyTypeEnum enu){
+        if(enu.getValue() == 1){
+            return "Casa";
+        }else if(enu.getValue() == 2){
+            return "Apartamento";
+        }
+
+        return "";
+    }
     
 }

@@ -60,12 +60,7 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
 
     @Override
     public List<PropertyDTO> findByCedula(String cedula) {
-        /*
-         Owner owner = ownerFacade.findByCedula(cedula);
-         if (owner != null) {
-         return new ArrayList<Property>(owner.getPropertyCollection());
-         }
-         */
+
         TypedQuery<PropertyDTO> consultaOwner = em.createNamedQuery("Property.findByOwnerNDI", PropertyDTO.class);
         consultaOwner.setParameter("ownerNdi", cedula);
         return consultaOwner.getResultList();
@@ -79,15 +74,6 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
         List<PropertyDTO> result_p = consultaOwner.getResultList();
 
         List<PropertyDTO> result = new ArrayList<PropertyDTO>();
-        /*
-         if (owner != null) {
-         List<Property> properties = new ArrayList<Property>(owner.getPropertyCollection());
-         for (Property p : properties) {
-         if (p.getRent().compareTo(minimal) >= 0 && p.getRent().compareTo(maximal) <= 0) {
-         result.add(p);
-         }
-         }
-         }*/
 
         for (PropertyDTO p : result_p) {
             if (p.getRent().compareTo(minimal) >= 0 && p.getRent().compareTo(maximal) <= 0) {
@@ -96,6 +82,12 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
         }
 
         return result;
+    }
+
+    @Override
+    public List<PropertyDTO> findAllDTO() {
+        TypedQuery<PropertyDTO> findAll = em.createNamedQuery("Property.findAllDTO", PropertyDTO.class);
+        return findAll.getResultList();
     }
 
 }
