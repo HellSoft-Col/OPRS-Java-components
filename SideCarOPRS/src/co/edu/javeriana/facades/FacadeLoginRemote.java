@@ -5,6 +5,7 @@
  */
 package co.edu.javeriana.facades;
 
+import co.edu.javeriana.dtos.LoginDTO;
 import javax.ejb.Remote;
 
 /**
@@ -13,5 +14,6 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface FacadeLoginRemote {
+    public LoginDTO iniciarSesion(LoginDTO params);
     
 }

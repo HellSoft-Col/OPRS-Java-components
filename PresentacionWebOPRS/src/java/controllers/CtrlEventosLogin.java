@@ -5,9 +5,13 @@
  */
 package controllers;
 
+import co.edu.javeriana.dtos.LoginDTO;
+import com.google.gson.Gson;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
+import javax.ws.rs.core.Response;
+import proxies.ProxyLogIn;
 
 /**
  *
@@ -43,5 +47,19 @@ public class CtrlEventosLogin {
         this.password = password;
     }
     
-    
+    public LoginDTO createLoginDto (){
+        LoginDTO login = new LoginDTO();
+        login.setUsername(username);
+        login.setPassword(password);
+        
+        Gson gson = new Gson();
+        String dtoJson = gson.toJson(login);
+        ProxyLogIn proxyLogin = new ProxyLogIn();
+        Response response = proxyLogin.logIn(dtoJson);
+        
+        
+//String result = EntityUtils.toString(response.getEntity());
+        LoginDTO user = gson.fromJson(response, LoginDTO.class);
+        return login;
+    }
 }
