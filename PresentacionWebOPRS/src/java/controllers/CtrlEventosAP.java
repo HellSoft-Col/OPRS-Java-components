@@ -96,6 +96,7 @@ public class CtrlEventosAP {
         //TODO: get owner id
         this.owner = BigInteger.valueOf(1);
         PropertyPK ppk = new PropertyPK(owner);
+        ppk.setId(BigInteger.valueOf(999));
         Property property = new Property(ppk, type, address, rooms, rent, location);
         boolean ans = facadeAgregarPropiedad.addProperty(property);
         if(!ans){

@@ -31,4 +31,6 @@ public interface OwnerFacadeLocal {
     int count();
     
     Owner findByCedula(String cedula);
+
+    public Owner findById(int id);
 }
