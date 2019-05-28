@@ -42,7 +42,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Rent.findByState", query = "SELECT r FROM Rent r WHERE r.state = :state"),
     @NamedQuery(name = "Rent.findByPropertyId", query = "SELECT r FROM Rent r WHERE r.rentPK.propertyId = :propertyId"),
     @NamedQuery(name = "Rent.findByPropertyOwnerId", query = "SELECT r FROM Rent r WHERE r.rentPK.propertyOwnerId = :propertyOwnerId"),
-    @NamedQuery(name = "Rent.findByCustomerId", query = "SELECT r FROM Rent r WHERE r.rentPK.customerId = :customerId")})
+    @NamedQuery(name = "Rent.findByCustomerId", query = "SELECT r FROM Rent r WHERE r.rentPK.customerId = :customerId"),
+    @NamedQuery(name = "Rent.findRentPropertiesByNdi", query="SELECT p.address, p.location, p.rent, p.roomsNumber, p.type FROM PROPERTY p LEFT OUTER JOIN RENT ON property.ID = rent.property_id INNER JOIN CUSTOMER ON rent.customer_id = customer.ID WHERE customer.NDI = :ndi")})
 public class Rent implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
