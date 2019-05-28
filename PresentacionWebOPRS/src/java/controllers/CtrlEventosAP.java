@@ -10,20 +10,26 @@ import co.edu.javeriana.entities.PropertyPK;
 import co.edu.javeriana.facades.FacadeAgregarPropiedadRemote;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  *
  * @author LICHO
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class CtrlEventosAP {
-    
-    @EJB
-    FacadeAgregarPropiedadRemote fapr;
+
+    FacadeAgregarPropiedadRemote facadeAgregarPropiedad = lookupFacadeAgregarPropiedadRemote();
     
     private BigInteger type;
     private String address;
@@ -36,14 +42,6 @@ public class CtrlEventosAP {
      * Creates a new instance of CtrlEventosAP
      */
     public CtrlEventosAP() {
-    }
-
-    public FacadeAgregarPropiedadRemote getFapr() {
-        return fapr;
-    }
-
-    public void setFapr(FacadeAgregarPropiedadRemote fapr) {
-        this.fapr = fapr;
     }
 
     public BigInteger getType() {
@@ -94,14 +92,26 @@ public class CtrlEventosAP {
         this.owner = owner;
     }
 
-    
-    
     public void addProperty(){
         //TODO: get owner id
         this.owner = BigInteger.valueOf(1);
         PropertyPK ppk = new PropertyPK(owner);
         Property property = new Property(ppk, type, address, rooms, rent, location);
-        fapr.addProperty(property);
+        boolean ans = facadeAgregarPropiedad.addProperty(property);
+        if(!ans){
+            FacesContext.getCurrentInstance().addMessage("apForm:pSubmit", new FacesMessage("Algo salió mal :(")); 
+        }
+        
+    }
+    
+    private FacadeAgregarPropiedadRemote lookupFacadeAgregarPropiedadRemote() {
+        try {
+            javax.naming.Context c = new InitialContext();
+            return (FacadeAgregarPropiedadRemote) c.lookup("java:global/LogicaDeNegocioOPRS/FacadeAgregarPropiedad!co.edu.javeriana.facades.FacadeAgregarPropiedadRemote");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
     }
     
 }

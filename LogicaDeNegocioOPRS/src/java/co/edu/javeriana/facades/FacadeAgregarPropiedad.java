@@ -7,6 +7,7 @@ package co.edu.javeriana.facades;
 
 import co.edu.javeriana.entities.Property;
 import co.edu.javeriana.integracion.datos.PropertyFacade;
+import co.edu.javeriana.integracion.datos.PropertyFacadeLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -18,7 +19,7 @@ import javax.ejb.Stateless;
 public class FacadeAgregarPropiedad implements FacadeAgregarPropiedadRemote {
     
     @EJB
-    private PropertyFacade propertyFacade;
+    private PropertyFacadeLocal propertyFacade;
 
     @Override
     public boolean addProperty(Property property) {

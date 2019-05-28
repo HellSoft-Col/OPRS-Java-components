@@ -36,4 +36,6 @@ public interface PropertyFacadeLocal {
     public List<Property> findByCedula(String cedula);
    
     public List<Property> findByRentRangeAndCedula(String cedula, BigDecimal minimal, BigDecimal maximal);
+    
+    public boolean addProperty(Property property);
 }

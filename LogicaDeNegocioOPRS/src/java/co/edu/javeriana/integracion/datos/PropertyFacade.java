@@ -61,6 +61,7 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
             em.persist(property);
         }
         catch(Exception ex){
+            System.out.println(ex);
             return false;
         }
         return true;

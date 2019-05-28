@@ -15,6 +15,6 @@ import javax.ejb.Remote;
 @Remote
 public interface FacadeAgregarPropiedadRemote {
 
-    boolean addProperty(Property property);
+    public boolean addProperty(Property property);
     
 }
