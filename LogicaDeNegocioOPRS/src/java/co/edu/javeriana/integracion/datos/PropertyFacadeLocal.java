@@ -5,6 +5,7 @@
  */
 package co.edu.javeriana.integracion.datos;
 
+import co.edu.javeriana.dtos.PropertyDTO;
 import co.edu.javeriana.entities.Property;
 import java.math.BigDecimal;
 import java.util.List;
@@ -31,9 +32,9 @@ public interface PropertyFacadeLocal {
 
     int count();
     
-    public List<Property> findByRentRange(BigDecimal minimal, BigDecimal maximal);
+    public List<PropertyDTO> findByRentRange(BigDecimal minimal, BigDecimal maximal);
     
-    public List<Property> findByCedula(String cedula);
+    public List<PropertyDTO> findByCedula(String cedula);
    
-    public List<Property> findByRentRangeAndCedula(String cedula, BigDecimal minimal, BigDecimal maximal);
+    public List<PropertyDTO> findByRentRangeAndCedula(String cedula, BigDecimal minimal, BigDecimal maximal);
 }

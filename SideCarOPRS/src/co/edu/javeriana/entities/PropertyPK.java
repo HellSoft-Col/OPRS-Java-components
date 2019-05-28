@@ -18,7 +18,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class PropertyPK implements Serializable {
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID", insertable=false)
     private BigInteger id;
     @Basic(optional = false)
     @Column(name = "OWNER_ID")

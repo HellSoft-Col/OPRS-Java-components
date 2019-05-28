@@ -8,6 +8,7 @@ package co.edu.javeriana.integracion.datos;
 import co.edu.javeriana.entities.Owner;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -34,7 +35,13 @@ public class OwnerFacade extends AbstractFacade<Owner> implements OwnerFacadeLoc
     public Owner findByCedula(String cedula) {
         TypedQuery<Owner> consultaOwner = em.createNamedQuery("Owner.findByNdi",Owner.class);
         consultaOwner.setParameter("ndi", cedula);
-        return consultaOwner.getSingleResult();
+        try{
+            Owner result = consultaOwner.getSingleResult();
+            return result;
+        }catch(NoResultException e){
+            return null;
+        }
+        
     }
     
 }
