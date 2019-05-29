@@ -8,16 +8,25 @@
     <h:body>
         Seleccione la funcionalidad que desee
         <h:form>
-            <h:commandButton
-            value= "Agregar propiedad"
-            action=" "/>
-            <h:commandButton
-            value= "Buscar propiedad"
-            action=" "/>
-            <h:commandButton
-            value= "Rentar propiedad"
-            action=" "/>
-            
+            <table border="1" cellspacing="2" cellpadding="2">
+                <tbody>
+                    <tr>
+                        <td><h:commandButton
+                                value= "Agregar propiedad"
+                                action="#{ctrlEventosMenu.agregarP}"/></td>
+                        <td><h:commandButton
+                                value= "Buscar propiedad"
+                                action="#{ctrlEventosMenu.buscarP}"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:commandButton
+                                value= "Rentar propiedad"
+                                action=" "/></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
         </h:form>
     </h:body>
 </html>

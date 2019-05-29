@@ -7,12 +7,12 @@ package controllers;
 
 import co.edu.javeriana.dtos.LoginDTO;
 import com.google.gson.Gson;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.ws.rs.core.Response;
-import org.apache.http.HttpEntity;
-import org.apache.http.util.EntityUtils;
 import proxies.ProxyLogIn;
 
 /**
@@ -66,8 +66,15 @@ public class CtrlEventosLogin {
         
         LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
         
-        if(user.getUsername() == null){
+        if(user.getUsername() == null && (user.getPassword()== null)){
             //TODO: Colocar mensaje de eror
+            FacesContext.getCurrentInstance().addMessage("loginForm:loginSubmit", new FacesMessage("Lo sentimos, el usuario no existe"));
+             if(user.getUsername()!= this.username && (user.getPassword()== this.password)){
+                    FacesContext.getCurrentInstance().addMessage("loginForm:usernameSubmit", new FacesMessage("El usuario no coincide"));
+             }else{
+                FacesContext.getCurrentInstance().addMessage("loginForm:passSubmit", new FacesMessage("La contraseña no coincide"));
+                
+            }
             return "index";
         }
         

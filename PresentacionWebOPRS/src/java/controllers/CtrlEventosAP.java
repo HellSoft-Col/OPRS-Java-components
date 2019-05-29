@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import co.edu.javeriana.dtos.LoginDTO;
 import co.edu.javeriana.entities.Property;
 import co.edu.javeriana.entities.PropertyPK;
 import co.edu.javeriana.enums.PropertyLocationEnum;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -21,6 +23,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -34,7 +37,6 @@ import javax.naming.NamingException;
 public class CtrlEventosAP {
 
     FacadeAgregarPropiedadRemote facadeAgregarPropiedad = lookupFacadeAgregarPropiedadRemote();
-    
     private BigInteger type;
     private String address;
     private String location;
@@ -98,6 +100,17 @@ public class CtrlEventosAP {
     }
 
     public BigInteger getOwner() {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map sessionMap = externalContext.getSessionMap();
+        LoginDTO user = (LoginDTO)sessionMap.get("id");
+        BigDecimal bd;
+        BigInteger bi;
+        bd = user.getId();
+        bi = bd.toBigInteger();
+        
+        this.owner = bi;
+       
+        System.out.println("---------> Id usuario concurrente: " + this.owner);
         return owner;
     }
 
@@ -114,6 +127,7 @@ public class CtrlEventosAP {
     }
     
     public void addProperty(){
+        
         //TODO: get owner id
         this.owner = BigInteger.valueOf(1);
         PropertyPK ppk = new PropertyPK(owner);
