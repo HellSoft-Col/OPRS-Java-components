@@ -5,6 +5,7 @@
  */
 package co.edu.javeriana.integracion.datos;
 
+import co.edu.javeriana.dtos.LoginDTO;
 import co.edu.javeriana.entities.Owner;
 import java.util.List;
 import javax.ejb.Local;
@@ -31,6 +32,8 @@ public interface OwnerFacadeLocal {
     int count();
     
     Owner findByCedula(String cedula);
+    
+    LoginDTO findByLogin(String username, String password);
 
     public Owner findById(int id);
 }

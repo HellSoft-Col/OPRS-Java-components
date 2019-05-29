@@ -5,10 +5,19 @@
  */
 package co.edu.javeriana.integracion.datos;
 
+import co.edu.javeriana.dtos.LoginDTO;
+import co.edu.javeriana.dtos.PropertyDTO;
 import co.edu.javeriana.entities.Customer;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -30,8 +39,22 @@ public class CustomerFacade extends AbstractFacade<Customer> implements Customer
     }
 
     @Override
-    public Customer findByLogin(String username, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public LoginDTO findByLogin(String username, String password) {
+        TypedQuery<LoginDTO> iniciarSesion = em.createNamedQuery("Customer.findByLogin", LoginDTO.class);
+        iniciarSesion.setParameter("username", username);
+        iniciarSesion.setParameter("password", password);
+        try{
+           LoginDTO login = iniciarSesion.getSingleResult();
+           return login; 
+        }catch(NoResultException e){
+            return null;
+        }
+        
     }
+   
+    
+  
+    
+        
     
 }

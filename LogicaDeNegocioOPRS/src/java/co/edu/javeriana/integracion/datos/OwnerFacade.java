@@ -5,6 +5,7 @@
  */
 package co.edu.javeriana.integracion.datos;
 
+import co.edu.javeriana.dtos.LoginDTO;
 import co.edu.javeriana.entities.Owner;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -38,6 +39,20 @@ public class OwnerFacade extends AbstractFacade<Owner> implements OwnerFacadeLoc
         try{
             Owner result = consultaOwner.getSingleResult();
             return result;
+        }catch(NoResultException e){
+            return null;
+        }
+        
+    }
+    
+    @Override
+    public LoginDTO findByLogin(String username, String password) {
+        TypedQuery<LoginDTO> iniciarSesion = em.createNamedQuery("Customer.findByLogin", LoginDTO.class);
+        iniciarSesion.setParameter("username", username);
+        iniciarSesion.setParameter("password", password);
+        try{
+           LoginDTO login = iniciarSesion.getSingleResult();
+           return login; 
         }catch(NoResultException e){
             return null;
         }

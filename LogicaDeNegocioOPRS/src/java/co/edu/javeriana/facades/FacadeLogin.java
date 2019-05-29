@@ -24,11 +24,17 @@ public class FacadeLogin implements FacadeLoginRemote, FacadeLoginLocal {
     private OwnerFacadeLocal ownerFacade;
     private CustomerFacadeLocal customerFacade;
 
-   /*public LoginDTO iniciarsesion(LoginDTO params){
-      customerFacade.findByLogin(params.getUsername(), params.getPassword());
-      return ;
+    public LoginDTO iniciarSesion(LoginDTO params){
+      LoginDTO login = new LoginDTO();
+      if(params.getUsername()!= null && (params.getPassword()!= null)){
+          login = customerFacade.findByLogin(params.getUsername(), params.getPassword());
+          if(login.getUsername() == null && (login.getPassword() == null)){
+              login = ownerFacade.findByLogin(params.getUsername(), params.getPassword());
+          }
+      }
+      return login;
         
-    }*/
+    }
     public FacadeLogin(){
         
     }

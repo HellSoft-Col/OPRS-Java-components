@@ -5,6 +5,7 @@
  */
 package co.edu.javeriana.integracion.datos;
 
+import co.edu.javeriana.dtos.LoginDTO;
 import co.edu.javeriana.entities.Customer;
 import java.util.List;
 import javax.ejb.Local;
@@ -24,7 +25,7 @@ public interface CustomerFacadeLocal {
 
     Customer find(Object id);
     
-    Customer findByLogin(String username, String password);
+    LoginDTO findByLogin(String username, String password);
     
     List<Customer> findAll();
 
