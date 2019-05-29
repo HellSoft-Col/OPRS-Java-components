@@ -6,6 +6,7 @@
 package co.edu.javeriana.integracion.datos;
 
 import co.edu.javeriana.dtos.PropertyDTO;
+import co.edu.javeriana.dtos.RentsCustomerDTO;
 import co.edu.javeriana.entities.Rent;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -15,6 +16,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -35,16 +37,9 @@ public class RentFacade extends AbstractFacade<Rent> implements RentFacadeLocal 
     }
 
     @Override
-    public List<PropertyDTO> findRentPropertiesByNdi(String ndi) {
-        Query rentProperties = em.createNamedQuery("Rent.findRentPropertiesByNdi");
-        rentProperties.setParameter("ndi", ndi);
-        List<Object[]> result_list = rentProperties.getResultList();
-        List<PropertyDTO> result_set = new ArrayList<PropertyDTO>();
-        for (Object[] obj : result_list) {
-            PropertyDTO p = new PropertyDTO(obj[0].toString(), obj[1].toString(), new BigDecimal(obj[2].toString()), new BigInteger(obj[3].toString()), new BigInteger(obj[4].toString()));
-            result_set.add(p);
-        }
-        return result_set;
+    public List<RentsCustomerDTO> findRentPropertiesByNdi() {
+        TypedQuery rentProperties = em.createNamedQuery("Rent.findRentPropertiesByNdi", RentsCustomerDTO.class);
+        return rentProperties.getResultList();
     }
     
 }

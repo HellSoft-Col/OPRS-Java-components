@@ -6,6 +6,7 @@
 package co.edu.javeriana.integracion.datos;
 
 import co.edu.javeriana.dtos.PropertyDTO;
+import co.edu.javeriana.dtos.RentsCustomerDTO;
 import co.edu.javeriana.entities.Rent;
 import java.util.List;
 import javax.ejb.Local;
@@ -31,6 +32,6 @@ public interface RentFacadeLocal {
 
     int count();
     
-    List<PropertyDTO> findRentPropertiesByNdi(String ndi);
+    List<RentsCustomerDTO> findRentPropertiesByNdi();
     
 }

@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Rent.findByPropertyId", query = "SELECT r FROM Rent r WHERE r.rentPK.propertyId = :propertyId"),
     @NamedQuery(name = "Rent.findByPropertyOwnerId", query = "SELECT r FROM Rent r WHERE r.rentPK.propertyOwnerId = :propertyOwnerId"),
     @NamedQuery(name = "Rent.findByCustomerId", query = "SELECT r FROM Rent r WHERE r.rentPK.customerId = :customerId"),
-    @NamedQuery(name = "Rent.findRentPropertiesByNdi", query="SELECT p.address, p.location, p.rent, p.roomsNumber, p.type FROM PROPERTY p LEFT OUTER JOIN RENT ON property.ID = rent.property_id INNER JOIN CUSTOMER ON rent.customer_id = customer.ID WHERE customer.NDI = :ndi")})
+    @NamedQuery(name = "Rent.findRentPropertiesByNdi", query="SELECT new co.edu.javeriana.dtos.RentsCustomerDTO(r.property.address, r.property.location, r.property.rent, r.property.roomsNumber, r.property.type,r.customer.name,r.customer.ndi) FROM Rent r ORDER BY r.customer.id")})
 public class Rent implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId

@@ -6,27 +6,36 @@
 package co.edu.javeriana.facades;
 
 import co.edu.javeriana.dtos.PropertyDTO;
+import co.edu.javeriana.dtos.RentsCustomerDTO;
 import co.edu.javeriana.integracion.datos.RentFacadeLocal;
 import java.util.List;
+import java.util.concurrent.Future;
+import javax.annotation.Resource;
+import javax.ejb.AsyncResult;
 import javax.ejb.Asynchronous;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
+import javax.ejb.SessionContext;
 
 /**
  *
  * @author anfec
  */
 @Stateless
+@Asynchronous
 public class FacadeListarPropiedades implements FacadeListarPropiedadesLocal{
 
     @EJB
     private RentFacadeLocal rentFacade;
+    @Resource
+    SessionContext ctx;   
     
-    @Asynchronous
     @Override
-    public List<PropertyDTO> ListRentPropertiesByUser(String cedula){
-        List<PropertyDTO> rentProperties = rentFacade.findRentPropertiesByNdi(cedula);
-        return rentProperties;
+    public Future<List<RentsCustomerDTO>> ListRentPropertiesByUser(){
+        if (ctx.wasCancelCalled()) {
+            return new AsyncResult<>(null);
+        }
+        List<RentsCustomerDTO> rentProperties = rentFacade.findRentPropertiesByNdi();
+        return new AsyncResult<>(rentProperties);
     }
 }

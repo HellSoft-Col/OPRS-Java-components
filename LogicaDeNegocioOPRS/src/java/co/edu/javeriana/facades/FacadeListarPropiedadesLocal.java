@@ -6,7 +6,10 @@
 package co.edu.javeriana.facades;
 
 import co.edu.javeriana.dtos.PropertyDTO;
+import co.edu.javeriana.dtos.RentsCustomerDTO;
 import java.util.List;
+import java.util.concurrent.Future;
+import javax.ejb.Asynchronous;
 import javax.ejb.Local;
 
 /**
@@ -15,5 +18,6 @@ import javax.ejb.Local;
  */
 @Local
 public interface FacadeListarPropiedadesLocal {
-    public List<PropertyDTO> ListRentPropertiesByUser(String cedula);
+    
+    public Future<List<RentsCustomerDTO>> ListRentPropertiesByUser();
 }
