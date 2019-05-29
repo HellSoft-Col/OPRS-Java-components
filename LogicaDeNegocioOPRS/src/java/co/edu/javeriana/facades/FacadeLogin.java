@@ -17,17 +17,19 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class FacadeLogin implements FacadeLoginRemote, FacadeLoginLocal {
+    @EJB
+    private CustomerFacadeLocal customerFacade1;
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
     @EJB
     private OwnerFacadeLocal ownerFacade;
-    private CustomerFacadeLocal customerFacade;
+    
+   
 
+    @Override
     public LoginDTO iniciarSesion(LoginDTO params){
       LoginDTO login = new LoginDTO();
       if(params.getUsername()!= null && (params.getPassword()!= null)){
-          login = customerFacade.findByLogin(params.getUsername(), params.getPassword());
+          login = customerFacade1.findByLogin(params.getUsername(), params.getPassword());
           if(login.getUsername() == null && (login.getPassword() == null)){
               login = ownerFacade.findByLogin(params.getUsername(), params.getPassword());
           }

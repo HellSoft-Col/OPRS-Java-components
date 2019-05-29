@@ -32,6 +32,7 @@ import javax.ws.rs.core.Response;
 @Path("login")
 public class LoginService {
     FacadeLoginRemote facadeLogin = lookupFacadeLoginRemote();
+    
 
     @Context
     private UriInfo context;
@@ -81,4 +82,6 @@ public class LoginService {
             throw new RuntimeException(ne);
         }
     }
+
+ 
 }

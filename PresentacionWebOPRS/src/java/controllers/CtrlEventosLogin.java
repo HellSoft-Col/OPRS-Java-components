@@ -11,6 +11,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import javax.ws.rs.core.Response;
+import org.apache.http.HttpEntity;
+import org.apache.http.util.EntityUtils;
 import proxies.ProxyLogIn;
 
 /**
@@ -57,9 +59,10 @@ public class CtrlEventosLogin {
         ProxyLogIn proxyLogin = new ProxyLogIn();
         Response response = proxyLogin.logIn(dtoJson);
         
+        response.getEntity();
         
-//String result = EntityUtils.toString(response.getEntity());
-        LoginDTO user = gson.fromJson(response, LoginDTO.class);
-        return login;
+        String result = response.readEntity(String.class);
+        LoginDTO user = gson.fromJson(result, LoginDTO.class);
+        return user;
     }
 }

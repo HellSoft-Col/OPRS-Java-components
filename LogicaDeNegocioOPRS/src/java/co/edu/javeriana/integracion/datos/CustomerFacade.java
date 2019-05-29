@@ -40,15 +40,17 @@ public class CustomerFacade extends AbstractFacade<Customer> implements Customer
 
     @Override
     public LoginDTO findByLogin(String username, String password) {
+        LoginDTO login;
         TypedQuery<LoginDTO> iniciarSesion = em.createNamedQuery("Customer.findByLogin", LoginDTO.class);
         iniciarSesion.setParameter("username", username);
         iniciarSesion.setParameter("password", password);
         try{
-           LoginDTO login = iniciarSesion.getSingleResult();
-           return login; 
+           login = iniciarSesion.getSingleResult();
         }catch(NoResultException e){
-            return null;
+           login = new LoginDTO();
         }
+        
+        return login; 
         
     }
    
