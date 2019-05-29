@@ -49,7 +49,7 @@ public class CtrlEventosLogin {
         this.password = password;
     }
     
-    public LoginDTO createLoginDto (){
+    public String createLoginDto (){
         LoginDTO login = new LoginDTO();
         login.setUsername(username);
         login.setPassword(password);
@@ -57,12 +57,21 @@ public class CtrlEventosLogin {
         Gson gson = new Gson();
         String dtoJson = gson.toJson(login);
         ProxyLogIn proxyLogin = new ProxyLogIn();
-        Response response = proxyLogin.logIn(dtoJson);
+        Response result = proxyLogin.logIn(dtoJson);
+       
+        String result_string ;
         
-        response.getEntity();
+        result_string = result.readEntity(String.class);
         
-        String result = response.readEntity(String.class);
-        LoginDTO user = gson.fromJson(result, LoginDTO.class);
-        return user;
+        
+        LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
+        
+        if(user.getUsername() == null){
+            //TODO: Colocar mensaje de eror
+            return "index";
+        }
+        
+        //TODO: Agregar Funcionalidad a los botones
+        return "PantallaWebMenu";
     }
 }

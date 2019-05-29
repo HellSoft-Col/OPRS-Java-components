@@ -10,6 +10,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
+
 /**
  * Jersey REST client generated for REST resource:LoginService [login]<br>
  * USAGE:
