@@ -43,8 +43,8 @@ public class RentFacade extends AbstractFacade<Rent> implements RentFacadeLocal 
     @Override
     public List<RentDTO> findRentTransactions(){
         List<RentDTO> resultDTO = new ArrayList<>();
-        Query consultaPropiedades = em.createNamedQuery("Rent.findAll");
-        List<Rent> result_list = consultaPropiedades.getResultList();
+        Query consultaRentas = em.createNamedQuery("Rent.findAll");
+        List<Rent> result_list = consultaRentas.getResultList();
         for (Rent rent : result_list) {
             RentDTO r = new RentDTO();
             r.setRentalDate(rent.getRentalDate());
