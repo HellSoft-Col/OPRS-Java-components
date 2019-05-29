@@ -41,4 +41,6 @@ public interface PropertyFacadeLocal {
     public List<PropertyDTO> findAllDTO();
     
     public boolean addProperty(Property property);
+    
+    public Property findById(int id);
 }

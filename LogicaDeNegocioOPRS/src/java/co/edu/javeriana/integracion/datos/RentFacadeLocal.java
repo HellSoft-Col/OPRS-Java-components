@@ -5,7 +5,10 @@
  */
 package co.edu.javeriana.integracion.datos;
 
+import co.edu.javeriana.dtos.RentSignDTO;
 import co.edu.javeriana.entities.Rent;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,4 +33,13 @@ public interface RentFacadeLocal {
 
     int count();
     
+    List<Rent> findByCustomerAndState(BigDecimal id, BigInteger state);
+    
+    List<RentSignDTO> findByCustomerAndStateDTO(BigDecimal id, BigInteger state);
+    
+    List<Rent> findByOwnerAndState(BigDecimal id, BigInteger state);
+    
+    List<RentSignDTO> findByOwnerAndStateDTO(BigDecimal id, BigInteger state);
+    
+    public Rent findById(int id);
 }

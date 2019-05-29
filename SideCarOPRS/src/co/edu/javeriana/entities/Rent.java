@@ -42,8 +42,14 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Rent.findByState", query = "SELECT r FROM Rent r WHERE r.state = :state"),
     @NamedQuery(name = "Rent.findByPropertyId", query = "SELECT r FROM Rent r WHERE r.rentPK.propertyId = :propertyId"),
     @NamedQuery(name = "Rent.findByPropertyOwnerId", query = "SELECT r FROM Rent r WHERE r.rentPK.propertyOwnerId = :propertyOwnerId"),
-    @NamedQuery(name = "Rent.findByCustomerId", query = "SELECT r FROM Rent r WHERE r.rentPK.customerId = :customerId")})
+    @NamedQuery(name = "Rent.findByCustomerId", query = "SELECT r FROM Rent r WHERE r.rentPK.customerId = :customerId"),
+    @NamedQuery(name = "Rent.findByCustomerIdAndState", query = "SELECT r FROM Rent r WHERE r.customer.id=:id AND r.state=:state"),
+    @NamedQuery(name = "Rent.findByOwnerIdAndState", query = "SELECT r FROM Rent r WHERE r.property.owner.id=:id AND r.state=:state"),
+    @NamedQuery(name = "Rent.findByCustomerIdAndStateDTO", query = "SELECT new co.edu.javeriana.dtos.RentSignDTO(r.rentPK.id, r.property.address, r.property.location,r.rentalDate, r.rentalTimeStart, r.rentalTimeEnd, r.rentProperty) FROM Rent r WHERE r.customer.id=:id AND r.state=:state"),
+    @NamedQuery(name = "Rent.findByOwnerIdAndStateDTO", query = "SELECT new co.edu.javeriana.dtos.RentSignDTO(r.rentPK.id, r.property.address, r.property.location,r.rentalDate, r.rentalTimeStart, r.rentalTimeEnd, r.rentProperty) FROM Rent r WHERE r.property.owner.id=:id AND r.state=:state")
+})
 public class Rent implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected RentPK rentPK;
@@ -73,6 +79,15 @@ public class Rent implements Serializable {
     private Property property;
 
     public Rent() {
+    }
+
+    public Rent(RentPK rentPK, Date rentalDate, Date rentalTimeStart, Date rentalTimeEnd, BigDecimal rentProperty, BigInteger state) {
+        this.rentPK = rentPK;
+        this.rentalDate = rentalDate;
+        this.rentalTimeStart = rentalTimeStart;
+        this.rentalTimeEnd = rentalTimeEnd;
+        this.rentProperty = rentProperty;
+        this.state = state;
     }
 
     public Rent(RentPK rentPK) {
@@ -180,5 +195,5 @@ public class Rent implements Serializable {
     public String toString() {
         return "co.edu.javeriana.entities.Rent[ rentPK=" + rentPK + " ]";
     }
-    
+
 }

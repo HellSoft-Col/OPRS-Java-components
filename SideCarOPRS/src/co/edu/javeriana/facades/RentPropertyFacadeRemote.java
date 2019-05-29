@@ -5,6 +5,8 @@
  */
 package co.edu.javeriana.facades;
 
+import co.edu.javeriana.dtos.RentPropertyDTO;
+import java.math.BigInteger;
 import javax.ejb.Remote;
 
 /**
@@ -13,5 +15,7 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface RentPropertyFacadeRemote {
+    public boolean AddRent(RentPropertyDTO params);
     
+    public boolean SignLease(BigInteger rent_id);
 }

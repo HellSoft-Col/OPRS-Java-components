@@ -5,12 +5,18 @@
  */
 package co.edu.javeriana.dtos;
 
+import co.edu.javeriana.entities.RentPK;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
 
 /**
  *
  * @author SANTI
  */
-public class RentDTO implements Serializable{
-    
+public class RentDTO implements Serializable {
+
+
+
 }

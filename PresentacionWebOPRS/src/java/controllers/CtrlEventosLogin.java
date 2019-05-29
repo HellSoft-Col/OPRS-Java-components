@@ -59,10 +59,10 @@ public class CtrlEventosLogin {
         ProxyLogIn proxyLogin = new ProxyLogIn();
         Response result = proxyLogin.logIn(dtoJson);
        
-        String result_string ;
-        
+        String result_string = new String();
+        /*
         result_string = result.readEntity(String.class);
-        
+        */
         
         LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
         

@@ -29,7 +29,10 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(co.edu.javeriana.services.LeaseByUserService.class);
         resources.add(co.edu.javeriana.services.LoginService.class);
+        resources.add(co.edu.javeriana.services.RentPropertyService.class);
+        resources.add(co.edu.javeriana.services.SignLeaseService.class);
         resources.add(co.edu.javeriana.services.serachPropertyService.class);
     }
     
