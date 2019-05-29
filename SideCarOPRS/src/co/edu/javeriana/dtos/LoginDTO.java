@@ -23,7 +23,20 @@ public class LoginDTO implements Serializable{
     
     
     public LoginDTO() {
+        this.username = null;
+        this.password = null;
     }
+
+    public LoginDTO(String username, String password, BigDecimal id, String name, String lastName, String ndi, String email) {
+        this.username = username;
+        this.password = password;
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.ndi = ndi;
+        this.email = email;
+    }
+    
 
     public String getUsername() {
         return username;
