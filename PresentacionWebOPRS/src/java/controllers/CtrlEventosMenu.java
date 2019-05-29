@@ -32,7 +32,7 @@ public class CtrlEventosMenu {
     public String agregarP(){
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         Map sessionMap = externalContext.getSessionMap();
-        LoginDTO user = (LoginDTO)sessionMap.get("id");
+        LoginDTO user = (LoginDTO)sessionMap.get("user");
         BigDecimal bd;
         BigInteger bi;
         bd = user.getId();
