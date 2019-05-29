@@ -20,6 +20,7 @@ import co.edu.javeriana.integracion.datos.OwnerFacadeLocal;
 import co.edu.javeriana.integracion.datos.PropertyFacadeLocal;
 import co.edu.javeriana.integracion.datos.RentFacadeLocal;
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -44,9 +45,8 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
     @Override
     public boolean AddRent(RentPropertyDTO params) {
         boolean flag = true;
-
-        Rent new_rent = new Rent(new RentPK(BigInteger.valueOf(999), params.getPropertyId(), params.getPropertyOwnerId(), params.getCustomerId()), params.getRentalDate(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty(), BigInteger.valueOf(RentStateEnum.getNO_FIRMADO()));
         try {
+            Rent new_rent = new Rent(new RentPK(BigInteger.valueOf(999), params.getPropertyId(), params.getPropertyOwnerId(), params.getCustomerId()),new SimpleDateFormat("dd-MM-yyyy").parse( params.getRentalDate()),new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalTimeStart()), new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalTimeEnd()), params.getRentProperty(), BigInteger.valueOf(RentStateEnum.getNO_FIRMADO()));
             rentFacade.create(new_rent);
         } catch (Exception e) {
             return false;

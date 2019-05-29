@@ -8,12 +8,13 @@ package co.edu.javeriana.dtos;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Date;
 
 /**
- *
+
  * @author SANTI
  */
+
+
 public class RentPropertyDTO implements Serializable {
     
     /* For RENT ID */
@@ -22,9 +23,9 @@ public class RentPropertyDTO implements Serializable {
     private BigInteger customerId;
     
     /* For rent */
-    private Date rentalDate;
-    private Date rentalTimeStart;
-    private Date rentalTimeEnd;
+    private String rentalDate;
+    private String rentalTimeEnd;
+    private String rentalTimeStart;
     private BigDecimal rentProperty; 
     
     /* For payment */
@@ -32,7 +33,7 @@ public class RentPropertyDTO implements Serializable {
     private String account_password;
     private int type;
 
-    public RentPropertyDTO(BigInteger propertyId, BigInteger propertyOwnerId, BigInteger customerId, Date rentalDate, Date rentalTimeStart, Date rentalTimeEnd, BigDecimal rentProperty, String ndi, String account_password, int type) {
+    public RentPropertyDTO(BigInteger propertyId, BigInteger propertyOwnerId, BigInteger customerId, String rentalDate, String rentalTimeStart, String rentalTimeEnd, BigDecimal rentProperty, String ndi, String account_password, int type) {
         this.propertyId = propertyId;
         this.propertyOwnerId = propertyOwnerId;
         this.customerId = customerId;
@@ -71,27 +72,27 @@ public class RentPropertyDTO implements Serializable {
         this.customerId = customerId;
     }
 
-    public Date getRentalDate() {
+    public String getRentalDate() {
         return rentalDate;
     }
 
-    public void setRentalDate(Date rentalDate) {
+    public void setRentalDate(String rentalDate) {
         this.rentalDate = rentalDate;
     }
 
-    public Date getRentalTimeStart() {
+    public String getRentalTimeStart() {
         return rentalTimeStart;
     }
 
-    public void setRentalTimeStart(Date rentalTimeStart) {
+    public void setRentalTimeStart(String rentalTimeStart) {
         this.rentalTimeStart = rentalTimeStart;
     }
 
-    public Date getRentalTimeEnd() {
+    public String getRentalTimeEnd() {
         return rentalTimeEnd;
     }
 
-    public void setRentalTimeEnd(Date rentalTimeEnd) {
+    public void setRentalTimeEnd(String rentalTimeEnd) {
         this.rentalTimeEnd = rentalTimeEnd;
     }
 

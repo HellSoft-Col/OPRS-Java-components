@@ -42,7 +42,9 @@ public class RentPropertyService {
     }
 
     /**
-     * Retrieves representation of an instance of co.edu.javeriana.services.RentPropertyService
+     * Retrieves representation of an instance of
+     * co.edu.javeriana.services.RentPropertyService
+     *
      * @return an instance of co.edu.javeriana.dtos.RentPropertyDTO
      */
     @GET
@@ -52,24 +54,30 @@ public class RentPropertyService {
         throw new UnsupportedOperationException();
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createNewRent(RentPropertyDTO params) {
+        System.err.println("ppp");
+        System.out.println("Entre");
+        boolean flag = rentPropertyFacade.AddRent(params);
+        if (!flag) {
+            return Response.serverError().build();
+        }
+        return Response.ok().build();
+    }
+    
+    
+
     /**
      * PUT method for updating or creating an instance of RentPropertyService
+     *
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */
     @PUT
     @Consumes("application/json")
     public void putJson(RentPropertyDTO content) {
-    }
-    
-    @POST
-    @Consumes("application/json")
-    public Response createNewRent(RentPropertyDTO params){
-        boolean flag = rentPropertyFacade.AddRent(params);
-        if(!flag){
-            return Response.serverError().build();
-        }
-        return Response.ok().build();
     }
 
     private RentPropertyFacadeRemote lookupRentPropertyFacadeRemote() {
