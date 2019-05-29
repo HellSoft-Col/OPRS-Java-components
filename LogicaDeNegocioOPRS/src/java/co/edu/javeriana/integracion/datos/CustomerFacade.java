@@ -8,6 +8,7 @@ package co.edu.javeriana.integracion.datos;
 import co.edu.javeriana.dtos.LoginDTO;
 import co.edu.javeriana.dtos.PropertyDTO;
 import co.edu.javeriana.entities.Customer;
+import co.edu.javeriana.entities.Owner;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -53,10 +54,12 @@ public class CustomerFacade extends AbstractFacade<Customer> implements Customer
         return login; 
         
     }
-   
-    
-  
-    
-        
+
+    @Override
+    public Customer findById(int id) {
+        TypedQuery<Customer> consultaCustomer = em.createNamedQuery("Customer.findById",Customer.class);
+        consultaCustomer.setParameter("id", id);
+        return consultaCustomer.getSingleResult();
+    }
     
 }

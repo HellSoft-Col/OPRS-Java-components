@@ -5,10 +5,15 @@
  */
 package co.edu.javeriana.integracion.datos;
 
+import co.edu.javeriana.dtos.RentSignDTO;
 import co.edu.javeriana.entities.Rent;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -22,10 +27,53 @@ public class RentFacade extends AbstractFacade<Rent> implements RentFacadeLocal 
     @Override
     protected EntityManager getEntityManager() {
         return em;
-    }
+    }   
 
     public RentFacade() {
         super(Rent.class);
+    }
+
+    @Override
+    public List<Rent> findByCustomerAndState(BigDecimal id, BigInteger state) {
+        TypedQuery<Rent> consultaCustomer = em.createNamedQuery("Rent.findByCustomerIdAndState", Rent.class);
+        consultaCustomer.setParameter("id", id);
+        consultaCustomer.setParameter("state", state);
+       
+        return consultaCustomer.getResultList();
+    }
+
+    @Override
+    public List<Rent> findByOwnerAndState(BigDecimal id, BigInteger state) {
+        TypedQuery<Rent> consultaCustomer = em.createNamedQuery("Rent.findByOwnerIdAndState", Rent.class);
+        consultaCustomer.setParameter("id", id);
+        consultaCustomer.setParameter("state", state);
+       
+        return consultaCustomer.getResultList();
+    }
+
+    @Override
+    public List<RentSignDTO> findByCustomerAndStateDTO(BigDecimal id, BigInteger state) {
+        TypedQuery<RentSignDTO> consultaCustomer = em.createNamedQuery("Rent.findByCustomerIdAndStateDTO", RentSignDTO.class);
+        consultaCustomer.setParameter("id", id);
+        consultaCustomer.setParameter("state", state);
+       
+        return consultaCustomer.getResultList();
+    }
+
+    @Override
+    public List<RentSignDTO> findByOwnerAndStateDTO(BigDecimal id, BigInteger state) {
+        TypedQuery<RentSignDTO> consultaCustomer = em.createNamedQuery("Rent.findByOwnerIdAndStateDTO", RentSignDTO.class);
+        consultaCustomer.setParameter("id", id);
+        consultaCustomer.setParameter("state", state);
+       
+        return consultaCustomer.getResultList();
+    }
+
+    @Override
+    public Rent findById(int id) {
+        TypedQuery<Rent> consultaRent = em.createNamedQuery("Rent.findById",Rent.class);
+        consultaRent.setParameter("id", id);
+        return consultaRent.getSingleResult();
     }
     
 }

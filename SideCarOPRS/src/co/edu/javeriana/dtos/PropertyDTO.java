@@ -26,13 +26,38 @@ public class PropertyDTO implements Serializable{
     private BigDecimal rent;
     private BigInteger roomsNumber;
     private BigInteger type;
+    
+    private BigInteger owner_id;
+    private BigInteger id;
 
-    public PropertyDTO(String address, String location, BigDecimal rent, BigInteger roomsNumber, BigInteger type) {
+    public PropertyDTO(BigInteger id, BigInteger owner_id, String address, String location, BigDecimal rent, BigInteger roomsNumber, BigInteger type) {
+        this.id = id;
+        this.owner_id = owner_id;
         this.address = address;
         this.location = location;
         this.rent = rent;
         this.roomsNumber = roomsNumber;
         this.type = type;
+    }
+
+    public PropertyDTO() {
+    }
+    
+
+    public BigInteger getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(BigInteger owner_id) {
+        this.owner_id = owner_id;
+    }
+
+    public BigInteger getId() {
+        return id;
+    }
+
+    public void setId(BigInteger id) {
+        this.id = id;
     }
 
     public String getAddress() {
@@ -74,5 +99,6 @@ public class PropertyDTO implements Serializable{
     public void setType(BigInteger type) {
         this.type = type;
     }
-
+    
+    
 }

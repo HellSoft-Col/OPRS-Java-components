@@ -10,7 +10,7 @@ package co.edu.javeriana.enums;
  * @author HellSoft
  */
 public enum RentStateEnum {
-    FIRMADO(1),TERMINADO(2),EN_CONTRATO(3),EXPIRADO(4);
+    FIRMADO(1),TERMINADO(2),EN_CONTRATO(3),EXPIRADO(4), NO_FIRMADO(0);
     
     private final int value;
     
@@ -38,6 +38,10 @@ public enum RentStateEnum {
         return EXPIRADO.getValue();
     }
 
+    public static int getNO_FIRMADO() {
+        return NO_FIRMADO.getValue();
+    }
+    
     
     
     
