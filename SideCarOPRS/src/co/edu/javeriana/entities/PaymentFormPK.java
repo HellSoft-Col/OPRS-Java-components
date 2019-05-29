@@ -18,7 +18,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class PaymentFormPK implements Serializable {
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID", insertable=false)
     private BigInteger id;
     @Basic(optional = false)
     @Column(name = "CUSTOMER_ID")
