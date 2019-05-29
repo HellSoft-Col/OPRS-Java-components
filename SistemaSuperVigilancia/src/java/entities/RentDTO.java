@@ -14,59 +14,45 @@ import java.util.Date;
  * @author LICHO
  */
 public class RentDTO {
-    private BigDecimal id;
     private Date rentalDate;
     private Date rentalTimeStart;
     private Date rentalTimeEnd;
     private double rentProperty;
     private String state;
-    private String costumerName;
-    private String costumerLastName;
-    private String customerNdi;
-    private String customerEmail;
-    private String propertyType;
-    private String propertyAddress;
-    private BigInteger propertyRooms;
-    private String propertyLocation;
-    private String ownerName;
-    private String ownerLastName;
-    private String ownerNdi;
-    private String ownerEmail;
+    private String nameCostumer;
+    private String lasNameCostumer;
+    private String ndiCostumer;
+    private String eMailCostumer;
+    private String typeProperty;
+    private String addressProperty;
+    private BigInteger roomsNumberProperty;
+    private String locationProperty;
+    private String nameOwner;
+    private String lastNameOwner;
+    private String ndiOwner;
+    private String eMailOwner;
 
     public RentDTO() {
     }
 
-    public RentDTO(BigDecimal id, Date rentalDate, Date rentalTimeStart, Date rentalTimeEnd, 
-            double rentProperty, String state, String costumerName, String costumerLastName, 
-            String customerNdi, String customerEmail, String propertyType, String propertyAddress, 
-            BigInteger propertyRooms, String propertyLocation, String ownerName, String ownerLastName, 
-            String ownerNdi, String ownerEmail) {
-        this.id = id;
+    public RentDTO(Date rentalDate, Date rentalTimeStart, Date rentalTimeEnd, double rentProperty, String state, String nameCostumer, String lasNameCostumer, String ndiCostumer, String eMailCostumer, String typeProperty, String addressProperty, BigInteger roomsNumberProperty, String locationProperty, String nameOwner, String lastNameOwner, String ndiOwner, String eMailOwner) {
         this.rentalDate = rentalDate;
         this.rentalTimeStart = rentalTimeStart;
         this.rentalTimeEnd = rentalTimeEnd;
         this.rentProperty = rentProperty;
         this.state = state;
-        this.costumerName = costumerName;
-        this.costumerLastName = costumerLastName;
-        this.customerNdi = customerNdi;
-        this.customerEmail = customerEmail;
-        this.propertyType = propertyType;
-        this.propertyAddress = propertyAddress;
-        this.propertyRooms = propertyRooms;
-        this.propertyLocation = propertyLocation;
-        this.ownerName = ownerName;
-        this.ownerLastName = ownerLastName;
-        this.ownerNdi = ownerNdi;
-        this.ownerEmail = ownerEmail;
-    }
-
-    public BigDecimal getId() {
-        return id;
-    }
-
-    public void setId(BigDecimal id) {
-        this.id = id;
+        this.nameCostumer = nameCostumer;
+        this.lasNameCostumer = lasNameCostumer;
+        this.ndiCostumer = ndiCostumer;
+        this.eMailCostumer = eMailCostumer;
+        this.typeProperty = typeProperty;
+        this.addressProperty = addressProperty;
+        this.roomsNumberProperty = roomsNumberProperty;
+        this.locationProperty = locationProperty;
+        this.nameOwner = nameOwner;
+        this.lastNameOwner = lastNameOwner;
+        this.ndiOwner = ndiOwner;
+        this.eMailOwner = eMailOwner;
     }
 
     public Date getRentalDate() {
@@ -109,101 +95,104 @@ public class RentDTO {
         this.state = state;
     }
 
-    public String getCostumerName() {
-        return costumerName;
+    public String getNameCostumer() {
+        return nameCostumer;
     }
 
-    public void setCostumerName(String costumerName) {
-        this.costumerName = costumerName;
+    public void setNameCostumer(String nameCostumer) {
+        this.nameCostumer = nameCostumer;
     }
 
-    public String getCostumerLastName() {
-        return costumerLastName;
+    public String getLasNameCostumer() {
+        return lasNameCostumer;
     }
 
-    public void setCostumerLastName(String costumerLastName) {
-        this.costumerLastName = costumerLastName;
+    public void setLasNameCostumer(String lasNameCostumer) {
+        this.lasNameCostumer = lasNameCostumer;
     }
 
-    public String getCustomerNdi() {
-        return customerNdi;
+    public String getNdiCostumer() {
+        return ndiCostumer;
     }
 
-    public void setCustomerNdi(String customerNdi) {
-        this.customerNdi = customerNdi;
+    public void setNdiCostumer(String ndiCostumer) {
+        this.ndiCostumer = ndiCostumer;
     }
 
-    public String getCustomerEmail() {
-        return customerEmail;
+    public String geteMailCostumer() {
+        return eMailCostumer;
     }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
+    public void seteMailCostumer(String eMailCostumer) {
+        this.eMailCostumer = eMailCostumer;
     }
 
-    public String getPropertyType() {
-        return propertyType;
+    public String getTypeProperty() {
+        return typeProperty;
     }
 
-    public void setPropertyType(String propertyType) {
-        this.propertyType = propertyType;
+    public void setTypeProperty(String typeProperty) {
+        this.typeProperty = typeProperty;
     }
 
-    public String getPropertyAddress() {
-        return propertyAddress;
+    public String getAddressProperty() {
+        return addressProperty;
     }
 
-    public void setPropertyAddress(String propertyAddress) {
-        this.propertyAddress = propertyAddress;
+    public void setAddressProperty(String addressProperty) {
+        this.addressProperty = addressProperty;
     }
 
-    public BigInteger getPropertyRooms() {
-        return propertyRooms;
+    public BigInteger getRoomsNumberProperty() {
+        return roomsNumberProperty;
     }
 
-    public void setPropertyRooms(BigInteger propertyRooms) {
-        this.propertyRooms = propertyRooms;
+    public void setRoomsNumberProperty(BigInteger roomsNumberProperty) {
+        this.roomsNumberProperty = roomsNumberProperty;
     }
 
-    public String getPropertyLocation() {
-        return propertyLocation;
+    public String getLocationProperty() {
+        return locationProperty;
     }
 
-    public void setPropertyLocation(String propertyLocation) {
-        this.propertyLocation = propertyLocation;
+    public void setLocationProperty(String locationProperty) {
+        this.locationProperty = locationProperty;
     }
 
-    public String getOwnerName() {
-        return ownerName;
+    public String getNameOwner() {
+        return nameOwner;
     }
 
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
+    public void setNameOwner(String nameOwner) {
+        this.nameOwner = nameOwner;
     }
 
-    public String getOwnerLastName() {
-        return ownerLastName;
+    public String getLastNameOwner() {
+        return lastNameOwner;
     }
 
-    public void setOwnerLastName(String ownerLastName) {
-        this.ownerLastName = ownerLastName;
+    public void setLastNameOwner(String lastNameOwner) {
+        this.lastNameOwner = lastNameOwner;
     }
 
-    public String getOwnerNdi() {
-        return ownerNdi;
+    public String getNdiOwner() {
+        return ndiOwner;
     }
 
-    public void setOwnerNdi(String ownerNdi) {
-        this.ownerNdi = ownerNdi;
+    public void setNdiOwner(String ndiOwner) {
+        this.ndiOwner = ndiOwner;
     }
 
-    public String getOwnerEmail() {
-        return ownerEmail;
+    public String geteMailOwner() {
+        return eMailOwner;
     }
 
-    public void setOwnerEmail(String ownerEmail) {
-        this.ownerEmail = ownerEmail;
+    public void seteMailOwner(String eMailOwner) {
+        this.eMailOwner = eMailOwner;
     }
+    
+    
+
     
     
 }

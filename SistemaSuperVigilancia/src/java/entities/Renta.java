@@ -26,132 +26,76 @@ import javax.validation.constraints.Size;
  * @author LICHO
  */
 @Entity
-@Table(name = "RENT")
+@Table(name = "RENTA")
 @NamedQueries({
-    @NamedQuery(name = "Rent.findAll", query = "SELECT r FROM Rent r"),
-    @NamedQuery(name = "Rent.findById", query = "SELECT r FROM Rent r WHERE r.id = :id"),
-    @NamedQuery(name = "Rent.findByRentalDate", query = "SELECT r FROM Rent r WHERE r.rentalDate = :rentalDate"),
-    @NamedQuery(name = "Rent.findByRentalTimeStart", query = "SELECT r FROM Rent r WHERE r.rentalTimeStart = :rentalTimeStart"),
-    @NamedQuery(name = "Rent.findByRentalTimeEnd", query = "SELECT r FROM Rent r WHERE r.rentalTimeEnd = :rentalTimeEnd"),
-    @NamedQuery(name = "Rent.findByRentProperty", query = "SELECT r FROM Rent r WHERE r.rentProperty = :rentProperty"),
-    @NamedQuery(name = "Rent.findByState", query = "SELECT r FROM Rent r WHERE r.state = :state"),
-    @NamedQuery(name = "Rent.findByCostumerName", query = "SELECT r FROM Rent r WHERE r.costumerName = :costumerName"),
-    @NamedQuery(name = "Rent.findByCostumerLastName", query = "SELECT r FROM Rent r WHERE r.costumerLastName = :costumerLastName"),
-    @NamedQuery(name = "Rent.findByCustomerNdi", query = "SELECT r FROM Rent r WHERE r.customerNdi = :customerNdi"),
-    @NamedQuery(name = "Rent.findByCustomerEmail", query = "SELECT r FROM Rent r WHERE r.customerEmail = :customerEmail"),
-    @NamedQuery(name = "Rent.findByPropertyType", query = "SELECT r FROM Rent r WHERE r.propertyType = :propertyType"),
-    @NamedQuery(name = "Rent.findByPropertyAddress", query = "SELECT r FROM Rent r WHERE r.propertyAddress = :propertyAddress"),
-    @NamedQuery(name = "Rent.findByPropertyRooms", query = "SELECT r FROM Rent r WHERE r.propertyRooms = :propertyRooms"),
-    @NamedQuery(name = "Rent.findByPropertyLocation", query = "SELECT r FROM Rent r WHERE r.propertyLocation = :propertyLocation"),
-    @NamedQuery(name = "Rent.findByOwnerName", query = "SELECT r FROM Rent r WHERE r.ownerName = :ownerName"),
-    @NamedQuery(name = "Rent.findByOwnerLastName", query = "SELECT r FROM Rent r WHERE r.ownerLastName = :ownerLastName"),
-    @NamedQuery(name = "Rent.findByOwnerNdi", query = "SELECT r FROM Rent r WHERE r.ownerNdi = :ownerNdi"),
-    @NamedQuery(name = "Rent.findByOwnerEmail", query = "SELECT r FROM Rent r WHERE r.ownerEmail = :ownerEmail"),
-    @NamedQuery(name = "Rent.findByConsecutivoConsulta", query = "SELECT r FROM Rent r WHERE r.consecutivoConsulta = :consecutivoConsulta")})
-public class Rent implements Serializable {
+    @NamedQuery(name = "Renta.findAll", query = "SELECT r FROM Renta r")})
+public class Renta implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "ID", insertable = false)
     private BigDecimal id;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "RENTAL_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date rentalDate;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "RENTAL_TIME_START")
     @Temporal(TemporalType.TIMESTAMP)
     private Date rentalTimeStart;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "RENTAL_TIME_END")
     @Temporal(TemporalType.TIMESTAMP)
     private Date rentalTimeEnd;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "RENT_PROPERTY")
     private double rentProperty;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "STATE")
     private String state;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "COSTUMER_NAME")
     private String costumerName;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "COSTUMER_LAST_NAME")
     private String costumerLastName;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "CUSTOMER_NDI")
     private String customerNdi;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "CUSTOMER_EMAIL")
     private String customerEmail;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "PROPERTY_TYPE")
     private String propertyType;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "PROPERTY_ADDRESS")
     private String propertyAddress;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "PROPERTY_ROOMS")
     private BigInteger propertyRooms;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "PROPERTY_LOCATION")
     private String propertyLocation;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "OWNER_NAME")
     private String ownerName;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "OWNER_LAST_NAME")
     private String ownerLastName;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "OWNER_NDI")
     private String ownerNdi;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "OWNER_EMAIL")
     private String ownerEmail;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "CONSECUTIVO_CONSULTA")
     private BigInteger consecutivoConsulta;
 
-    public Rent() {
+    public Renta() {
     }
 
-    public Rent(BigDecimal id) {
+    public Renta(BigDecimal id) {
         this.id = id;
     }
 
-    public Rent(Date rentalDate, Date rentalTimeStart, Date rentalTimeEnd, double rentProperty, String state, String costumerName, String costumerLastName, String customerNdi, String customerEmail, String propertyType, String propertyAddress, BigInteger propertyRooms, String propertyLocation, String ownerName, String ownerLastName, String ownerNdi, String ownerEmail, BigInteger consecutivoConsulta) {
+    public Renta(BigDecimal id, Date rentalDate, Date rentalTimeStart, Date rentalTimeEnd, double rentProperty, String state, String costumerName, String costumerLastName, String customerNdi, String customerEmail, String propertyType, String propertyAddress, BigInteger propertyRooms, String propertyLocation, String ownerName, String ownerLastName, String ownerNdi, String ownerEmail, BigInteger consecutivoConsulta) {
+        this.id = null;
         this.rentalDate = rentalDate;
         this.rentalTimeStart = rentalTimeStart;
         this.rentalTimeEnd = rentalTimeEnd;
@@ -334,10 +278,10 @@ public class Rent implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Rent)) {
+        if (!(object instanceof Renta)) {
             return false;
         }
-        Rent other = (Rent) object;
+        Renta other = (Renta) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -346,7 +290,7 @@ public class Rent implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Rent[ id=" + id + " ]";
+        return "entities.Renta[ id=" + id +" ]";
     }
     
 }

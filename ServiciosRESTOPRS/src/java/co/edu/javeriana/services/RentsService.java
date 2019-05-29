@@ -30,10 +30,9 @@ import javax.ws.rs.core.Response;
  */
 @Path("rents")
 public class RentsService {
+    
     FacadeBuscarTransaccionesRentasRemote facadeBuscarTransaccionesRentas = lookupFacadeBuscarTransaccionesRentasRemote();
 
-    
-    
     @Context
     private UriInfo context;
 

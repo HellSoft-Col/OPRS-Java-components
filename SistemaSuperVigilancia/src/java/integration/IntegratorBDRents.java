@@ -5,9 +5,11 @@
  */
 package integration;
 
-import entities.Rent;
+import entities.Renta;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import javax.ejb.Stateless;
+import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -17,24 +19,19 @@ import javax.persistence.Query;
  * @author LICHO
  */
 @Stateless
-public class IntegratorRentsDB implements IntegratorRentsDBLocal {
+@LocalBean
+public class IntegratorBDRents {
     @PersistenceContext(unitName = "SistemaSuperVigilanciaPU")
     private EntityManager em;
 
-    @Override
-    public void addRent(Rent rent){
-        try{
-            em.persist(rent);
-        }
-        catch(Exception ex){
-            System.out.println(ex);
-        }
-    }
-    
-    @Override
-    public BigInteger getSequenceVal(){
-        Query q = em.createNativeQuery("SELECT SEQUENCE_RENTS.NEXTVAL FROM DUAL");
-        return (java.math.BigInteger)q.getSingleResult();
+    public void persist(Renta object) {
+        em.persist(object);
+    }    
+
+    public BigDecimal getSequenceVal() {
+        Query q = em.createNativeQuery("SELECT SEQUENCE_RENTS.nextval from DUAL");
+        BigDecimal result=(BigDecimal)q.getSingleResult();   
+        return result;
     }
     
 }

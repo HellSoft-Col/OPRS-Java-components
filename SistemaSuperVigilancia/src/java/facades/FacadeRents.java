@@ -7,16 +7,15 @@ package facades;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import entities.Rent;
 import entities.RentDTO;
-import integration.IntegratorRentsDBLocal;
-import java.lang.reflect.Type;
+import entities.Renta;
+import integration.IntegratorBDRents;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ejb.LocalBean;
 import proxies.ProxyRents;
 
 /**
@@ -24,31 +23,27 @@ import proxies.ProxyRents;
  * @author LICHO
  */
 @Stateless
-public class FacadeRents implements FacadeRentsLocal {
+@LocalBean
+public class FacadeRents {
+
     @EJB
-    private IntegratorRentsDBLocal integratorRentsDB;
-    
-    @Override
-    public void addRent(Rent rent){
-        integratorRentsDB.addRent(rent);
-    }
-    
-    @Override
+    private IntegratorBDRents integratorBDRents;
+   
     public void saveAllRents(){
-        BigInteger seq = integratorRentsDB.getSequenceVal();
+        BigDecimal seq = integratorBDRents.getSequenceVal();
         Gson gson = new Gson();
-        Type listTypeProperty = new TypeToken<ArrayList<RentDTO>>() {}.getType();
         ProxyRents proxyRents = new ProxyRents();
         String response = proxyRents.getRentsJson(String.class);
-        List<RentDTO> results = gson.fromJson(response, listTypeProperty);
+        List<RentDTO> results = gson.fromJson(response, new TypeToken<List<RentDTO>>(){}.getType());
         for(RentDTO r : results){
-            Rent newRent = new Rent(r.getRentalDate(), r.getRentalTimeStart(), r.getRentalTimeEnd(), 
-                    r.getRentProperty(), r.getState(), r.getCostumerName(), 
-                    r.getCostumerLastName(), r.getCustomerNdi(), r.getCustomerEmail(), 
-                    r.getPropertyType(), r.getPropertyAddress(), r.getPropertyRooms(), 
-                    r.getPropertyLocation(), r.getOwnerName(), r.getOwnerLastName(), 
-                    r.getOwnerNdi(), r.getOwnerEmail(), seq);
-            this.addRent(newRent);
+            Renta newRent = new Renta(BigDecimal.ONE,r.getRentalDate(), r.getRentalTimeStart(), r.getRentalTimeEnd(), 
+                    r.getRentProperty(), r.getState(), r.getNameCostumer(), 
+                    r.getLasNameCostumer(), r.getNdiCostumer(), r.geteMailOwner(), 
+                    r.getTypeProperty(), r.getAddressProperty(), r.getRoomsNumberProperty(), 
+                    r.getLocationProperty(), r.getNameOwner(), r.getLastNameOwner(), 
+                    r.getNdiOwner(), r.geteMailOwner(), seq.toBigInteger());
+            System.out.println(seq); 
+            integratorBDRents.persist(newRent);
         }
     }
 }
