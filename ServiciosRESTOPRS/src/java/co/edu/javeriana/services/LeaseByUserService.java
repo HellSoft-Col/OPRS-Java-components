@@ -27,7 +27,7 @@ import javax.ws.rs.PUT;
  *
  * @author SANTI
  */
-@Path("LeaseByUser")
+    @Path("LeaseByUser")
 public class LeaseByUserService {
     private FacadeObtenerContratosSinFirmarRemote facadeObtenerContratosSinFirmar = lookupFacadeObtenerContratosSinFirmarRemote();
 
