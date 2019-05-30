@@ -22,6 +22,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.ws.rs.core.Response;
 import proxies.ProxyRP;
 
@@ -109,6 +110,13 @@ public class CtrlEventosRP implements Serializable{
         
         ProxyRP proxyRP = new ProxyRP();
         Response result = proxyRP.createNewRent(dtoJson);
+        
+        if (result.getStatus() != Response.Status.OK.getStatusCode()){
+            //TODO: Devolver error 
+        }
+        
+        //TODO: Devolver Todo OK
+        
     }
     
     
