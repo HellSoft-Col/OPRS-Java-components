@@ -87,17 +87,15 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             mailMessageError.setTo(customer.getEMail());
             mailMessageError.setSubject("Notificación ERROR OPRS - Renta");
          
-           /* mailMessageError.setBody(
-                    "Su " + type
-                    + " en " + property.getAddress() + " de " + property.getLocation()
-                    + " esta en proceso de renta por " + customer.getName() + " " + customer.getLastName() + " en espera de la firma del contrato. Att: HellSoft");*/
+            mailMessageError.setBody("Buen día Sr./Sra. " + customer.getName() + " " + customer.getLastName() + 
+                    " Su pago ha sido declinado, el banco HellBank no puede validar sus datos o no cuenta con suficiente saldo. " +
+                    " lo invitamos a resolver los conflictos antes de continuar el proceso de renta. Att: House of dreams.");
 
             integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageError);
 
             return false;
         }
 
-        //TODO: Hacer validacion con Institucion financiera
         try {
 
             RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
