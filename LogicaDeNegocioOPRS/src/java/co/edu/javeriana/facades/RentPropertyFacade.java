@@ -76,9 +76,9 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             Logger.getLogger(RentPropertyFacade.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
+        
         PaymentDTO payment = new PaymentDTO(DocumentTypeEnum.getDocumentType(params.getType()), params.getNdi(), params.getAccount_password(), params.getRentProperty().intValue());
-        PaymentResponseDTO paymentresponse = proxieInstitucionFinanciera.solicitarConfirmacionPago(payment);
+        /*PaymentResponseDTO paymentresponse = proxieInstitucionFinanciera.solicitarConfirmacionPago(payment);
 
         if (paymentresponse.getNumAprobacion() == null || paymentresponse.getAprobacion() == null) {
 
@@ -95,7 +95,7 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
 
             return false;
         }
-
+                */
         try {
 
             RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());

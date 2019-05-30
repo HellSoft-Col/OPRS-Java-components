@@ -5,8 +5,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <style>
         .panelGridCenter{
-            margin: 0 auto;
+            margin: auto;
             text-align: center;
+            padding: 10px;
         }
     </style>
     <h:head>
@@ -15,42 +16,50 @@
     <h:body>
         <f:view>
             <h:form>
-                <h1><h:outputText value="List"/></h1>
-                <h:dataTable value="#{ctrlEventosFC.unsigned_rents}" var="item">
+                <h1><h:outputText value="Lista de contratos sin firmar"/></h1>
+                
+                
+                <h:dataTable styleClass="panelGridCenter" value="#{ctrlEventosFC.unsigned_rents}" var="item">
                     
                     <h:column class="panelGridCenter">
                         <f:facet name="header">
-                            <h:outputText value="PropertyAddress"/>
+                            <h:outputText value="Direccion"/>
                         </f:facet>
                         <h:outputText value="#{item.propertyAddress}"/>
                     </h:column>
                     <h:column class="panelGridCenter">
                         <f:facet name="header">
-                            <h:outputText value="PropertyLocation"/>
+                            <h:outputText value="Locacion"/>
                         </f:facet>
                         <h:outputText value="#{item.propertyLocation}"/>
                     </h:column>
                     <h:column class="panelGridCenter">
                         <f:facet name="header">
-                            <h:outputText value="RentalDate"/>
+                            <h:outputText value="Creacion"/>
                         </f:facet>
-                        <h:outputText value="#{item.rentalDate}"/>
+                        <h:outputText value="#{item.rentalDate}" >
+                             <f:convertDateTime pattern="dd-MM-yyyy" />
+                        </h:outputText>
                     </h:column>
                     <h:column class="panelGridCenter">
                         <f:facet name="header">
-                            <h:outputText value="RentalTimeStart"/>
+                            <h:outputText value="Inicio"/>
                         </f:facet>
-                        <h:outputText value="#{item.rentalTimeStart}"/>
+                        <h:outputText value="#{item.rentalTimeStart}">
+                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                        </h:outputText>
                     </h:column>
                     <h:column class="panelGridCenter">
                         <f:facet name="header">
-                            <h:outputText value="RentalTimeEnd"/>
+                            <h:outputText value="Fin"/>
                         </f:facet>
-                        <h:outputText value="#{item.rentalTimeEnd}"/>
+                        <h:outputText value="#{item.rentalTimeEnd}">
+                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                        </h:outputText>
                     </h:column>
                     <h:column class="panelGridCenter">
                         <f:facet name="header">
-                            <h:outputText value="RentProperty"/>
+                            <h:outputText value="Costo Renta"/>
                         </f:facet>
                         <h:outputText value="#{item.rentProperty}"/>
                     </h:column>
