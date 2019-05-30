@@ -19,9 +19,9 @@ public class RentDTO {
     private Date rentalTimeEnd;
     private double rentProperty;
     private String state;
-    private String nameCostumer;
-    private String lasNameCostumer;
-    private String ndiCostumer;
+    private String nameCustomer;
+    private String lastNameCustomer;
+    private String ndiCustomer;
     private String eMailCostumer;
     private String typeProperty;
     private String addressProperty;
@@ -35,15 +35,15 @@ public class RentDTO {
     public RentDTO() {
     }
 
-    public RentDTO(Date rentalDate, Date rentalTimeStart, Date rentalTimeEnd, double rentProperty, String state, String nameCostumer, String lasNameCostumer, String ndiCostumer, String eMailCostumer, String typeProperty, String addressProperty, BigInteger roomsNumberProperty, String locationProperty, String nameOwner, String lastNameOwner, String ndiOwner, String eMailOwner) {
+    public RentDTO(Date rentalDate, Date rentalTimeStart, Date rentalTimeEnd, double rentProperty, String state, String nameCustomer, String lastNameCustomer, String ndiCustomer, String eMailCostumer, String typeProperty, String addressProperty, BigInteger roomsNumberProperty, String locationProperty, String nameOwner, String lastNameOwner, String ndiOwner, String eMailOwner) {
         this.rentalDate = rentalDate;
         this.rentalTimeStart = rentalTimeStart;
         this.rentalTimeEnd = rentalTimeEnd;
         this.rentProperty = rentProperty;
         this.state = state;
-        this.nameCostumer = nameCostumer;
-        this.lasNameCostumer = lasNameCostumer;
-        this.ndiCostumer = ndiCostumer;
+        this.nameCustomer = nameCustomer;
+        this.lastNameCustomer = lastNameCustomer;
+        this.ndiCustomer = ndiCustomer;
         this.eMailCostumer = eMailCostumer;
         this.typeProperty = typeProperty;
         this.addressProperty = addressProperty;
@@ -95,28 +95,28 @@ public class RentDTO {
         this.state = state;
     }
 
-    public String getNameCostumer() {
-        return nameCostumer;
+    public String getNameCustomer() {
+        return nameCustomer;
     }
 
-    public void setNameCostumer(String nameCostumer) {
-        this.nameCostumer = nameCostumer;
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
     }
 
-    public String getLasNameCostumer() {
-        return lasNameCostumer;
+    public String getLastNameCustomer() {
+        return lastNameCustomer;
     }
 
-    public void setLasNameCostumer(String lasNameCostumer) {
-        this.lasNameCostumer = lasNameCostumer;
+    public void setLastNameCustomer(String lastNameCustomer) {
+        this.lastNameCustomer = lastNameCustomer;
     }
 
-    public String getNdiCostumer() {
-        return ndiCostumer;
+    public String getNdiCustomer() {
+        return ndiCustomer;
     }
 
-    public void setNdiCostumer(String ndiCostumer) {
-        this.ndiCostumer = ndiCostumer;
+    public void setNdiCustomer(String ndiCustomer) {
+        this.ndiCustomer = ndiCustomer;
     }
 
     public String geteMailCostumer() {
@@ -190,9 +190,5 @@ public class RentDTO {
     public void seteMailOwner(String eMailOwner) {
         this.eMailOwner = eMailOwner;
     }
-    
-    
-
-    
     
 }

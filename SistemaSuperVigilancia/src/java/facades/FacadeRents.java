@@ -37,8 +37,8 @@ public class FacadeRents {
         List<RentDTO> results = gson.fromJson(response, new TypeToken<List<RentDTO>>(){}.getType());
         for(RentDTO r : results){
             Renta newRent = new Renta(BigDecimal.ONE,r.getRentalDate(), r.getRentalTimeStart(), r.getRentalTimeEnd(), 
-                    r.getRentProperty(), r.getState(), r.getNameCostumer(), 
-                    r.getLasNameCostumer(), r.getNdiCostumer(), r.geteMailOwner(), 
+                    r.getRentProperty(), r.getState(), r.getNameCustomer(), 
+                    r.getLastNameCustomer(), r.getNdiCustomer(), r.geteMailOwner(), 
                     r.getTypeProperty(), r.getAddressProperty(), r.getRoomsNumberProperty(), 
                     r.getLocationProperty(), r.getNameOwner(), r.getLastNameOwner(), 
                     r.getNdiOwner(), r.geteMailOwner(), seq.toBigInteger());
