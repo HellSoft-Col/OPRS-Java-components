@@ -7,9 +7,11 @@ package controllers;
 
 import co.edu.javeriana.dtos.LoginDTO;
 import com.google.gson.Gson;
+import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.ws.rs.core.Response;
@@ -29,6 +31,7 @@ public class CtrlEventosLogin {
      */
     private String username;
     private String password;
+    
     
     public CtrlEventosLogin() {
     }
@@ -65,6 +68,7 @@ public class CtrlEventosLogin {
         
         
         LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
+        sessionMap.put("user",user);
         
         if(user.getUsername() == null && (user.getPassword()== null)){
             //TODO: Colocar mensaje de eror

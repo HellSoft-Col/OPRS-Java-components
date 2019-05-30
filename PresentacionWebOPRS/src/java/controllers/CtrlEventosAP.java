@@ -44,6 +44,7 @@ public class CtrlEventosAP {
     private BigDecimal rent;
     private BigInteger owner;
     private List<String> locationNames;
+ 
     
     @PostConstruct
     public void init() {
@@ -116,9 +117,15 @@ public class CtrlEventosAP {
     }
     
     public void addProperty(){
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map sessionMap = externalContext.getSessionMap();
+        LoginDTO currentUser = (LoginDTO)sessionMap.get("user");
+        BigDecimal userId = currentUser.getId();
+        BigInteger ownerId = userId.toBigInteger();
         
-        //TODO: get owner id
-        this.owner = BigInteger.valueOf(1);
+        this.owner = ownerId;
+       
+        System.out.println("-----------------------------------> Este es el Id del owner: " + this.owner);
         PropertyPK ppk = new PropertyPK(owner);
         //TODO: try to delete this shit :V
         ppk.setId(BigInteger.valueOf(999));
