@@ -6,8 +6,9 @@
       xmlns:p="http://primefaces.org/ui">
     <style>
         .panelGridCenter{
-            margin: 0 auto;
+            margin: auto;
             text-align: center;
+            padding: 10px;
         }
     </style>
     <h:head>
@@ -18,7 +19,7 @@
             <h:form id="fcForm">
                 <p:dataTable value="#{ctrlEventosFC.unsigned_rents}" var="item">
                     <f:facet name="header">
-                        Contrato
+                        Lista de contratos sin firmar
                     </f:facet>
                     <p:column headerText="Dirección">
                         <h:outputText value="#{item.propertyAddress}"/>
@@ -26,16 +27,19 @@
                     <p:column headerText="Locación">
                         <h:outputText value="#{item.propertyLocation}"/>
                     </p:column>
-                    <p:column headerText="Fecha contrato">
+                    <p:column headerText="Fecha creación contrato">
                         <h:outputText value="#{item.rentalDate}"/>
+                        <f:convertDateTime pattern="dd-MM-yyyy"/>
                     </p:column>
                     <p:column headerText="Fecha inicio">
                         <h:outputText value="#{item.rentalTimeStart}"/>
+                        <f:convertDateTime pattern="dd-MM-yyyy"/>
                     </p:column>
                     <p:column headerText="Fecha de finalización">
                         <h:outputText value="#{item.rentalTimeEnd}"/>
+                        <f:convertDateTime pattern="dd-MM-yyyy"/>
                     </p:column>
-                    <p:column headerText="Valor renta">
+                    <p:column headerText="Costo renta">
                         <h:outputText value="#{item.rentProperty}"/>
                     </p:column>
                     

@@ -62,10 +62,13 @@ public class CtrlEventosFC implements Serializable{
     }
     
     public void SignContract(BigInteger lease_id){
+        System.out.println("---> "+ lease_id.toString());
         ProxyFC proxie = new ProxyFC();
         LeaseUtilityDTO params = new LeaseUtilityDTO();
         params.setLease_id(lease_id);
-        Response result = proxie.signLease(lease_id);
+        Gson gson = new Gson();
+        String json = gson.toJson(params);
+        Response result = proxie.signLease(json);
         
         if (result.getStatus() != Response.Status.OK.getStatusCode()){
             FacesContext.getCurrentInstance().addMessage("fcForm:fcSubmit", new FacesMessage("El contrato no existe:("));

@@ -65,7 +65,7 @@
                         <h:outputLabel value="Fecha de finalización de renta:" for="rental_time_end" />
                         <p:datePicker id="rental_time_end" value="#{ctrlEventosRP.rentalTimeEnd}" title="Rental_time_end" showIcon="true"/>
                     </h:panelGrid>
-                    <h:commandButton id="rSubmit" value="Enviar" action=" "/>
+                    <h:commandButton id="rSubmit" value="Enviar" action="#{ctrlEventosRP.sendPaymentForm()}"/>
                     <div class="errorMsg"><h:message for="rSubmit" /></div>
                 </p:panel>
             </h:form>

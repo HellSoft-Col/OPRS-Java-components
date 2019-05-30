@@ -29,6 +29,9 @@ import java.math.BigInteger;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -59,7 +62,7 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
     @Override
     public boolean AddRent(RentPropertyDTO params) {
         boolean flag = true;
-        Owner owner ;
+        Owner owner;
         Customer customer;
         Property property;
         Rent new_rent;
@@ -76,9 +79,9 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             Logger.getLogger(RentPropertyFacade.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
+        
         PaymentDTO payment = new PaymentDTO(DocumentTypeEnum.getDocumentType(params.getType()), params.getNdi(), params.getAccount_password(), params.getRentProperty().intValue());
-        PaymentResponseDTO paymentresponse = proxieInstitucionFinanciera.solicitarConfirmacionPago(payment);
+        /*PaymentResponseDTO paymentresponse = proxieInstitucionFinanciera.solicitarConfirmacionPago(payment);
 
         if (paymentresponse.getNumAprobacion() == null || paymentresponse.getAprobacion() == null) {
 
@@ -90,16 +93,15 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             mailMessageError.setBody("Buen día Sr./Sra. " + customer.getName() + " " + customer.getLastName() + 
                     " Su pago ha sido declinado, el banco HellBank no puede validar sus datos o no cuenta con suficiente saldo. " +
                     " lo invitamos a resolver los conflictos antes de continuar el proceso de renta. Att: House of dreams.");
-
             integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageError);
 
             return false;
         }
-
+                */
         try {
 
-            RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
-            integradorTRentas.sendJMSMessageToTopicoRentas(rental);
+            //RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
+            //integradorTRentas.sendJMSMessageToTopicoRentas(rental);
 
             MailMessage mailMessageOwner = new MailMessage();
             MailMessage mailMessageCustomer = new MailMessage();
@@ -149,5 +151,24 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void verifyState() {
+        List<Rent> rents = rentFacade.findByState(BigInteger.valueOf(0));
+        Date yesterday = new Date(System.currentTimeMillis() - 3600 * 24 * 1000);
+        for (Rent r : rents) {
+            if (r.getRentalDate().before(yesterday)) {
+                MailMessage message = new MailMessage();
+                message.setTo(r.getCustomer().getEMail());
+                message.setSubject("Notificación Vencimiento de Contrato");
+                message.setBody("El contrato de renta en " + r.getProperty().getAddress() + " localizada en "
+                        + r.getProperty().getLocation()+ " ha pasado la fecha límite.");
+                integradorColaCorreo.sendJMSMessageToColaCorreo(message);
+                r.setState(BigInteger.valueOf(4));
+                rentFacade.edit(r);
+                System.out.println("Se modifico la renta" + r.getProperty().getAddress());
+            }
+        }
     }
 }

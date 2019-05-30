@@ -108,8 +108,9 @@ public class CtrlEventosRP implements Serializable{
         
         RentPropertyDTO rentP = new RentPropertyDTO(propertyId,propertyOwnerId, customerId, rentalDate,  rentalTimeStart, rentalTimeEnd, rentProperty, ndi, account_password, type);
         Gson gson = new Gson();
-        String dtoJson = gson.toJson(rentP);
         
+        String dtoJson = gson.toJson(rentP);
+        System.out.println("--->" + dtoJson);
         ProxyRP proxyRP = new ProxyRP();
         Response result = proxyRP.createNewRent(dtoJson);
         

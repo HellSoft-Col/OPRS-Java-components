@@ -58,8 +58,7 @@ public class RentPropertyService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createNewRent(RentPropertyDTO params) {
-        System.err.println("ppp");
-        System.out.println("Entre");
+
         boolean flag = rentPropertyFacade.AddRent(params);
         if (!flag) {
             return Response.serverError().build();
