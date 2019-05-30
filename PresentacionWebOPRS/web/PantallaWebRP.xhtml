@@ -27,7 +27,7 @@
                     <h:inputText id="rental_time_start" value="#{ctrlEventosRP.rentalTimeStart}" title="Rental_time_start" />
                     <h:outputLabel value="Fecha de finalización de renta:" for="rental_time_end" />
                     <h:inputText id="rental_time_end" value="#{ctrlEventosRP.rentalTimeEnd}" title="Rental_time_end" />
-                    <h:commandButton value="Enviar" action=" "/>
+                    <h:commandButton value="Enviar" action="#{ctrlEventosRP.sendPaymentForm()}"/>
                 </h:panelGrid>
             </h:form>
         </f:view>

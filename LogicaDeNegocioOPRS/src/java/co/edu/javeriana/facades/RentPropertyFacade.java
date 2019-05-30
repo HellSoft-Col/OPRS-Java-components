@@ -100,8 +100,8 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
                 */
         try {
 
-            RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
-            integradorTRentas.sendJMSMessageToTopicoRentas(rental);
+            //RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
+            //integradorTRentas.sendJMSMessageToTopicoRentas(rental);
 
             MailMessage mailMessageOwner = new MailMessage();
             MailMessage mailMessageCustomer = new MailMessage();
