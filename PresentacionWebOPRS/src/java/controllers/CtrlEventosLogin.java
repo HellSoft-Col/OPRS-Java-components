@@ -90,7 +90,6 @@ public class CtrlEventosLogin implements Serializable{
                 return "PantallaWebMenu";
             }
         }*/
-       
 
         //TODO: Agregar Funcionalidad a los botones
         if (user.getUser_type() == UserTypeEnum.OWNER.getValue()) {
