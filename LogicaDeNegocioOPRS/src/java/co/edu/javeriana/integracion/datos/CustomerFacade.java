@@ -56,7 +56,7 @@ public class CustomerFacade extends AbstractFacade<Customer> implements Customer
     }
 
     @Override
-    public Customer findById(int id) {
+    public Customer findById(int id) throws Exception{
         TypedQuery<Customer> consultaCustomer = em.createNamedQuery("Customer.findById",Customer.class);
         consultaCustomer.setParameter("id", id);
         return consultaCustomer.getSingleResult();

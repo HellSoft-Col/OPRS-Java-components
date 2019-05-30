@@ -33,6 +33,6 @@ public interface CustomerFacadeLocal {
 
     int count();
     
-    public Customer findById(int id); 
+    public Customer findById(int id) throws Exception; 
    
 }

@@ -29,17 +29,7 @@ public class CtrlEventosMenu {
      */
     public CtrlEventosMenu() {
     }
-    public String agregarP(){
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        Map sessionMap = externalContext.getSessionMap();
-        LoginDTO user = (LoginDTO)sessionMap.get("id");
-        BigDecimal bd;
-        BigInteger bi;
-        bd = user.getId();
-        bi = bd.toBigInteger();
-        
-       
-        System.out.println("---------> Id usuario concurrente: " + bi);
+    public String agregarP(){        
         return "PantallaWebAP";
     }
     public String buscarP(){

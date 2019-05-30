@@ -19,7 +19,7 @@ import javax.ejb.Local;
 @Local
 public interface RentFacadeLocal {
 
-    void create(Rent rent);
+    void create(Rent rent) throws Exception;
 
     void edit(Rent rent);
 

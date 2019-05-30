@@ -100,17 +100,6 @@ public class CtrlEventosAP {
     }
 
     public BigInteger getOwner() {
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        Map sessionMap = externalContext.getSessionMap();
-        LoginDTO user = (LoginDTO)sessionMap.get("id");
-        BigDecimal bd;
-        BigInteger bi;
-        bd = user.getId();
-        bi = bd.toBigInteger();
-        
-        this.owner = bi;
-       
-        System.out.println("---------> Id usuario concurrente: " + this.owner);
         return owner;
     }
 

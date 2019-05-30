@@ -6,21 +6,31 @@
 package co.edu.javeriana.facades;
 
 import co.edu.javeriana.dtos.MailMessage;
+import co.edu.javeriana.dtos.PaymentDTO;
+import co.edu.javeriana.dtos.PaymentResponseDTO;
 import co.edu.javeriana.dtos.RentDTO;
 import co.edu.javeriana.dtos.RentPropertyDTO;
+import co.edu.javeriana.dtos.RentarRequest;
 import co.edu.javeriana.entities.Customer;
 import co.edu.javeriana.entities.Owner;
 import co.edu.javeriana.entities.Property;
 import co.edu.javeriana.entities.Rent;
 import co.edu.javeriana.entities.RentPK;
+import co.edu.javeriana.enums.DocumentTypeEnum;
 import co.edu.javeriana.enums.RentStateEnum;
 import co.edu.javeriana.integracion.IntegradorColaCorreoLocal;
+import co.edu.javeriana.integracion.IntegradorTRentasLocal;
 import co.edu.javeriana.integracion.datos.CustomerFacadeLocal;
 import co.edu.javeriana.integracion.datos.OwnerFacadeLocal;
 import co.edu.javeriana.integracion.datos.PropertyFacadeLocal;
 import co.edu.javeriana.integracion.datos.RentFacadeLocal;
+import co.edu.javeriana.proxies.ProxieInstitucionFinancieraLocal;
 import java.math.BigInteger;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -30,7 +40,10 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropertyFacadeLocal {
-
+    @EJB
+    private ProxieInstitucionFinancieraLocal proxieInstitucionFinanciera;
+    @EJB
+    private IntegradorTRentasLocal integradorTRentas;
     @EJB
     private IntegradorColaCorreoLocal integradorColaCorreo;
     @EJB
@@ -45,29 +58,47 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
     @Override
     public boolean AddRent(RentPropertyDTO params) {
         boolean flag = true;
+        
+        Rent new_rent;
         try {
-            Rent new_rent = new Rent(new RentPK(BigInteger.valueOf(999), params.getPropertyId(), params.getPropertyOwnerId(), params.getCustomerId()),new SimpleDateFormat("dd-MM-yyyy").parse( params.getRentalDate()),new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalTimeStart()), new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalTimeEnd()), params.getRentProperty(), BigInteger.valueOf(RentStateEnum.getNO_FIRMADO()));
+            new_rent = new Rent(new RentPK(BigInteger.valueOf(999), params.getPropertyId(), params.getPropertyOwnerId(), params.getCustomerId()),new SimpleDateFormat("dd-MM-yyyy").parse( params.getRentalDate()),new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalTimeStart()), new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalTimeEnd()), params.getRentProperty(), BigInteger.valueOf(RentStateEnum.getNO_FIRMADO()));
             rentFacade.create(new_rent);
-        } catch (Exception e) {
+        } catch (SQLIntegrityConstraintViolationException e) {
+            Logger.getLogger(RentPropertyFacade.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        } catch (Exception ex) {
+            Logger.getLogger(RentPropertyFacade.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
 
+        PaymentDTO payment = new PaymentDTO(DocumentTypeEnum.getDocumentType(params.getType()), params.getNdi(), params.getAccount_password(), params.getRentProperty().intValue());
+        PaymentResponseDTO paymentresponse = proxieInstitucionFinanciera.solicitarConfirmacionPago(payment);
+        
+        if (paymentresponse.getNumAprobacion() == null || paymentresponse.getAprobacion() == null){
+            return false;
+        }
+        
+        
         //TODO: Hacer validacion con Institucion financiera
-        //TODO: Agregar al topico para lo del ERP
         try {
-            MailMessage mailMessageOwner = new MailMessage();
-            MailMessage mailMessageCustomer = new MailMessage();
-
+            
+            
+            
             Owner owner = ownerFacade.findById(params.getPropertyOwnerId().intValue());
             Customer customer = customerFacade.findById(params.getCustomerId().intValue());
+            Property property = propertyFacade.findById(params.getPropertyId().intValue());
+            
+            RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(),customer.getLastName(), property.getLocation(),property.getAddress(), params.getRentalTimeStart(),params.getRentalTimeEnd(), params.getRentProperty().longValue());            
+            integradorTRentas.sendJMSMessageToTopicoRentas(rental);
+            
+            MailMessage mailMessageOwner = new MailMessage();
+            MailMessage mailMessageCustomer = new MailMessage();
 
             mailMessageOwner.setTo(owner.getEMail());
             mailMessageOwner.setSubject("Notificación OPRS - Renta");
 
             mailMessageCustomer.setTo(customer.getEMail());
             mailMessageCustomer.setSubject("Notificación OPRS - Renta");
-
-            Property property = propertyFacade.findById(params.getPropertyId().intValue());
 
             String type;
             if (property.getType() == BigInteger.valueOf(1)) {
@@ -90,6 +121,7 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             return flag;
 
         } catch (Exception e) {
+            Logger.getLogger(RentPropertyFacade.class.getName()).log(Level.SEVERE, null, e);
             return false;
         }
 

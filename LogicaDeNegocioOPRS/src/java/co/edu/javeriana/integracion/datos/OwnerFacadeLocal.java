@@ -35,5 +35,5 @@ public interface OwnerFacadeLocal {
     
     LoginDTO findByLogin(String username, String password);
 
-    public Owner findById(int id);
+    public Owner findById(int id) throws Exception;
 }

@@ -32,15 +32,14 @@ public class ListenerColaCorreo implements MessageListener {
     }
     
     @Override
-    public void onMessage(Message message) {
-      MailMessage objMsg;
-      /*
+    public void onMessage(Message message) {/*
+        MailMessage objMsg;
         try {
             objMsg = (MailMessage) message.getBody(MailMessage.class);
             integradorSMTP.sendMail(objMsg);
         } catch (JMSException ex) {
             Logger.getLogger(ListenerColaCorreo.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-    }
+        }
+   */ }
     
 }
