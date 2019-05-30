@@ -30,5 +30,7 @@ public interface RentDealFacadeLocal {
     List<RentDeal> findRange(int[] range);
 
     int count();
+
+    boolean addContrato(RentDeal contrato);
     
 }
