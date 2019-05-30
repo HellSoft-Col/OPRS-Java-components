@@ -90,12 +90,4 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
         consultaProperty.setParameter("id", id);
         return consultaProperty.getSingleResult();
     }   
-
-    @Override
-    public Property findById(int id) {
-        TypedQuery<Property> consultaProperty = em.createNamedQuery("Property.findById",Property.class);
-        consultaProperty.setParameter("id", id);
-        return consultaProperty.getSingleResult();
-    }
-
 }
