@@ -87,10 +87,10 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             mailMessageError.setTo(customer.getEMail());
             mailMessageError.setSubject("Notificación ERROR OPRS - Renta");
          
-            mailMessageError.setBody(
+           /* mailMessageError.setBody(
                     "Su " + type
                     + " en " + property.getAddress() + " de " + property.getLocation()
-                    + " esta en proceso de renta por " + customer.getName() + " " + customer.getLastName() + " en espera de la firma del contrato. Att: HellSoft");
+                    + " esta en proceso de renta por " + customer.getName() + " " + customer.getLastName() + " en espera de la firma del contrato. Att: HellSoft");*/
 
             integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageError);
 
