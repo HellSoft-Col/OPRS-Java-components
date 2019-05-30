@@ -6,6 +6,7 @@
 package controllers;
 
 import co.edu.javeriana.dtos.LoginDTO;
+import co.edu.javeriana.enums.UserTypeEnum;
 import com.google.gson.Gson;
 import java.util.Map;
 import javax.faces.application.FacesMessage;
@@ -64,7 +65,7 @@ public class CtrlEventosLogin {
         String result_string = new String();
 
         result_string = result.readEntity(String.class);
-        
+
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         Map sessionMap = externalContext.getSessionMap();
 
@@ -80,9 +81,15 @@ public class CtrlEventosLogin {
 
             }
             return null;
+
         }
 
         //TODO: Agregar Funcionalidad a los botones
-        return "PantallaWebMenu";
+        if (user.getUser_type() == UserTypeEnum.OWNER.getValue()) {
+            return "PantallaWebMenuOwner";
+        } else {
+            return "PantallaWebMenu";
+        }
+
     }
 }
