@@ -62,4 +62,11 @@ public class CustomerFacade extends AbstractFacade<Customer> implements Customer
         return consultaCustomer.getSingleResult();
     }
     
+    @Override
+    public Customer findById(int id) {
+        TypedQuery<Customer> consultaCustomer = em.createNamedQuery("Customer.findById",Customer.class);
+        consultaCustomer.setParameter("id", id);
+        return consultaCustomer.getSingleResult();
+    } 
+    
 }
