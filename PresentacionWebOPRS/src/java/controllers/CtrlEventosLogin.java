@@ -65,7 +65,7 @@ public class CtrlEventosLogin implements Serializable{
 
         String result_string = new String();
 
-        result_string = result.readEntity(String.class);
+        //result_string = result.readEntity(String.class);
 
         LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();

@@ -17,6 +17,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -149,7 +150,13 @@ public class CtrlEventosAP implements Serializable {
 
     private FacadeAgregarPropiedadRemote lookupFacadeAgregarPropiedadRemote() {
         try {
-            javax.naming.Context c = new InitialContext();
+            Properties prop = new Properties();
+            prop.put("org.omg.CORBA.ORBInitialHost","10.192.12.26"); 
+            prop.put("org.omg.CORBA.ORBInitialPort","3700");
+            prop.put("java.naming.factory.initial","com.sun.enterprise.naming.SerialInitContextFactory");
+            prop.put("java.naming.factory.url.pkgs","com.sun.enterprise.naming");
+            prop.put("java.naming.factory.state","com.sun.corba.ee.impl.presentation.rmi.JNDIStateFactoryImpl");
+            javax.naming.Context c = new InitialContext(prop);
             return (FacadeAgregarPropiedadRemote) c.lookup("java:global/LogicaDeNegocioOPRS/FacadeAgregarPropiedad!co.edu.javeriana.facades.FacadeAgregarPropiedadRemote");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
