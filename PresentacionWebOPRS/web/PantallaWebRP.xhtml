@@ -11,25 +11,19 @@
 
 
             <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
+                <h1><h:outputText value="Formulario de pago"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Ndi:" for="ndi" />
-                    <h:inputText id="ndi" value="#{ctrlEventosRP.contrato.ndi}" title="Ndi" />
-                    <h:outputLabel value="First_name:" for="first_name" />
-                    <h:inputText id="first_name" value="#{ctrlEventosRP.contrato.first_name}" title="First_name" />
-                    <h:outputLabel value="Last_name:" for="last_name" />
-                    <h:inputText id="last_name" value="#{ctrlEventosRP.contrato.last_name}" title="Last_name" />
-                    <h:outputLabel value="Location_addres:" for="location_addres" />
-                    <h:inputText id="location_addres" value="#{ctrlEventosRP.contrato.location_address}" title="Location_addres" />
-                    <h:outputLabel value="Property_addres:" for="property_addres" />
-                    <h:inputText id="property_addres" value="#{ctrlEventosRP.contrato.property_address}" title="Property_addres" />
-                    <h:outputLabel value="Rental_time_start:" for="rental_time_start" />
-                    <h:inputText id="rental_time_start" value="#{ctrlEventosRP.contrato.rental_time_start}" title="Rental_time_start" />
-                    <h:outputLabel value="Rental_time_end:" for="rental_time_end" />
-                    <h:inputText id="rental_time_end" value="#{ctrlEventosRP.contrato.rental_time_end}" title="Rental_time_end" />
-                    <h:outputLabel value="Amount:" for="amount" />
-                    <h:inputText id="amount" value="#{ctrlEventosRP.contrato.amount}" title="Amount" />
-                    <h:commandButton value="Enviar" action="#{ctrlEventosRP.enviarContrato()}"/>
+                    <h:outputLabel value="Número de identificación: " for="ndi" />
+                    <h:inputText id="ndi" value="#{ctrlEventosRP.ndi}" title="Ndi" />
+                    <h:outputLabel value="Contraseña de usuario: " for="account_password" />
+                    <h:inputText id="account_password" value="#{ctrlEventosRP.account_password}" title="Account_password" />
+                    <h:outputLabel value="Fecha de inicio renta:" for="rental_time_start" />
+                    <h:inputText id="rental_time_start" value="#{ctrlEventosRP.rentalTimeStart}" title="Rental_time_start" />
+                    <h:outputLabel value="Fecha de finalización de renta:" for="rental_time_end" />
+                    <h:inputText id="type" value="#{ctrlEventosRP.rentalTimeStart}" title="Type" />
+                    <h:outputLabel value="Tipo: " for="type" />
+                    <h:inputText id="rental_time_end" value="#{ctrlEventosRP.rentalTimeEnd}" title="Rental_time_end" />
+                    <h:commandButton value="Enviar" action=" "/>
                 </h:panelGrid>
             </h:form>
         </f:view>

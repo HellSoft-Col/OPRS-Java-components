@@ -29,8 +29,8 @@ public class CtrlEventosMenu {
      */
     public CtrlEventosMenu() {
     }
-    public String agregarP(){        
-        return "PantallaWebAP";
+    public String rentarP(){        
+        return "PantallaWebRP";
     }
     public String buscarP(){
         return "PantallaWebBP";

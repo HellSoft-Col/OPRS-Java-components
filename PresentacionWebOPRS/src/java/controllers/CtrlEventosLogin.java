@@ -66,10 +66,9 @@ public class CtrlEventosLogin {
 
         result_string = result.readEntity(String.class);
 
+        LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         Map sessionMap = externalContext.getSessionMap();
-
-        LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
         sessionMap.put("user", user);
 
         if (user.getUsername() == null || user.getPassword() == null) {
@@ -83,6 +82,16 @@ public class CtrlEventosLogin {
             return null;
 
         }
+        
+        /*if (user.getUser_type() == UserTypeEnum.OWNER.getValue()) {
+            return "PantallaWebMenuOwner";
+        } else {
+            if (user.getUser_type() == UserTypeEnum.CUSTOMER.getValue()) {
+                return "PantallaWebMenu";
+            }
+        }*/
+        
+        
 
         //TODO: Agregar Funcionalidad a los botones
         if (user.getUser_type() == UserTypeEnum.OWNER.getValue()) {
