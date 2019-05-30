@@ -37,6 +37,28 @@ public enum RentStateEnum {
     public static int getEXPIRADO() {
         return EXPIRADO.getValue();
     }
+    
+    public static String getState(int opc){
+        String state = null;
+        switch (opc){
+            case 1:  
+                state = "Firmado";
+                break;
+            case 2:  
+                state = "Terminado";
+                break;
+            case 3:  
+                state = "En contrato";
+                break;
+            case 4:  
+                state = "Expirado";
+                break;
+            default: 
+                state = "Invalid state";
+                break;
+        }
+        return state;
+    }
 
     public static int getNO_FIRMADO() {
         return NO_FIRMADO.getValue();

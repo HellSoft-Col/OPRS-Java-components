@@ -13,55 +13,56 @@
         <title>Firmar contrato</title>
     </h:head>
     <h:body>
-       <f:view>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{ctrlEventosFC.unsigned_rents}" var="item">
+                    
+                    <h:column class="panelGridCenter">
+                        <f:facet name="header">
+                            <h:outputText value="PropertyAddress"/>
+                        </f:facet>
+                        <h:outputText value="#{item.propertyAddress}"/>
+                    </h:column>
+                    <h:column class="panelGridCenter">
+                        <f:facet name="header">
+                            <h:outputText value="PropertyLocation"/>
+                        </f:facet>
+                        <h:outputText value="#{item.propertyLocation}"/>
+                    </h:column>
+                    <h:column class="panelGridCenter">
+                        <f:facet name="header">
+                            <h:outputText value="RentalDate"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rentalDate}"/>
+                    </h:column>
+                    <h:column class="panelGridCenter">
+                        <f:facet name="header">
+                            <h:outputText value="RentalTimeStart"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rentalTimeStart}"/>
+                    </h:column>
+                    <h:column class="panelGridCenter">
+                        <f:facet name="header">
+                            <h:outputText value="RentalTimeEnd"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rentalTimeEnd}"/>
+                    </h:column>
+                    <h:column class="panelGridCenter">
+                        <f:facet name="header">
+                            <h:outputText value="RentProperty"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rentProperty}"/>
+                    </h:column>
+                    
+                    <h:column class="panelGridCenter">
+                        <h:commandButton
+                            value= "Firmar"
+                            action="#{ctrlEventosFC.SignContract(item.rent_id)}"/>
+                    </h:column>
 
-           <h:form>
-               <h1><h:outputText value="Firmar contrato"/></h1>
-               <h:dataTable styleClass="panelGridCenter" value="" var="item">
-                   <h:column  >
-                       <f:facet name="header">
-                           <h:outputText value="Dirección" class="panelGridCenter"/>
-                       </f:facet>
-                       <h:outputText value="" />
-                   </h:column>
-                   <h:column class="panelGridCenter">
-                       <f:facet name="header">
-                           <h:outputText value="Locación"/>
-                       </f:facet>
-                       <h:outputText value=""/>
-                   </h:column >
-                   <h:column class="panelGridCenter">
-                       <f:facet name="header">
-                           <h:outputText value="Fecha firma contrato"/>
-                       </f:facet>
-                       <h:outputText value=""/>
-                   </h:column>
-                   <h:column class="panelGridCenter">
-                       <f:facet name="header">
-                           <h:outputText value="Fecha inicio"/>
-                       </f:facet>
-                       <h:outputText value=""/>
-                   </h:column>
-                   <h:column class="panelGridCenter">
-                       <f:facet name="header">
-                           <h:outputText value="Fecha fin"/>
-                       </f:facet>
-                       <h:outputText value=""/>
-                   </h:column>
-                   <h:column class="panelGridCenter">
-                       <f:facet name="header">
-                           <h:outputText value="Monto renta"/>
-                       </f:facet>
-                       <h:outputText value=""/>
-                   </h:column>
-                   <h:column class="panelGridCenter">
-                       <h:commandButton
-                                value= "Firmar"
-                                action=""/>
-                   </h:column>
-               </h:dataTable>
-           </h:form>
-           
+                </h:dataTable>
+            </h:form>
         </f:view>
 
     </h:body>

@@ -59,7 +59,7 @@ public class ListenerERP implements MessageListener {
                 renta.setAmount(mm.getLong("Amount"));
                 System.out.println(this.getClass().getName() + ": Received a request for " + message.getStringProperty("System"));
                 System.out.println(request);
-                facadeERP.agregarContrato(renta);
+                //facadeERP.agregarContrato(renta);
             } catch (JMSException ex) {
                 System.out.println("Failed to get request message");
             }

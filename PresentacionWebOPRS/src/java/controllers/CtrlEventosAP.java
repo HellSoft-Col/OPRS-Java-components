@@ -131,7 +131,6 @@ public class CtrlEventosAP implements Serializable {
 
         this.owner = ownerId;
 
-        System.out.println("-----------------------------------> Este es el Id del owner: " + this.owner);
         PropertyPK ppk = new PropertyPK(this.owner);
         //TODO: try to delete this shit :V
         ppk.setId(BigInteger.valueOf(999));
