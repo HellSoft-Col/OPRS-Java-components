@@ -1,37 +1,75 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <script type="text/javascript">
+    PrimeFaces.locales['es'] = {
+        closeText: 'Cerrar',
+        prevText: 'Anterior',
+        nextText: 'Siguiente',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+        weekHeader: 'Semana',
+        firstDayOfWeek: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Sólo hora',
+        timeText: 'Tiempo',
+        hourText: 'Hora',
+        minuteText: 'Minuto',
+        secondText: 'Segundo',
+        currentText: 'Fecha actual',
+        ampm: false,
+        month: 'Mes',
+        week: 'Semana',
+        day: 'Día',
+        allDayText: 'Todo el día'
+    };
+</script>
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style>
+    <style>
+        .panelGridCenter{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
     <h:head>
         <title>Formulario de pago</title>
     </h:head>
     <h:body>
         <f:view>
-
-
-            <h:form>
+            <h:form id="rpForm">
                 <h1><h:outputText value="Formulario de pago"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Tipo de documento: " />
-                    <h:selectOneMenu id="dType" value="#{ctrlEventosRP.type}">
-                        <f:selectItem itemValue="1" itemLabel="Cedula de ciudadania" />
-                        <f:selectItem itemValue="2" itemLabel="Cedula de extranjeria" />
-                        <f:selectItem itemValue="3" itemLabel="Tarjeta de identidad" />  
-                    </h:selectOneMenu>
-                    <h:outputLabel value="Número de identificación: " for="ndi" />
-                    <h:inputText id="ndi" value="#{ctrlEventosRP.ndi}" title="Ndi" />
-                    <h:outputLabel value="Contraseña de la cuenta: " for="account_password" />
-                    <h:inputText id="account_password" value="#{ctrlEventosRP.account_password}" title="Account_password" />
-                    <h:outputLabel value="Fecha de inicio renta:" for="rental_time_start" />
-                    <h:inputText id="rental_time_start" value="#{ctrlEventosRP.rentalTimeStart}" title="Rental_time_start" />
-                    <h:outputLabel value="Fecha de finalización de renta:" for="rental_time_end" />
-                    <h:inputText id="rental_time_end" value="#{ctrlEventosRP.rentalTimeEnd}" title="Rental_time_end" />
-                    <h:commandButton value="Enviar" action=" "/>
-                </h:panelGrid>
+                <p:panel id="basic" header="Formulario de pago" styleClass="panelGridCenter" style="margin-bottom:20px; margin-top:100px">
+                    <h:panelGrid columns="2" cellpadding="10" styleClass="panelGridCenter">
+                        <h:outputLabel value="Tipo de documento: " />
+                        <h:selectOneMenu id="dType" value="#{ctrlEventosRP.type}">
+                            <f:selectItem itemValue="1" itemLabel="Cedula de ciudadania" />
+                            <f:selectItem itemValue="2" itemLabel="Cedula de extranjeria" />
+                            <f:selectItem itemValue="3" itemLabel="Tarjeta de identidad" />  
+                        </h:selectOneMenu>
+                        <h:outputLabel value="Contraseña de la cuenta: " for="account_password" />
+                        <h:inputText id="account_password" value="#{ctrlEventosRP.account_password}" title="Account_password" />
+                        <h:outputLabel value="Fecha de inicio renta:" for="rental_time_start" />
+                        <p:datePicker id="rental_time_start" value="#{ctrlEventosRP.rentalTimeStart}" title="Rental_time_start" showIcon="true"/>
+                        <h:outputLabel value="Fecha de finalización de renta:" for="rental_time_end" />
+                        <p:datePicker id="rental_time_end" value="#{ctrlEventosRP.rentalTimeEnd}" title="Rental_time_end" showIcon="true"/>
+                    </h:panelGrid>
+                    <h:commandButton id="rSubmit" value="Enviar" action=" "/>
+                    <div class="errorMsg"><h:message for="rSubmit" /></div>
+                </p:panel>
             </h:form>
         </f:view>
-
     </h:body>
 </html>
 

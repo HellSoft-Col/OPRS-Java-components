@@ -36,5 +36,8 @@ public class CtrlEventosMenu implements Serializable{
     public String buscarP(){
         return "PantallaWebBP";
     }
+    public String rentSign(){
+        return "PantallaWebRentSign";
+    }
     
 }

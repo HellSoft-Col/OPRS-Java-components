@@ -1,29 +1,35 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <style>
+        .panelGridCenter{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
     <h:head>
         <title>Buscar Propiedad</title>
     </h:head>
     <h:body>
-      <f:view>
-        <h:form>
+        <f:view>
             <h1><h:outputText value="Buscar propiedad"/></h1>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Cédula del propietario:" for="cedula"/>
-                <h:inputText id="cedula" value="#{ctrlEventosBP.idCard}" title="Locacion"/>
-                <h:outputLabel value="Costo mínimo de renta:  " for="minRent"/>
-                <h:inputText id="minRent" value="#{ctrlEventosBP.minRent}" title="Min_rent"/>
-                <h:outputLabel value="Costo máximo de renta:  " for="maxRent"/>
-                <h:inputText id="maxRent" value="#{ctrlEventosBP.maxRent}" title="Max_rent"/>
-            </h:panelGrid>
-            <h:commandButton id="buscar" value="Buscar" action ="#{ctrlEventosBP.createDtoProperty}"/>
-            
-        </h:form>
-     </f:view>
-        
+            <h:form>
+                <p:panel id="basic" header="Buscar propiedad" styleClass="panelGridCenter" style="margin-bottom:20px; margin-top:100px">
+                    <h:panelGrid columns="2" cellpadding="10" styleClass="panelGridCenter">
+                        <h:outputLabel value="Cédula del propietario:" for="cedula"/>
+                        <h:inputText id="cedula" value="#{ctrlEventosBP.idCard}" title="Locacion"/>
+                        <h:outputLabel value="Costo mínimo de renta:  " for="minRent"/>
+                        <h:inputText id="minRent" value="#{ctrlEventosBP.minRent}" title="Min_rent"/>
+                        <h:outputLabel value="Costo máximo de renta:  " for="maxRent"/>
+                        <h:inputText id="maxRent" value="#{ctrlEventosBP.maxRent}" title="Max_rent"/>
+                    </h:panelGrid>
+                    <p:commandButton id="buscar" value="Buscar" action ="#{ctrlEventosBP.createDtoProperty}"/>
+                </p:panel>
+            </h:form>
+        </f:view>
     </h:body>
 </html>
 

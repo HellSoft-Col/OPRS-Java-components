@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <style>
         .panelGridCenter{
             margin: 0 auto;
@@ -14,54 +15,38 @@
     </h:head>
     <h:body>
         <f:view>
-            <h:form>
-                <h1><h:outputText value="List"/></h1>
-                <h:dataTable value="#{ctrlEventosFC.unsigned_rents}" var="item">
-                    
-                    <h:column class="panelGridCenter">
-                        <f:facet name="header">
-                            <h:outputText value="PropertyAddress"/>
-                        </f:facet>
+            <h:form id="fcForm">
+                <p:dataTable value="#{ctrlEventosFC.unsigned_rents}" var="item">
+                    <f:facet name="header">
+                        Contrato
+                    </f:facet>
+                    <p:column headerText="Dirección">
                         <h:outputText value="#{item.propertyAddress}"/>
-                    </h:column>
-                    <h:column class="panelGridCenter">
-                        <f:facet name="header">
-                            <h:outputText value="PropertyLocation"/>
-                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Locación">
                         <h:outputText value="#{item.propertyLocation}"/>
-                    </h:column>
-                    <h:column class="panelGridCenter">
-                        <f:facet name="header">
-                            <h:outputText value="RentalDate"/>
-                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Fecha contrato">
                         <h:outputText value="#{item.rentalDate}"/>
-                    </h:column>
-                    <h:column class="panelGridCenter">
-                        <f:facet name="header">
-                            <h:outputText value="RentalTimeStart"/>
-                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Fecha inicio">
                         <h:outputText value="#{item.rentalTimeStart}"/>
-                    </h:column>
-                    <h:column class="panelGridCenter">
-                        <f:facet name="header">
-                            <h:outputText value="RentalTimeEnd"/>
-                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Fecha de finalización">
                         <h:outputText value="#{item.rentalTimeEnd}"/>
-                    </h:column>
-                    <h:column class="panelGridCenter">
-                        <f:facet name="header">
-                            <h:outputText value="RentProperty"/>
-                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Valor renta">
                         <h:outputText value="#{item.rentProperty}"/>
-                    </h:column>
+                    </p:column>
                     
-                    <h:column class="panelGridCenter">
-                        <h:commandButton
+                    <p:column style="text-align: center">
+                        <p:commandButton
+                            id="fcSubmit"
                             value= "Firmar"
                             action="#{ctrlEventosFC.SignContract(item.rent_id)}"/>
-                    </h:column>
-
-                </h:dataTable>
+                        <div class="errorMsg"><h:message for="fcSubmit" /></div>
+                    </p:column>
+                </p:dataTable>
             </h:form>
         </f:view>
 

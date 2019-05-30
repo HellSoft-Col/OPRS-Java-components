@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <style>
         .panelGridCenter{
             margin: 0 auto;
@@ -10,54 +11,37 @@
         }
     </style>
     <h:head>
-        <title>Facelet Title</title>
+        <title>Resultado búsqueda</title>
     </h:head>
     <h:body>
-       <f:view>
-
-           <h:form>
-               <h1><h:outputText value="Resultados de la búsqueda"/></h1>
-               <h:dataTable styleClass="panelGridCenter" value="#{ctrlEventosBP.properties}" var="item">
-                   <h:column  >
-                       <f:facet name="header">
-                           <h:outputText value="Direccion" class="panelGridCenter"/>
-                       </f:facet>
-                       <h:outputText value="#{item.address}" />
-                   </h:column>
-                   <h:column class="panelGridCenter">
-                       <f:facet name="header">
-                           <h:outputText value="Locacion"/>
-                       </f:facet>
-                       <h:outputText value="#{item.location}"/>
-                   </h:column >
-                   <h:column class="panelGridCenter">
-                       <f:facet name="header">
-                           <h:outputText value="Renta"/>
-                       </f:facet>
-                       <h:outputText value="#{item.rent}"/>
-                   </h:column>
-                   <h:column class="panelGridCenter">
-                       <f:facet name="header">
-                           <h:outputText value="No. Habitaciones"/>
-                       </f:facet>
-                       <h:outputText value="#{item.roomsNumber}"/>
-                   </h:column>
-                   <h:column class="panelGridCenter">
-                       <f:facet name="header">
-                           <h:outputText value="Tipo"/>
-                       </f:facet>
-                       <h:outputText value="#{ctrlEventosBP.propertyTypeName(item.type)}"/>
-                   </h:column>
-                   <h:column class="panelGridCenter">
-                       <h:commandButton
-                                value= "Rentar propiedad"
-                                action="#{ctrlEventosBP.rentarP(item)}"/>
-                   </h:column>
-               </h:dataTable>
-           </h:form>
-           
+        <f:view>
+            <h:form>
+                <p:dataTable id="basicDT" value="#{ctrlEventosBP.properties}" var="item">
+                    <f:facet name="header">
+                        Resultados de la búsqueda
+                    </f:facet>
+                    <p:column headerText="Dirección">
+                        <h:outputText value="#{item.address}"/>
+                    </p:column>
+                    <p:column headerText="Locación">
+                        <h:outputText value="#{item.location}"/>
+                    </p:column>
+                    <p:column headerText="Renta">
+                        <h:outputText value="#{item.rent}"/>
+                    </p:column>
+                    <p:column headerText="No. habitaciones">
+                        <h:outputText value="#{item.roomsNumber}"/>
+                    </p:column>
+                    <p:column headerText="Tipo propiedad">
+                        <h:outputText value="#{ctrlEventosBP.propertyTypeName(item.type)}"/>
+                    </p:column>
+                    <p:column style="text-align: center">
+                        <p:commandButton value="Rentar propiedad" action="#{ctrlEventosBP.rentarP(item)}">
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
         </f:view>
-
     </h:body>
 </html>
 

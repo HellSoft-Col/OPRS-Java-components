@@ -14,10 +14,12 @@ import com.google.gson.Gson;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -92,12 +94,12 @@ public class CtrlEventosRP implements Serializable{
         BigDecimal userId = user.getId();
         BigInteger customerId = userId.toBigInteger();
         
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");  
+        SimpleDateFormat dtf = new SimpleDateFormat("dd-MM-yyyy");
         LocalDateTime now = LocalDateTime.now();  
         String rentalDate = dtf.format(now);
         
-        String rentalTimeStart = this.rentalTimeStart;
-        String rentalTimeEnd = this.rentalTimeEnd;
+        String rentalTimeStart = dtf.format(this.rentalTimeStart);
+        String rentalTimeEnd = dtf.format(this.rentalTimeEnd);
         BigDecimal rentProperty = property.getRent();
         String ndi = user.getNdi();
         String account_password = this.account_password;
@@ -112,7 +114,10 @@ public class CtrlEventosRP implements Serializable{
         Response result = proxyRP.createNewRent(dtoJson);
         
         if (result.getStatus() != Response.Status.OK.getStatusCode()){
+            FacesContext.getCurrentInstance().addMessage("rpForm:rSubmit", new FacesMessage("Su solicitud ha sido rechazada :("));
             //TODO: Devolver error 
+        }else{
+            FacesContext.getCurrentInstance().addMessage("rpForm:rSubmit", new FacesMessage("Su solicitud de rentar propiedad esta en proceso, por favor revise su correo para seguir las instrucciones :)"));
         }
         
         //TODO: Devolver Todo OK

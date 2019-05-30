@@ -17,6 +17,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
@@ -67,7 +68,10 @@ public class CtrlEventosFC implements Serializable{
         Response result = proxie.signLease(lease_id);
         
         if (result.getStatus() != Response.Status.OK.getStatusCode()){
+            FacesContext.getCurrentInstance().addMessage("fcForm:fcSubmit", new FacesMessage("El contrato no existe:("));
             //TODO: Devolver error 
+        }else{
+            FacesContext.getCurrentInstance().addMessage("fcForm:fcSubmit", new FacesMessage("El contrato ya ha sido firmado, gracias :)"));
         }
         
         //TODO: Devolver Todo OK
