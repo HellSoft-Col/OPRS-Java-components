@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.javeriana.dtos;
+package entities;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
@@ -14,23 +13,20 @@ import java.util.Date;
  *
  * @author LICHO
  */
-public class RentDTO implements Serializable{
+public class RentDTO {
     private Date rentalDate;
     private Date rentalTimeStart;
     private Date rentalTimeEnd;
-    private BigDecimal rentProperty;
+    private double rentProperty;
     private String state;
-    //Customer data
     private String nameCustomer;
     private String lastNameCustomer;
     private String ndiCustomer;
-    private String eMailCustomer;
-    //Property data
+    private String eMailCostumer;
     private String typeProperty;
     private String addressProperty;
     private BigInteger roomsNumberProperty;
     private String locationProperty;
-    //Owner data
     private String nameOwner;
     private String lastNameOwner;
     private String ndiOwner;
@@ -39,10 +35,7 @@ public class RentDTO implements Serializable{
     public RentDTO() {
     }
 
-    public RentDTO(Date rentalDate, Date rentalTimeStart, Date rentalTimeEnd, BigDecimal rentProperty, String state, 
-            String nameCustomer, String lastNameCustomer, String ndiCustomer, String eMailCustomer, String typeProperty, 
-            String addressProperty, BigInteger roomsNumberProperty, String locationProperty, String nameOwner, String lastNameOwner, 
-            String ndiOwner, String eMailOwner) {
+    public RentDTO(Date rentalDate, Date rentalTimeStart, Date rentalTimeEnd, double rentProperty, String state, String nameCustomer, String lastNameCustomer, String ndiCustomer, String eMailCostumer, String typeProperty, String addressProperty, BigInteger roomsNumberProperty, String locationProperty, String nameOwner, String lastNameOwner, String ndiOwner, String eMailOwner) {
         this.rentalDate = rentalDate;
         this.rentalTimeStart = rentalTimeStart;
         this.rentalTimeEnd = rentalTimeEnd;
@@ -51,7 +44,7 @@ public class RentDTO implements Serializable{
         this.nameCustomer = nameCustomer;
         this.lastNameCustomer = lastNameCustomer;
         this.ndiCustomer = ndiCustomer;
-        this.eMailCustomer = eMailCustomer;
+        this.eMailCostumer = eMailCostumer;
         this.typeProperty = typeProperty;
         this.addressProperty = addressProperty;
         this.roomsNumberProperty = roomsNumberProperty;
@@ -86,11 +79,11 @@ public class RentDTO implements Serializable{
         this.rentalTimeEnd = rentalTimeEnd;
     }
 
-    public BigDecimal getRentProperty() {
+    public double getRentProperty() {
         return rentProperty;
     }
 
-    public void setRentProperty(BigDecimal rentProperty) {
+    public void setRentProperty(double rentProperty) {
         this.rentProperty = rentProperty;
     }
 
@@ -126,12 +119,12 @@ public class RentDTO implements Serializable{
         this.ndiCustomer = ndiCustomer;
     }
 
-    public String geteMailCustomer() {
-        return eMailCustomer;
+    public String geteMailCostumer() {
+        return eMailCostumer;
     }
 
-    public void seteMailCustomer(String eMailCustomer) {
-        this.eMailCustomer = eMailCustomer;
+    public void seteMailCostumer(String eMailCostumer) {
+        this.eMailCostumer = eMailCostumer;
     }
 
     public String getTypeProperty() {
@@ -197,6 +190,5 @@ public class RentDTO implements Serializable{
     public void seteMailOwner(String eMailOwner) {
         this.eMailOwner = eMailOwner;
     }
-    
     
 }

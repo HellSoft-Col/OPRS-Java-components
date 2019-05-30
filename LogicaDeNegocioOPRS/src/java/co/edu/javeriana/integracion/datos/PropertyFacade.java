@@ -83,6 +83,13 @@ public class PropertyFacade extends AbstractFacade<Property> implements Property
         TypedQuery<PropertyDTO> findAll = em.createNamedQuery("Property.findAllDTO", PropertyDTO.class);
         return findAll.getResultList();
     }
+    
+    @Override
+    public Property findById(int id) {
+        TypedQuery<Property> consultaProperty = em.createNamedQuery("Property.findById",Property.class);
+        consultaProperty.setParameter("id", id);
+        return consultaProperty.getSingleResult();
+    }   
 
     @Override
     public Property findById(int id) {

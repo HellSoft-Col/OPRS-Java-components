@@ -37,4 +37,15 @@ public enum PropertyTypeEnum {
         return "";
     }
     
+    public static String getStringName(int opc){
+        String name = "";
+        if(opc == 1){
+            name = "Casa";
+        }
+        else if(opc == 2){
+            name = "Apartamento";
+        }
+        return name;
+    }
+    
 }
