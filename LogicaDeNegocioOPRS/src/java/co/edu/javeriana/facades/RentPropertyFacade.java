@@ -40,6 +40,7 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropertyFacadeLocal {
+
     @EJB
     private ProxieInstitucionFinancieraLocal proxieInstitucionFinanciera;
     @EJB
@@ -58,10 +59,15 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
     @Override
     public boolean AddRent(RentPropertyDTO params) {
         boolean flag = true;
-        
+        Owner owner ;
+        Customer customer;
+        Property property;
         Rent new_rent;
         try {
-            new_rent = new Rent(new RentPK(BigInteger.valueOf(999), params.getPropertyId(), params.getPropertyOwnerId(), params.getCustomerId()),new SimpleDateFormat("dd-MM-yyyy").parse( params.getRentalDate()),new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalTimeStart()), new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalTimeEnd()), params.getRentProperty(), BigInteger.valueOf(RentStateEnum.getNO_FIRMADO()));
+            owner = ownerFacade.findById(params.getPropertyOwnerId().intValue());
+            customer = customerFacade.findById(params.getCustomerId().intValue());
+            property = propertyFacade.findById(params.getPropertyId().intValue());
+            new_rent = new Rent(new RentPK(BigInteger.valueOf(999), params.getPropertyId(), params.getPropertyOwnerId(), params.getCustomerId()), new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalDate()), new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalTimeStart()), new SimpleDateFormat("dd-MM-yyyy").parse(params.getRentalTimeEnd()), params.getRentProperty(), BigInteger.valueOf(RentStateEnum.getNO_FIRMADO()));
             rentFacade.create(new_rent);
         } catch (SQLIntegrityConstraintViolationException e) {
             Logger.getLogger(RentPropertyFacade.class.getName()).log(Level.SEVERE, null, e);
@@ -73,24 +79,30 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
 
         PaymentDTO payment = new PaymentDTO(DocumentTypeEnum.getDocumentType(params.getType()), params.getNdi(), params.getAccount_password(), params.getRentProperty().intValue());
         PaymentResponseDTO paymentresponse = proxieInstitucionFinanciera.solicitarConfirmacionPago(payment);
-        
-        if (paymentresponse.getNumAprobacion() == null || paymentresponse.getAprobacion() == null){
+
+        if (paymentresponse.getNumAprobacion() == null || paymentresponse.getAprobacion() == null) {
+
+            MailMessage mailMessageError = new MailMessage();
+
+            mailMessageError.setTo(customer.getEMail());
+            mailMessageError.setSubject("Notificación ERROR OPRS - Renta");
+         
+            mailMessageError.setBody(
+                    "Su " + type
+                    + " en " + property.getAddress() + " de " + property.getLocation()
+                    + " esta en proceso de renta por " + customer.getName() + " " + customer.getLastName() + " en espera de la firma del contrato. Att: HellSoft");
+
+            integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageError);
+
             return false;
         }
-        
-        
+
         //TODO: Hacer validacion con Institucion financiera
         try {
-            
-            
-            
-            Owner owner = ownerFacade.findById(params.getPropertyOwnerId().intValue());
-            Customer customer = customerFacade.findById(params.getCustomerId().intValue());
-            Property property = propertyFacade.findById(params.getPropertyId().intValue());
-            
-            RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(),customer.getLastName(), property.getLocation(),property.getAddress(), params.getRentalTimeStart(),params.getRentalTimeEnd(), params.getRentProperty().longValue());            
+
+            RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
             integradorTRentas.sendJMSMessageToTopicoRentas(rental);
-            
+
             MailMessage mailMessageOwner = new MailMessage();
             MailMessage mailMessageCustomer = new MailMessage();
 
