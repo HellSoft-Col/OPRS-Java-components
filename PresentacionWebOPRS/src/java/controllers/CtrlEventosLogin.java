@@ -8,6 +8,7 @@ package controllers;
 import co.edu.javeriana.dtos.LoginDTO;
 import co.edu.javeriana.enums.UserTypeEnum;
 import com.google.gson.Gson;
+import java.io.Serializable;
 import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -25,7 +26,7 @@ import proxies.ProxyLogIn;
 @Named("ctrlEventosLogin")
 @ManagedBean
 @SessionScoped
-public class CtrlEventosLogin {
+public class CtrlEventosLogin implements Serializable{
 
     /**
      * Creates a new instance of CtrlEventosLogin
@@ -54,8 +55,8 @@ public class CtrlEventosLogin {
 
     public String createLoginDto() {
         LoginDTO login = new LoginDTO();
-        login.setUsername(username);
-        login.setPassword(password);
+        login.setUsername(this.username);
+        login.setPassword(this.password);
 
         Gson gson = new Gson();
         String dtoJson = gson.toJson(login);
@@ -82,7 +83,6 @@ public class CtrlEventosLogin {
             return null;
 
         }
-        
         /*if (user.getUser_type() == UserTypeEnum.OWNER.getValue()) {
             return "PantallaWebMenuOwner";
         } else {
@@ -90,8 +90,7 @@ public class CtrlEventosLogin {
                 return "PantallaWebMenu";
             }
         }*/
-        
-        
+       
 
         //TODO: Agregar Funcionalidad a los botones
         if (user.getUser_type() == UserTypeEnum.OWNER.getValue()) {

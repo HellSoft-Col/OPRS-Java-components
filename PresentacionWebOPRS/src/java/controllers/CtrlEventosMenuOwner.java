@@ -6,6 +6,7 @@
 package controllers;
 
 import co.edu.javeriana.dtos.LoginDTO;
+import java.io.Serializable;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -20,14 +21,17 @@ import javax.inject.Named;
 @Named(value = "ctrlEventosMenuOwner")
 @ManagedBean
 @SessionScoped
-public class CtrlEventosMenuOwner {
+public class CtrlEventosMenuOwner implements Serializable{
    
     /**
      * Creates a new instance of CtrlEventosMenuOwner
      */
     public CtrlEventosMenuOwner() {
     }
-    public String showOwnerName(){
+    public String agregarP(){        
+        return "PantallaWebAP";
+    }
+    /*public String showOwnerName(){
        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
        Map sessionMap = externalContext.getSessionMap();
        LoginDTO currentUser = (LoginDTO) sessionMap.get("user"); 
@@ -35,6 +39,6 @@ public class CtrlEventosMenuOwner {
        String lastName = currentUser.getLastName();
        String completeName = "Bienvenido señor propietario/a " + " "+nameOwner + " " + lastName;
        return completeName;
-    }
+    }*/
     
 }

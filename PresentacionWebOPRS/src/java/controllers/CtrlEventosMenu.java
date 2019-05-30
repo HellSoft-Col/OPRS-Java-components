@@ -6,6 +6,7 @@
 package controllers;
 
 import co.edu.javeriana.dtos.LoginDTO;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Map;
@@ -22,7 +23,7 @@ import javax.inject.Named;
 @Named(value = "ctrlEventosMenu")
 @ManagedBean
 @RequestScoped
-public class CtrlEventosMenu {
+public class CtrlEventosMenu implements Serializable{
 
     /**
      * Creates a new instance of CtrlEventosMenu

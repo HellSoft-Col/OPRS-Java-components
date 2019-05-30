@@ -11,6 +11,7 @@ import co.edu.javeriana.entities.Property;
 import co.edu.javeriana.enums.PropertyTypeEnum;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +19,8 @@ import java.util.List;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import proxies.ProxyBP;
 
@@ -28,7 +31,7 @@ import proxies.ProxyBP;
 @Named(value = "ctrlEventosBP")
 @ManagedBean
 @SessionScoped
-public class CtrlEventosBP {
+public class CtrlEventosBP implements Serializable{
 
     private PropertyQueryDTO dtoProperty;
     private String idCard;
@@ -117,6 +120,12 @@ public class CtrlEventosBP {
         this.properties = result;
 
         return "PantallaSearchResult";
+    }
+    public String rentarP(PropertyDTO property){
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map sessionMap = externalContext.getSessionMap();
+        sessionMap.put("property", property);
+        return "PantallaWebRP";
     }
 
 }

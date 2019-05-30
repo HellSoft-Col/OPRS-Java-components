@@ -11,6 +11,7 @@ import co.edu.javeriana.entities.Property;
 import co.edu.javeriana.entities.PropertyPK;
 import co.edu.javeriana.enums.PropertyLocationEnum;
 import co.edu.javeriana.facades.FacadeAgregarPropiedadRemote;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ import javax.naming.NamingException;
 @Named(value = "ctrlEventosAP")
 @ManagedBean
 @SessionScoped
-public class CtrlEventosAP {
+public class CtrlEventosAP implements Serializable {
 
     private FacadeAgregarPropiedadRemote facadeAgregarPropiedad;
     ;

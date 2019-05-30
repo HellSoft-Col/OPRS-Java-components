@@ -8,17 +8,10 @@
         <title>Menu Owner</title>
     </h:head>
     <h:body>
-        <h1><h:outputText value="#{ctrlEventosMenuOwner.showwnerName}"/></h1>
         <h:form>  
            <p:menubar>
-                <p:submenu label="File" icon="pi pi-file">
-                    <p:submenu label="New" icon="pi pi-briefcase">
-                        <p:menuitem value="Project" url="#" />
-                        <p:menuitem value="Other" url="#" />
-                    </p:submenu>
-                    <p:menuitem value="Open" url="#" />
-                    <p:separator />
-                    <p:menuitem value="Quit" url="#" />
+                <p:submenu label="Propiedad" icon="pi pi-file">
+                        <p:menuitem value="Agregar nueva" action="#{ctrlEventosMenuOwner.agregarP()}" />
                 </p:submenu>
 
                 <p:submenu label="Edit" icon="pi pi-pencil">
@@ -38,11 +31,11 @@
 
                 <p:submenu label="Actions" icon="pi pi-cog">
                     <p:submenu label="Ajax" icon="pi pi-refresh">
-                        <p:menuitem value="Save" action="#{menuView.save}" icon="pi pi-save" update="messages"/>
-                        <p:menuitem value="Update" action="#{menuView.update}" icon="pi pi-refresh" update="messages"/>
+                        <p:menuitem value="Save" action="#{menuView.save}" icon="pi pi-save" update=" "/>
+                        <p:menuitem value="Update" action="#{menuView.update}" icon="pi pi-refresh" update=""/>
                     </p:submenu>
                     <p:submenu label="Non-Ajax" icon="pi pi-clone">
-                        <p:menuitem value="Delete" action="#{menuView.delete}" icon="pi pi-times" update="messages" ajax="false"/>
+                        <p:menuitem value="Delete" action="#{menuView.delete}" icon="pi pi-times" update="" ajax="false"/>
                     </p:submenu>
                 </p:submenu>
 

@@ -19,16 +19,16 @@
                 <p:panel id="basic" header="Login" styleClass="panelGridCenter" style="margin-bottom:20px; margin-top:100px">
                     <h1><h:outputText value="Iniciar Sesión"/></h1>
                     <h:panelGrid columns="2" cellpadding="10" styleClass="panelGridCenter">
-                        <h:outputLabel value="Usuario: " for="username"/>
-                        <h:inputText id="username" value="#{ctrlEventosLogin.username}" title="Usuario"/>
+                        <h:outputLabel value="Usuario: " for="usernameSubmit"/>
+                        <h:inputText id="usernameSubmit" value="#{ctrlEventosLogin.username}" title="Usuario"/>
                         <h:message for="usernameSubmit"></h:message>
                         <br></br>
-                        <h:outputLabel value="Contraseña: " for="password"/>
-                        <h:inputSecret id="password" value="#{ctrlEventosLogin.password}"  title="Contrasena"/>
+                        <h:outputLabel value="Contraseña: " for="passSubmit"/>
+                        <h:inputSecret id="passSubmit" value="#{ctrlEventosLogin.password}"  title="Contrasena"/>
                         <h:message for="passSubmit"></h:message>
                         <br></br>
                     </h:panelGrid>
-                    <p:commandButton id="login" value="Login" action ="#{ctrlEventosLogin.createLoginDto()}"/>
+                    <p:commandButton id="loginSubmit" value="Login" action ="#{ctrlEventosLogin.createLoginDto()}"/>
                     <div class="errorMsg"><h:message for="loginSubmit"></h:message></div>
                 </p:panel>
             </h:form>
