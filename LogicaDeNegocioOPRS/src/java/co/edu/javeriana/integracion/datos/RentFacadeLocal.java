@@ -33,16 +33,19 @@ public interface RentFacadeLocal {
     List<Rent> findRange(int[] range);
 
     int count();
-    
+
     List<Rent> findByCustomerAndState(BigDecimal id, BigInteger state);
-    
+
     List<RentSignDTO> findByCustomerAndStateDTO(BigDecimal id, BigInteger state);
-    
+
     List<Rent> findByOwnerAndState(BigDecimal id, BigInteger state);
-    
+
     List<RentSignDTO> findByOwnerAndStateDTO(BigDecimal id, BigInteger state);
-    
+
     public Rent findById(int id);
+
+    public List<Rent> findByState(BigInteger state);
+
     public List<RentDTO> findRentTransactions();
-    
+
 }
