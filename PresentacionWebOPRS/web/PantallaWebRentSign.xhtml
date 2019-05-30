@@ -1,12 +1,69 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <style>
+        .panelGridCenter{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
     <h:head>
-        <title>Contrato renta</title>
+        <title>Firmar contrato</title>
     </h:head>
     <h:body>
-        
+       <f:view>
+
+           <h:form>
+               <h1><h:outputText value="Firmar contrato"/></h1>
+               <h:dataTable styleClass="panelGridCenter" value="" var="item">
+                   <h:column  >
+                       <f:facet name="header">
+                           <h:outputText value="Dirección" class="panelGridCenter"/>
+                       </f:facet>
+                       <h:outputText value="" />
+                   </h:column>
+                   <h:column class="panelGridCenter">
+                       <f:facet name="header">
+                           <h:outputText value="Locación"/>
+                       </f:facet>
+                       <h:outputText value=""/>
+                   </h:column >
+                   <h:column class="panelGridCenter">
+                       <f:facet name="header">
+                           <h:outputText value="Fecha firma contrato"/>
+                       </f:facet>
+                       <h:outputText value=""/>
+                   </h:column>
+                   <h:column class="panelGridCenter">
+                       <f:facet name="header">
+                           <h:outputText value="Fecha inicio"/>
+                       </f:facet>
+                       <h:outputText value=""/>
+                   </h:column>
+                   <h:column class="panelGridCenter">
+                       <f:facet name="header">
+                           <h:outputText value="Fecha fin"/>
+                       </f:facet>
+                       <h:outputText value=""/>
+                   </h:column>
+                   <h:column class="panelGridCenter">
+                       <f:facet name="header">
+                           <h:outputText value="Monto renta"/>
+                       </f:facet>
+                       <h:outputText value=""/>
+                   </h:column>
+                   <h:column class="panelGridCenter">
+                       <h:commandButton
+                                value= "Firmar"
+                                action=""/>
+                   </h:column>
+               </h:dataTable>
+           </h:form>
+           
+        </f:view>
+
     </h:body>
 </html>
 
