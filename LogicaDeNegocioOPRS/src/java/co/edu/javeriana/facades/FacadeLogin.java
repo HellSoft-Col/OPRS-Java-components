@@ -23,7 +23,7 @@ public class FacadeLogin implements FacadeLoginRemote, FacadeLoginLocal {
 
     @EJB
     private OwnerFacadeLocal ownerFacade;
-    
+        
     @Override
     public LoginDTO iniciarSesion(LoginDTO params){
       LoginDTO login = new LoginDTO();
@@ -34,7 +34,6 @@ public class FacadeLogin implements FacadeLoginRemote, FacadeLoginLocal {
               login = ownerFacade.findByLogin(params.getUsername(), params.getPassword());
               login.setUser_type(UserTypeEnum.OWNER.getValue());
           }
-          System.out.println("------------------------>Este es el username del facade: " + login.getUsername());
       }
       return login;
         
