@@ -1,29 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <style>
+        .panelGridCenter{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
     <h:head>
         <title>Iniciar sesión</title>
     </h:head>
     <h:body>
-     <f:view>
-        <h:form id="loginForm" styleClass="formPosition">
-            <h1><h:outputText value="Iniciar Sesión"/></h1>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Usuario: " for="username"/>
-                <h:inputText id="username" value="#{ctrlEventosLogin.username}" title="Usuario"/>
-                <h:message for="usernameSubmit"></h:message>
-		<br></br><br></br>
-                <h:outputLabel value="Contraseña: " for="password"/>
-                <h:inputSecret id="password" value="#{ctrlEventosLogin.password}"  title="Contrasena"/>
-                <h:message for="passSubmit"></h:message>
-		<br></br><br></br>
-            </h:panelGrid>
-            <h:commandButton id="login" value="Login" action ="#{ctrlEventosLogin.createLoginDto()}"/>
-            <div class="errorMsg"><h:message for="loginSubmit"></h:message></div>
-        </h:form>
-     </f:view>
+        <f:view>
+            <h:form id="loginForm" styleClass="formPosition">
+                <p:panel id="basic" header="Login" styleClass="panelGridCenter" style="margin-bottom:20px; margin-top:100px">
+                    <h1><h:outputText value="Iniciar Sesión"/></h1>
+                    <h:panelGrid columns="2" cellpadding="10" styleClass="panelGridCenter">
+                        <h:outputLabel value="Usuario: " for="username"/>
+                        <h:inputText id="username" value="#{ctrlEventosLogin.username}" title="Usuario"/>
+                        <h:message for="usernameSubmit"></h:message>
+                        <br></br>
+                        <h:outputLabel value="Contraseña: " for="password"/>
+                        <h:inputSecret id="password" value="#{ctrlEventosLogin.password}"  title="Contrasena"/>
+                        <h:message for="passSubmit"></h:message>
+                        <br></br>
+                    </h:panelGrid>
+                    <p:commandButton id="login" value="Login" action ="#{ctrlEventosLogin.createLoginDto()}"/>
+                    <div class="errorMsg"><h:message for="loginSubmit"></h:message></div>
+                </p:panel>
+            </h:form>
+        </f:view>
     </h:body>
 </html>
 

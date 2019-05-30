@@ -31,7 +31,7 @@ public class ProxieInstitucionFinanciera implements ProxieInstitucionFinancieraL
         Response result_request = client.InfoPago(parameters);
        
         String result_string = new String();
-        result_string = result_request.readEntity(String.class);        
+        //result_string = result_request.readEntity(String.class);        
         result = gson.fromJson(result_string, PaymentResponseDTO.class);
         
         return result;
