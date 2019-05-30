@@ -30,9 +30,11 @@ public class FacadeLogin implements FacadeLoginRemote, FacadeLoginLocal {
       LoginDTO login = new LoginDTO();
       if(params.getUsername()!= null && (params.getPassword()!= null)){
           login = customerFacade1.findByLogin(params.getUsername(), params.getPassword());
-          if(login.getUsername() == null && (login.getPassword() == null)){
+          System.out.println("------------------------>Este es el username del facade: " + login.getUsername());
+          if(login.getUsername() == null || login.getPassword() == null){
               login = ownerFacade.findByLogin(params.getUsername(), params.getPassword());
           }
+          
       }
       return login;
         

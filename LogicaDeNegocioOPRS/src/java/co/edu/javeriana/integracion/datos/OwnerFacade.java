@@ -48,7 +48,7 @@ public class OwnerFacade extends AbstractFacade<Owner> implements OwnerFacadeLoc
     @Override
     public LoginDTO findByLogin(String username, String password) {
         LoginDTO login;
-        TypedQuery<LoginDTO> iniciarSesion = em.createNamedQuery("Customer.findByLogin", LoginDTO.class);
+        TypedQuery<LoginDTO> iniciarSesion = em.createNamedQuery("Owner.findByLogin", LoginDTO.class);
         iniciarSesion.setParameter("username", username);
         iniciarSesion.setParameter("password", password);
         try{

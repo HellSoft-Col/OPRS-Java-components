@@ -10,7 +10,7 @@
        <f:view>
 
            <h:form>
-               <h1><h:outputText value="List"/></h1>
+               <h1><h:outputText value="Resultados de la búsqueda"/></h1>
                <h:dataTable value="#{ctrlEventosBP.properties}" var="item">
                    <h:column>
                        <f:facet name="header">
@@ -41,6 +41,11 @@
                            <h:outputText value="Tipo"/>
                        </f:facet>
                        <h:outputText value="#{ctrlEventosBP.propertyTypeName(item.type)}"/>
+                   </h:column>
+                   <h:column>
+                       <h:commandButton
+                                value= "Rentar propiedad"
+                                action=" "/>
                    </h:column>
                </h:dataTable>
            </h:form>

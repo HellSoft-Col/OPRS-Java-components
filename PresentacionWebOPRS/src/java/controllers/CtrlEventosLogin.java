@@ -69,7 +69,6 @@ public class CtrlEventosLogin {
         LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
 
         if(user.getUsername() == null && (user.getPassword()== null)){
-            //TODO: Colocar mensaje de eror
             FacesContext.getCurrentInstance().addMessage("loginForm:loginSubmit", new FacesMessage("Lo sentimos, el usuario no existe"));
              if(user.getUsername()!= this.username && (user.getPassword()== this.password)){
                     FacesContext.getCurrentInstance().addMessage("loginForm:usernameSubmit", new FacesMessage("El usuario no coincide"));
@@ -77,7 +76,7 @@ public class CtrlEventosLogin {
                 FacesContext.getCurrentInstance().addMessage("loginForm:passSubmit", new FacesMessage("La contraseña no coincide"));
                 
             }
-            return "index";
+            return null;
         }
         
         //TODO: Agregar Funcionalidad a los botones

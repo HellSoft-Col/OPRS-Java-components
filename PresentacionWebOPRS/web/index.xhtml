@@ -16,11 +16,11 @@
                 <h:message for="usernameSubmit"></h:message>
 		<br></br><br></br>
                 <h:outputLabel value="Contraseña: " for="password"/>
-                <h:inputText id="password" value="#{ctrlEventosLogin.password}"  title="Contrasena"/>
+                <h:inputSecret id="password" value="#{ctrlEventosLogin.password}"  title="Contrasena"/>
                 <h:message for="passSubmit"></h:message>
 		<br></br><br></br>
             </h:panelGrid>
-            <h:commandButton id="login" value="Login" action ="#{ctrlEventosLogin.createLoginDto}"/>
+            <h:commandButton id="login" value="Login" action ="#{ctrlEventosLogin.createLoginDto()}"/>
             <div class="errorMsg"><h:message for="loginSubmit"></h:message></div>
         </h:form>
      </f:view>
