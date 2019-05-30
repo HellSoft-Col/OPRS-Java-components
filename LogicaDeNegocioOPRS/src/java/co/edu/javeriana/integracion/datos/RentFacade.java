@@ -76,4 +76,15 @@ public class RentFacade extends AbstractFacade<Rent> implements RentFacadeLocal 
         return consultaRent.getSingleResult();
     }
     
+    @Override
+    public List<Rent> findByState(BigInteger state){
+        TypedQuery<Rent> consultaRent = em.createNamedQuery("Rent.findByState",Rent.class);
+        consultaRent.setParameter("state", state);
+        return consultaRent.getResultList();
+    }
+    
+    public void edit(Rent rent) {
+        em.merge(rent);
+    }
+    
 }

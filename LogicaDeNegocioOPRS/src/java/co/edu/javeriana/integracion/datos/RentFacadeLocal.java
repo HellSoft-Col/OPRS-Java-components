@@ -42,4 +42,6 @@ public interface RentFacadeLocal {
     List<RentSignDTO> findByOwnerAndStateDTO(BigDecimal id, BigInteger state);
     
     public Rent findById(int id);
+
+    public List<Rent> findByState(BigInteger state);
 }

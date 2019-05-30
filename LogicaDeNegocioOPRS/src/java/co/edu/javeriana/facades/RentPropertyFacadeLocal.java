@@ -19,4 +19,6 @@ public interface RentPropertyFacadeLocal {
     public boolean AddRent(RentPropertyDTO params);
     
     public boolean SignLease(BigInteger rent_id);
+
+    public void verifyState();
 }

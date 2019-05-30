@@ -25,21 +25,22 @@ import javax.jms.MessageListener;
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 })
 public class ListenerColaCorreo implements MessageListener {
+
     @EJB
     private IntegradorSMTPLocal integradorSMTP;
-    
+
     public ListenerColaCorreo() {
     }
-    
+
     @Override
     public void onMessage(Message message) {
-      /*  MailMessage objMsg;
+        MailMessage objMsg;
         try {
             objMsg = (MailMessage) message.getBody(MailMessage.class);
             integradorSMTP.sendMail(objMsg);
         } catch (JMSException ex) {
             Logger.getLogger(ListenerColaCorreo.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-   }
-    
+        }
+    }
+
 }

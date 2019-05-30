@@ -29,6 +29,9 @@ import java.math.BigInteger;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -59,7 +62,7 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
     @Override
     public boolean AddRent(RentPropertyDTO params) {
         boolean flag = true;
-        Owner owner ;
+        Owner owner;
         Customer customer;
         Property property;
         Rent new_rent;
@@ -86,12 +89,11 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
 
             mailMessageError.setTo(customer.getEMail());
             mailMessageError.setSubject("Notificación ERROR OPRS - Renta");
-         
-            mailMessageError.setBody(
-                    "Su " + type
-                    + " en " + property.getAddress() + " de " + property.getLocation()
-                    + " esta en proceso de renta por " + customer.getName() + " " + customer.getLastName() + " en espera de la firma del contrato. Att: HellSoft");
 
+            /*mailMessageError.setBody(
+             "Su " + type
+             + " en " + property.getAddress() + " de " + property.getLocation()
+             + " esta en proceso de renta por " + customer.getName() + " " + customer.getLastName() + " en espera de la firma del contrato. Att: HellSoft");*/
             integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageError);
 
             return false;
@@ -151,5 +153,24 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void verifyState() {
+        List<Rent> rents = rentFacade.findByState(BigInteger.valueOf(0));
+        Date yesterday = new Date(System.currentTimeMillis() - 3600 * 24 * 1000);
+        for (Rent r : rents) {
+            if (r.getRentalDate().before(yesterday)) {
+                MailMessage message = new MailMessage();
+                message.setTo(r.getCustomer().getEMail());
+                message.setSubject("Notificación Vencimiento de Contrato");
+                message.setBody("El contrato de renta en " + r.getProperty().getAddress() + " localizada en "
+                        + r.getProperty().getLocation()+ " ha pasado la fecha límite.");
+                integradorColaCorreo.sendJMSMessageToColaCorreo(message);
+                r.setState(BigInteger.valueOf(4));
+                rentFacade.edit(r);
+                System.out.println("Se modifico la renta" + r.getProperty().getAddress());
+            }
+        }
     }
 }
