@@ -35,8 +35,9 @@ import javax.naming.NamingException;
 @ManagedBean
 @SessionScoped
 public class CtrlEventosAP {
-
-    FacadeAgregarPropiedadRemote facadeAgregarPropiedad = lookupFacadeAgregarPropiedadRemote();
+    @EJB
+    private FacadeAgregarPropiedadRemote facadeAgregarPropiedad;
+    
     private BigInteger type;
     private String address;
     private String location;
@@ -126,7 +127,7 @@ public class CtrlEventosAP {
         this.owner = ownerId;
        
         System.out.println("-----------------------------------> Este es el Id del owner: " + this.owner);
-        PropertyPK ppk = new PropertyPK(owner);
+        PropertyPK ppk = new PropertyPK(this.owner);
         //TODO: try to delete this shit :V
         ppk.setId(BigInteger.valueOf(999));
         Property property = new Property(ppk, type, address, rooms, rent, location);
@@ -140,14 +141,6 @@ public class CtrlEventosAP {
         
     }
     
-    private FacadeAgregarPropiedadRemote lookupFacadeAgregarPropiedadRemote() {
-        try {
-            javax.naming.Context c = new InitialContext();
-            return (FacadeAgregarPropiedadRemote) c.lookup("java:global/LogicaDeNegocioOPRS/FacadeAgregarPropiedad!co.edu.javeriana.facades.FacadeAgregarPropiedadRemote");
-        } catch (NamingException ne) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
-            throw new RuntimeException(ne);
-        }
-    }
+
     
 }

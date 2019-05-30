@@ -36,7 +36,6 @@ public class LoginDTO implements Serializable{
         this.ndi = ndi;
         this.email = email;
     }
-    
 
     public String getUsername() {
         return username;

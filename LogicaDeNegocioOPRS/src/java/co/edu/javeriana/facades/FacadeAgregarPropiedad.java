@@ -5,6 +5,7 @@
  */
 package co.edu.javeriana.facades;
 
+import co.edu.javeriana.dtos.LoginDTO;
 import co.edu.javeriana.dtos.MailMessage;
 import co.edu.javeriana.entities.Owner;
 import co.edu.javeriana.entities.Property;
@@ -12,9 +13,13 @@ import co.edu.javeriana.integracion.IntegradorColaCorreoLocal;
 import co.edu.javeriana.integracion.datos.OwnerFacadeLocal;
 import co.edu.javeriana.integracion.datos.PropertyFacade;
 import co.edu.javeriana.integracion.datos.PropertyFacadeLocal;
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -38,8 +43,10 @@ public class FacadeAgregarPropiedad implements FacadeAgregarPropiedadRemote {
         MailMessage mailMessage = new MailMessage();
         //TODO: get owner email from session
         //property.getPropertyPK().getOwnerId().intValue()
-        Owner owner = ownerFacade.findById(1);
-        mailMessage.setTo(owner.getEMail());
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map sessionMap = externalContext.getSessionMap();
+        LoginDTO currentUser = (LoginDTO)sessionMap.get("user");
+        mailMessage.setTo(currentUser.getEmail());
         mailMessage.setSubject("Notificación OPRS");
         String type;
         if(property.getType() == BigInteger.valueOf(1))
