@@ -24,14 +24,14 @@ public class RentPropertyDTO implements Serializable {
     
     /* For rent */
     private String rentalDate;
-    private String rentalTimeEnd;
-    private String rentalTimeStart;
+    private String rentalTimeEnd/* PANTALLA */;
+    private String rentalTimeStart/* PANTALLA */;
     private BigDecimal rentProperty; 
     
     /* For payment */
-    private String ndi;
-    private String account_password;
-    private int type;
+    private String ndi/* PANTALLA */;
+    private String account_password /* PANTALLA */;
+    private int type; /* PANTALLA */
 
     public RentPropertyDTO(BigInteger propertyId, BigInteger propertyOwnerId, BigInteger customerId, String rentalDate, String rentalTimeStart, String rentalTimeEnd, BigDecimal rentProperty, String ndi, String account_password, int type) {
         this.propertyId = propertyId;

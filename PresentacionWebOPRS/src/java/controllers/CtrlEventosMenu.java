@@ -19,7 +19,7 @@ import javax.inject.Named;
  *
  * @author HellSoft
  */
-@Named("ctrlEventosMenu")
+@Named(value = "ctrlEventosMenu")
 @ManagedBean
 @RequestScoped
 public class CtrlEventosMenu {

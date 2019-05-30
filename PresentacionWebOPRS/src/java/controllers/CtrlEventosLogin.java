@@ -31,8 +31,7 @@ public class CtrlEventosLogin {
      */
     private String username;
     private String password;
-    
-    
+
     public CtrlEventosLogin() {
     }
 
@@ -51,34 +50,38 @@ public class CtrlEventosLogin {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public String createLoginDto (){
+
+    public String createLoginDto() {
         LoginDTO login = new LoginDTO();
         login.setUsername(username);
         login.setPassword(password);
-        
+
         Gson gson = new Gson();
         String dtoJson = gson.toJson(login);
         ProxyLogIn proxyLogin = new ProxyLogIn();
         Response result = proxyLogin.logIn(dtoJson);
-       
-        String result_string = new String();
-        
-        result_string = result.readEntity(String.class);
-                
-        LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
 
-        if(user.getUsername() == null && (user.getPassword()== null)){
+        String result_string = new String();
+
+        result_string = result.readEntity(String.class);
+        
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map sessionMap = externalContext.getSessionMap();
+
+        LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
+        sessionMap.put("user", user);
+
+        if (user.getUsername() == null || user.getPassword() == null) {
             FacesContext.getCurrentInstance().addMessage("loginForm:loginSubmit", new FacesMessage("Lo sentimos, el usuario no existe"));
-             if(user.getUsername()!= this.username && (user.getPassword()== this.password)){
-                    FacesContext.getCurrentInstance().addMessage("loginForm:usernameSubmit", new FacesMessage("El usuario no coincide"));
-             }else{
+            if (user.getUsername() != this.username && (user.getPassword() == this.password)) {
+                FacesContext.getCurrentInstance().addMessage("loginForm:usernameSubmit", new FacesMessage("El usuario no coincide"));
+            } else {
                 FacesContext.getCurrentInstance().addMessage("loginForm:passSubmit", new FacesMessage("La contraseña no coincide"));
-                
+
             }
             return null;
         }
-        
+
         //TODO: Agregar Funcionalidad a los botones
         return "PantallaWebMenu";
     }

@@ -3,6 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <style>
+        .panelGridCenter{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -11,38 +17,38 @@
 
            <h:form>
                <h1><h:outputText value="Resultados de la búsqueda"/></h1>
-               <h:dataTable value="#{ctrlEventosBP.properties}" var="item">
-                   <h:column>
+               <h:dataTable styleClass="panelGridCenter" value="#{ctrlEventosBP.properties}" var="item">
+                   <h:column  >
                        <f:facet name="header">
-                           <h:outputText value="Direccion"/>
+                           <h:outputText value="Direccion" class="panelGridCenter"/>
                        </f:facet>
-                       <h:outputText value="#{item.address}"/>
+                       <h:outputText value="#{item.address}" />
                    </h:column>
-                   <h:column>
+                   <h:column class="panelGridCenter">
                        <f:facet name="header">
                            <h:outputText value="Locacion"/>
                        </f:facet>
                        <h:outputText value="#{item.location}"/>
-                   </h:column>
-                   <h:column>
+                   </h:column >
+                   <h:column class="panelGridCenter">
                        <f:facet name="header">
                            <h:outputText value="Renta"/>
                        </f:facet>
                        <h:outputText value="#{item.rent}"/>
                    </h:column>
-                   <h:column>
+                   <h:column class="panelGridCenter">
                        <f:facet name="header">
                            <h:outputText value="No. Habitaciones"/>
                        </f:facet>
                        <h:outputText value="#{item.roomsNumber}"/>
                    </h:column>
-                   <h:column>
+                   <h:column class="panelGridCenter">
                        <f:facet name="header">
                            <h:outputText value="Tipo"/>
                        </f:facet>
                        <h:outputText value="#{ctrlEventosBP.propertyTypeName(item.type)}"/>
                    </h:column>
-                   <h:column>
+                   <h:column class="panelGridCenter">
                        <h:commandButton
                                 value= "Rentar propiedad"
                                 action=" "/>

@@ -20,13 +20,13 @@ public class LoginDTO implements Serializable{
     private String lastName;
     private String ndi;
     private String email;
-    
+    private int user_type;
     
     public LoginDTO() {
         this.username = null;
         this.password = null;
     }
-
+    
     public LoginDTO(String username, String password, BigDecimal id, String name, String lastName, String ndi, String email) {
         this.username = username;
         this.password = password;
@@ -35,6 +35,14 @@ public class LoginDTO implements Serializable{
         this.lastName = lastName;
         this.ndi = ndi;
         this.email = email;
+    }
+
+     public int getUser_type() {
+        return user_type;
+    }
+
+    public void setUser_type(int user_type) {
+        this.user_type = user_type;
     }
 
     public String getUsername() {
