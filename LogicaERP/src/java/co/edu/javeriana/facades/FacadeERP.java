@@ -8,6 +8,7 @@ package co.edu.javeriana.facades;
 import co.edu.javeriana.dtos.RentarRequest;
 import co.edu.javeriana.entities.RentDeal;
 import co.edu.javeriana.integracion.datos.RentDealFacadeLocal;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,6 +31,7 @@ public class FacadeERP implements FacadeERPLocal {
     public void agregarContrato(RentarRequest contrato) {
         RentDeal rent = new RentDeal();
         try {
+            rent.setId(BigDecimal.valueOf(rentDealFacade.count() + 1));
             rent.setNdi(contrato.getNdi());
             rent.setName(contrato.getFirst_name());
             rent.setLastName(contrato.getLast_name());
@@ -40,7 +42,9 @@ public class FacadeERP implements FacadeERPLocal {
             Date timeEnd = new SimpleDateFormat("dd/MM/yyyy").parse(contrato.getRental_time_end());
             rent.setRentalTimeEnd(timeEnd);
             rent.setAmount(contrato.getAmount());
-            rentDealFacade.create(rent);
+            System.out.println("Facade ERP: ");
+            System.out.println(rent.getLocationAddress());
+            rentDealFacade.addContrato(rent);
         } catch (Exception e) {
             System.err.println(e);
         }

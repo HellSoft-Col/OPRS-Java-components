@@ -28,5 +28,15 @@ public class RentDealFacade extends AbstractFacade<RentDeal> implements RentDeal
     public RentDealFacade() {
         super(RentDeal.class);
     }
-    
+
+    @Override
+    public boolean addContrato(RentDeal contrato) {
+        try {
+            em.persist(contrato);
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+        return true;
+    }
 }
