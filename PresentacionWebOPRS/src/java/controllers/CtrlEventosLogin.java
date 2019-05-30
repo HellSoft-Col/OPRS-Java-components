@@ -65,11 +65,9 @@ public class CtrlEventosLogin {
         String result_string = new String();
         
         result_string = result.readEntity(String.class);
-        
-        
+                
         LoginDTO user = gson.fromJson(result_string, LoginDTO.class);
-        sessionMap.put("user",user);
-        
+
         if(user.getUsername() == null && (user.getPassword()== null)){
             //TODO: Colocar mensaje de eror
             FacesContext.getCurrentInstance().addMessage("loginForm:loginSubmit", new FacesMessage("Lo sentimos, el usuario no existe"));
