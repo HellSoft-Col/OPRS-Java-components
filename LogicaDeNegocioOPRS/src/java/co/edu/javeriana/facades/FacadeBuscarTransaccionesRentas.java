@@ -13,7 +13,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Stateless
 public class FacadeBuscarTransaccionesRentas implements FacadeBuscarTransaccionesRentasRemote {

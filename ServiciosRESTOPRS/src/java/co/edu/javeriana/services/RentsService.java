@@ -26,7 +26,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST Web Service
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Path("rents")
 public class RentsService {

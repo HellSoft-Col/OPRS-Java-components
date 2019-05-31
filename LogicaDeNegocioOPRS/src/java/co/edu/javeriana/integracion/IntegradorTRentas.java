@@ -21,7 +21,7 @@ import javax.jms.Topic;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 @Stateless
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) 

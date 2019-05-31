@@ -5,8 +5,10 @@
  */
 package co.edu.javeriana.services;
 
+import co.edu.javeriana.dtos.PaymentResponseDTO;
 import co.edu.javeriana.dtos.RentPropertyDTO;
 import co.edu.javeriana.facades.RentPropertyFacadeRemote;
+import com.google.gson.Gson;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -26,7 +28,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST Web Service
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Path("RentProperty")
 public class RentPropertyService {
@@ -58,12 +60,13 @@ public class RentPropertyService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createNewRent(RentPropertyDTO params) {
-
-        boolean flag = rentPropertyFacade.AddRent(params);
-        if (!flag) {
-            return Response.serverError().build();
+        Gson gson = new Gson();
+        PaymentResponseDTO flag = rentPropertyFacade.AddRent(params);
+        if (flag.getAprobacion() == null || flag.getNumAprobacion() == null) {
+            return Response.status(Response.Status.NOT_ACCEPTABLE.getStatusCode()).build();
         }
-        return Response.ok().build();
+        String json = gson.toJson(flag);
+        return Response.ok(json, MediaType.APPLICATION_JSON).build();
     }
     
     

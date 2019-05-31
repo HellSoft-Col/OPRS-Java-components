@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 public class RentSignDTO implements Serializable{
     private BigInteger rent_id;

@@ -7,7 +7,7 @@ package co.edu.javeriana.enums;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 public enum UserTypeEnum {
     OWNER(1), CUSTOMER(2);

@@ -11,7 +11,7 @@ import java.math.BigInteger;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 public class LeaseUtilityDTO implements Serializable{
     private BigDecimal user_id;

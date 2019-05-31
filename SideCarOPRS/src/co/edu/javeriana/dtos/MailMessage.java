@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 public class MailMessage implements Serializable{
     private String to;

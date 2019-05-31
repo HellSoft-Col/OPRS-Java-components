@@ -18,7 +18,7 @@ import javax.jms.Queue;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Stateless
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) 
