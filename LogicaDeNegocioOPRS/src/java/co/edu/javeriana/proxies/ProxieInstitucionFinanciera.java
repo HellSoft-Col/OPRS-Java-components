@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Stateless
 public class ProxieInstitucionFinanciera implements ProxieInstitucionFinancieraLocal {
@@ -29,10 +29,11 @@ public class ProxieInstitucionFinanciera implements ProxieInstitucionFinancieraL
         String parameters = gson.toJson(params);
         ProxieClientInstitucionFinanciera client = new ProxieClientInstitucionFinanciera();
         Response result_request = client.InfoPago(parameters);
-       
-        String result_string = new String();
-        //result_string = result_request.readEntity(String.class);        
-        result = gson.fromJson(result_string, PaymentResponseDTO.class);
+        if (result_request.getStatus() == Response.Status.OK.getStatusCode()){
+            String result_string = new String();
+            result_string = result_request.readEntity(String.class);   
+            result = gson.fromJson(result_string, PaymentResponseDTO.class);
+        }
         
         return result;
     }

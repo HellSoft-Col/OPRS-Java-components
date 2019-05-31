@@ -12,7 +12,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 @Stateless
 public class FRentarPropiedad implements FRentarPropiedadRemote, FRentarPropiedadLocal {

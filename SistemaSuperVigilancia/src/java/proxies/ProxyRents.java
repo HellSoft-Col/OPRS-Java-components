@@ -20,7 +20,7 @@ import javax.ws.rs.client.WebTarget;
  *        client.close();
  * </pre>
  *
- * @author LICHO
+ * @author HellSoft
  */
 public class ProxyRents {
     private WebTarget webTarget;

@@ -46,8 +46,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Rent.findByCustomerIdAndState", query = "SELECT r FROM Rent r WHERE r.customer.id=:id AND r.state=:state"),
     @NamedQuery(name = "Rent.findByOwnerIdAndState", query = "SELECT r FROM Rent r WHERE r.property.owner.id=:id AND r.state=:state"),
     @NamedQuery(name = "Rent.findByCustomerIdAndStateDTO", query = "SELECT new co.edu.javeriana.dtos.RentSignDTO(r.rentPK.id, r.property.address, r.property.location,r.rentalDate, r.rentalTimeStart, r.rentalTimeEnd, r.rentProperty) FROM Rent r WHERE r.customer.id=:id AND r.state=:state"),
-    @NamedQuery(name = "Rent.findByOwnerIdAndStateDTO", query = "SELECT new co.edu.javeriana.dtos.RentSignDTO(r.rentPK.id, r.property.address, r.property.location,r.rentalDate, r.rentalTimeStart, r.rentalTimeEnd, r.rentProperty) FROM Rent r WHERE r.property.owner.id=:id AND r.state=:state")
-})
+    @NamedQuery(name = "Rent.findByOwnerIdAndStateDTO", query = "SELECT new co.edu.javeriana.dtos.RentSignDTO(r.rentPK.id, r.property.address, r.property.location,r.rentalDate, r.rentalTimeStart, r.rentalTimeEnd, r.rentProperty) FROM Rent r WHERE r.property.owner.id=:id AND r.state=:state"),
+    @NamedQuery(name = "Rent.findRentPropertiesByNdi", query="SELECT new co.edu.javeriana.dtos.RentsCustomerDTO(r.property.address, r.property.location, r.property.rent, r.property.roomsNumber, r.property.type,r.customer.name,r.customer.ndi) FROM Rent r ORDER BY r.customer.id")
+    })
 public class Rent implements Serializable {
 
     private static final long serialVersionUID = 1L;

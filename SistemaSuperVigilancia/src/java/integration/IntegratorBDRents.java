@@ -16,7 +16,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Stateless
 @LocalBean

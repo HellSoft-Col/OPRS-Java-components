@@ -22,7 +22,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Stateless
 public class FacadeAgregarPropiedad implements FacadeAgregarPropiedadRemote {

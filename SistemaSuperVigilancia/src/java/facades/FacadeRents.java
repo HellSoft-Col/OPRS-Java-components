@@ -20,7 +20,7 @@ import proxies.ProxyRents;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Stateless
 @LocalBean

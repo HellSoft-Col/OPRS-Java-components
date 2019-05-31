@@ -11,7 +11,7 @@ import javax.ejb.Remote;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Remote
 public interface FacadeBuscarTransaccionesRentasRemote {

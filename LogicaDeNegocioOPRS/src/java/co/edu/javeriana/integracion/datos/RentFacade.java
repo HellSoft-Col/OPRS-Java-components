@@ -13,6 +13,8 @@ import co.edu.javeriana.entities.Property;
 import co.edu.javeriana.entities.Rent;
 import co.edu.javeriana.enums.PropertyTypeEnum;
 import co.edu.javeriana.enums.RentStateEnum;
+import co.edu.javeriana.dtos.PropertyDTO;
+import co.edu.javeriana.dtos.RentsCustomerDTO;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -130,6 +132,11 @@ public class RentFacade extends AbstractFacade<Rent> implements RentFacadeLocal 
             resultDTO.add(r);
         }
         return resultDTO;
+    }
+    
+    public List<RentsCustomerDTO> findRentPropertiesByNdi() {
+        TypedQuery rentProperties = em.createNamedQuery("Rent.findRentPropertiesByNdi", RentsCustomerDTO.class);
+        return rentProperties.getResultList();
     }
     
 }
