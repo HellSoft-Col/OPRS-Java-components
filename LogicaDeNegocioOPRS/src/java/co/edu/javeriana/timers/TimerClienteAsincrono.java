@@ -29,7 +29,7 @@ public class TimerClienteAsincrono {
     TimerService timerService;
     @EJB
     FacadeListarPropiedadesLocal facadeListarPropiedades;
-    @Schedule(second="*/10", minute="*", hour="*")
+    @Schedule(hour="*", minute="*/1")
     public void automaticTimeout() throws InterruptedException, ExecutionException{
         listRentProperties();
     }

@@ -111,8 +111,8 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
         }
         try {
 
-            //RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
-            //integradorTRentas.sendJMSMessageToTopicoRentas(rental);
+            RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
+            integradorTRentas.sendJMSMessageToTopicoRentas(rental);
 
             MailMessage mailMessageOwner = new MailMessage();
             MailMessage mailMessageCustomer = new MailMessage();
@@ -178,7 +178,7 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
                 integradorColaCorreo.sendJMSMessageToColaCorreo(message);
                 r.setState(BigInteger.valueOf(4));
                 rentFacade.edit(r);
-                System.out.println("Se modifico la renta" + r.getProperty().getAddress());
+                System.out.println("****|Se modifico la renta con direccion:  " + r.getProperty().getAddress());
             }
         }
     }

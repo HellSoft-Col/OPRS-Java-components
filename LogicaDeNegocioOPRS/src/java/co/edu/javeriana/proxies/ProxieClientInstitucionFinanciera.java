@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 public class ProxieClientInstitucionFinanciera {
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8083/api";
+    private static final String BASE_URI = "http://10.192.12.27:8081/api";
 
     public ProxieClientInstitucionFinanciera() {
         client = javax.ws.rs.client.ClientBuilder.newClient();

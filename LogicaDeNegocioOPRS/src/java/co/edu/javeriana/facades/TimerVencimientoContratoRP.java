@@ -22,11 +22,13 @@ public class TimerVencimientoContratoRP {
     @EJB
     private RentPropertyFacadeLocal rentPropertyFacade;
 
-    @Schedule(hour = "*", minute = "*/1")
+    @Schedule(hour = "*", minute = "*/3")
 
     public void myTimer() {
+        System.out.println("-----------------------------------");
+        System.out.println("Timer Vencimiento: ");
+        System.out.println("Event: " + new Date());
         rentPropertyFacade.verifyState();
-        System.out.println("Timer event: " + new Date());
     }
 
     // Add business logic below. (Right-click in editor and choose
