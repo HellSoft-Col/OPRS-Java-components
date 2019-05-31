@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package co.edu.javeriana.integracion.datos;
 
 import co.edu.javeriana.entities.RentDeal;
@@ -17,6 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class RentDealFacade extends AbstractFacade<RentDeal> implements RentDealFacadeLocal {
+
     @PersistenceContext(unitName = "LogicaERPPU")
     private EntityManager em;
 
@@ -38,20 +38,4 @@ public class RentDealFacade extends AbstractFacade<RentDeal> implements RentDeal
         }
         return true;
     }
-
-    @Override
-    public void create(RentDeal rentDeal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void edit(RentDeal rentDeal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void remove(RentDeal rentDeal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

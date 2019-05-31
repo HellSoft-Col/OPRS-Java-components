@@ -7,6 +7,7 @@ package co.edu.javeriana.mensajes;
 
 import co.edu.javeriana.dtos.RentarRequest;
 import co.edu.javeriana.facades.FacadeERPLocal;
+import java.math.BigDecimal;
 import java.util.Enumeration;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.EJB;
@@ -33,12 +34,14 @@ import javax.jms.MessageListener;
     ,
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic")
     ,
-        @ActivationConfigProperty(propertyName = "addressList", propertyValue = "192.168.43.233")
+        @ActivationConfigProperty(propertyName = "addressList", propertyValue = "10.192.12.26")
 })
 public class ListenerERP implements MessageListener {
 
     @EJB
     private FacadeERPLocal facadeERP;
+    
+    
 
     public ListenerERP() {
     }
@@ -67,7 +70,7 @@ public class ListenerERP implements MessageListener {
                 renta.setAmount(mm.getLong("Amount"));
                 System.out.println(this.getClass().getName() + ": Received a request for " + message.getStringProperty("System"));
                 System.out.println(request);
-                //facadeERP.agregarContrato(renta);
+                facadeERP.agregarContrato(renta);
             } catch (JMSException ex) {
                 System.out.println("Failed to get request message");
             }

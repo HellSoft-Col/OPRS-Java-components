@@ -25,7 +25,7 @@ import javax.ws.rs.client.WebTarget;
 public class ProxyRents {
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://localhost:8080/ServiciosRESTOPRS/webresources";
+    private static final String BASE_URI = "http://10.192.12.26:8080/ServiciosRESTOPRS/webresources";
 
     public ProxyRents() {
         client = javax.ws.rs.client.ClientBuilder.newClient();

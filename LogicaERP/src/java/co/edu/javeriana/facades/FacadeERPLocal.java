@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package co.edu.javeriana.facades;
 
 import co.edu.javeriana.dtos.RentarRequest;
@@ -17,5 +16,5 @@ import javax.ejb.Local;
 public interface FacadeERPLocal {
 
     void agregarContrato(RentarRequest contrato);
-    
+
 }
