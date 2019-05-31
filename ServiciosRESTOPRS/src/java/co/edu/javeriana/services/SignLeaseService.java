@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST Web Service
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Path("SignLease")
 public class SignLeaseService {

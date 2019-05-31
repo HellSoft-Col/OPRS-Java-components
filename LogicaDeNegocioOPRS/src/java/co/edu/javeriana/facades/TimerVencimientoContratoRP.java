@@ -13,7 +13,7 @@ import javax.ejb.LocalBean;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 @Stateless
 @LocalBean

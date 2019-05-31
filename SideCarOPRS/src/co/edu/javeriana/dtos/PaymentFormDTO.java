@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 public class PaymentFormDTO implements Serializable{
     

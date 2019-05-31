@@ -34,7 +34,7 @@ import javax.naming.NamingException;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Named(value = "ctrlEventosAP")
 @ManagedBean

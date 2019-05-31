@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
  *        client.close();
  * </pre>
  *
- * @author Guille
+ * @author HellSoft
  */
 public class ProxyLogIn {
     private WebTarget webTarget;

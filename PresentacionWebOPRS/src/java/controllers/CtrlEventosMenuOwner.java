@@ -16,7 +16,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author Guille
+ * @author HellSoft
  */
 @Named(value = "ctrlEventosMenuOwner")
 @ManagedBean

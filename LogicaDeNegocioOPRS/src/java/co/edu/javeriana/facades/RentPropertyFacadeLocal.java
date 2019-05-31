@@ -5,6 +5,7 @@
  */
 package co.edu.javeriana.facades;
 
+import co.edu.javeriana.dtos.PaymentResponseDTO;
 import co.edu.javeriana.dtos.RentPropertyDTO;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -12,11 +13,11 @@ import javax.ejb.Local;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Local
 public interface RentPropertyFacadeLocal {
-    public boolean AddRent(RentPropertyDTO params);
+    public PaymentResponseDTO AddRent(RentPropertyDTO params);
     
     public boolean SignLease(BigInteger rent_id);
 

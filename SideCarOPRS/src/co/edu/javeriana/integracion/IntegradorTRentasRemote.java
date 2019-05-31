@@ -9,7 +9,7 @@ import javax.ejb.Remote;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 @Remote
 public interface IntegradorTRentasRemote {

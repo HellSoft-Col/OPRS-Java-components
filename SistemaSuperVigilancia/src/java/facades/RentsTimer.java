@@ -13,7 +13,7 @@ import javax.ejb.LocalBean;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Stateless
 @LocalBean

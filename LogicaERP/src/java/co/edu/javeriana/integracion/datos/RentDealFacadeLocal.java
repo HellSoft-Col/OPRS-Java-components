@@ -12,7 +12,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author pabloarizaluna
+ * @author HellSoft
  */
 @Local
 public interface RentDealFacadeLocal {

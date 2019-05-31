@@ -19,7 +19,7 @@ import javax.jms.Topic;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 @Stateless
 public class IntegradorTRentas implements IntegradorTRentasRemote, IntegradorTRentasLocal {

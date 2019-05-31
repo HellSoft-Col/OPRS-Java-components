@@ -39,7 +39,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Stateless
 public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropertyFacadeLocal {
@@ -60,8 +60,9 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
     private RentFacadeLocal rentFacade;
 
     @Override
-    public boolean AddRent(RentPropertyDTO params) {
+    public PaymentResponseDTO AddRent(RentPropertyDTO params) {
         boolean flag = true;
+        PaymentResponseDTO response = new PaymentResponseDTO();
         Owner owner;
         Customer customer;
         Property property;
@@ -74,14 +75,14 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             rentFacade.create(new_rent);
         } catch (SQLIntegrityConstraintViolationException e) {
             Logger.getLogger(RentPropertyFacade.class.getName()).log(Level.SEVERE, null, e);
-            return false;
+            return response;
         } catch (Exception ex) {
             Logger.getLogger(RentPropertyFacade.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            return response;
         }
         
         PaymentDTO payment = new PaymentDTO(DocumentTypeEnum.getDocumentType(params.getType()), params.getNdi(), params.getAccount_password(), params.getRentProperty().intValue());
-        /*PaymentResponseDTO paymentresponse = proxieInstitucionFinanciera.solicitarConfirmacionPago(payment);
+        PaymentResponseDTO paymentresponse = proxieInstitucionFinanciera.solicitarConfirmacionPago(payment);
 
         if (paymentresponse.getNumAprobacion() == null || paymentresponse.getAprobacion() == null) {
 
@@ -95,9 +96,19 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
                     " lo invitamos a resolver los conflictos antes de continuar el proceso de renta. Att: House of dreams.");
             integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageError);
 
-            return false;
+            return paymentresponse;
+        }else{
+            MailMessage mailMessageExito = new MailMessage();
+
+            mailMessageExito.setTo(customer.getEMail());
+            mailMessageExito.setSubject("Notificación PAGO OPRS - Renta");
+         
+            mailMessageExito.setBody("Buen día Sr./Sra. " + customer.getName() + " " + customer.getLastName() + 
+                    " Su pago ha sido aprobado por el banco HellBank. El número de confirmacion es " +
+                    paymentresponse.getNumAprobacion() + " el día "+ paymentresponse.getAprobacion()+"Att: House of dreams.");
+            integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageExito);
+
         }
-                */
         try {
 
             //RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
@@ -130,11 +141,11 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageOwner);
             integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageCustomer);
 
-            return flag;
+            return paymentresponse;
 
         } catch (Exception e) {
             Logger.getLogger(RentPropertyFacade.class.getName()).log(Level.SEVERE, null, e);
-            return false;
+            return response;
         }
 
     }

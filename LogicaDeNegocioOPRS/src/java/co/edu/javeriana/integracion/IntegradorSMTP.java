@@ -21,7 +21,7 @@ import javax.naming.NamingException;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Stateless
 public class IntegradorSMTP implements IntegradorSMTPLocal {

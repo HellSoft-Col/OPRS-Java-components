@@ -19,7 +19,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author pabloarizaluna
+ * @author HellSoft
  */
 @Stateless
 public class FacadeERP implements FacadeERPLocal {

@@ -20,7 +20,7 @@ import javax.ws.rs.client.WebTarget;
         client.close();
  </pre>
  *
- * @author SANTI
+ * @author HellSoft
  */
 public class ProxyBuscarContratosUsuario {
     private WebTarget webTarget;

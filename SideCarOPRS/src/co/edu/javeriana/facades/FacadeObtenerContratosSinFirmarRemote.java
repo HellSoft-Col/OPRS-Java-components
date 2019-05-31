@@ -12,7 +12,7 @@ import javax.ejb.Remote;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Remote
 public interface FacadeObtenerContratosSinFirmarRemote {

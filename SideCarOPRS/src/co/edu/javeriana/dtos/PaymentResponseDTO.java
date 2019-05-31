@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 public class PaymentResponseDTO implements Serializable{
     private String numAprobacion;

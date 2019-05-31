@@ -16,7 +16,7 @@ import javax.jms.Queue;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Stateless
 public class IntegradorColaCorreo implements IntegradorColaCorreoLocal {

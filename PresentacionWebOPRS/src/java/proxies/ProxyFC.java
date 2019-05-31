@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
         client.close();
  </pre>
  *
- * @author SANTI
+ * @author HellSoft
  */
 public class ProxyFC {
     private WebTarget webTarget;

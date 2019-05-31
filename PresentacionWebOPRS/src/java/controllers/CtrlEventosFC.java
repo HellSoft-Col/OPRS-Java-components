@@ -29,7 +29,7 @@ import proxies.ProxyFC;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Named(value = "ctrlEventosFC")
 @ManagedBean

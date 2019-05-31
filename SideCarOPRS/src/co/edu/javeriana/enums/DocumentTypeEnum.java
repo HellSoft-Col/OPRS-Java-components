@@ -7,7 +7,7 @@ package co.edu.javeriana.enums;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 public enum DocumentTypeEnum {
     CEDULA(1), CEDULA_EXTRANJERIA(2), TARJETA_IDENTIDAD(3);
@@ -26,16 +26,16 @@ public enum DocumentTypeEnum {
         String documento;
         switch (opc) {
             case 1:  
-                documento = "Cedula de ciudadania";
+                documento = "CC";
                 break;
             case 2:  
-                documento = "Cedula de extranjeria";
+                documento = "CE";
                 break;
             case 3:  
-                documento = "Tarjeta de identidad";
+                documento = "TI";
                 break;
             default: 
-                documento = "Documento invalido";
+                documento = "Error";
                 break;
         }
         return documento;

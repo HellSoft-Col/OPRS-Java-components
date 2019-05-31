@@ -19,7 +19,7 @@ import javax.jms.MessageListener;
 
 /**
  *
- * @author pabloarizaluna
+ * @author HellSoft
  */
 @JMSDestinationDefinition(name = "java:app/jms/TopicoRentas", interfaceName = "javax.jms.Topic", resourceAdapter = "jmsra", destinationName = "TopicoRentas")
 @MessageDriven(activationConfig = {
