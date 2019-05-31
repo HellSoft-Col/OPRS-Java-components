@@ -11,6 +11,7 @@ import java.util.Enumeration;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
+import javax.jms.JMSDestinationDefinition;
 import javax.jms.JMSException;
 import javax.jms.MapMessage;
 import javax.jms.Message;
@@ -20,13 +21,20 @@ import javax.jms.MessageListener;
  *
  * @author pabloarizaluna
  */
+@JMSDestinationDefinition(name = "java:app/jms/TopicoRentas", interfaceName = "javax.jms.Topic", resourceAdapter = "jmsra", destinationName = "TopicoRentas")
 @MessageDriven(activationConfig = {
-    @ActivationConfigProperty(propertyName = "clientId", propertyValue = "jms/TopicoRentas"),
-    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/TopicoRentas"),
-    @ActivationConfigProperty(propertyName = "subscriptionDurability", propertyValue = "Durable"),
-    @ActivationConfigProperty(propertyName = "subscriptionName", propertyValue = "jms/TopicoRentas"),
-    @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
-    @ActivationConfigProperty(propertyName = "messageSelector", propertyValue = "System = 'All'"),})
+    @ActivationConfigProperty(propertyName = "clientId", propertyValue = "java:app/jms/TopicoRentas")
+    ,
+        @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:app/jms/TopicoRentas")
+    ,
+        @ActivationConfigProperty(propertyName = "subscriptionDurability", propertyValue = "Durable")
+    ,
+        @ActivationConfigProperty(propertyName = "subscriptionName", propertyValue = "java:app/jms/TopicoRentas")
+    ,
+        @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic")
+    ,
+        @ActivationConfigProperty(propertyName = "addressList", propertyValue = "192.168.43.233")
+})
 public class ListenerERP implements MessageListener {
 
     @EJB
