@@ -13,20 +13,21 @@ import javax.persistence.Entity;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
 /**
  *
  * @author HellSoft
  */
 
 @XmlRootElement
-public class PropertyDTO implements Serializable{
+public class PropertyDTO implements Serializable {
 
     private String address;
     private String location;
     private BigDecimal rent;
     private BigInteger roomsNumber;
     private BigInteger type;
-    
+
     private BigInteger owner_id;
     private BigInteger id;
 
@@ -40,9 +41,16 @@ public class PropertyDTO implements Serializable{
         this.type = type;
     }
 
+    public PropertyDTO(String address, String location, BigDecimal rent, BigInteger roomsNumber, BigInteger type) {
+        this.address = address;
+        this.location = location;
+        this.rent = rent;
+        this.roomsNumber = roomsNumber;
+        this.type = type;
+    }
+
     public PropertyDTO() {
     }
-    
 
     public BigInteger getOwner_id() {
         return owner_id;
@@ -63,7 +71,7 @@ public class PropertyDTO implements Serializable{
     public String getAddress() {
         return address;
     }
-   
+
     public void setAddress(String address) {
         this.address = address;
     }
@@ -71,7 +79,7 @@ public class PropertyDTO implements Serializable{
     public String getLocation() {
         return location;
     }
-    
+
     public void setLocation(String location) {
         this.location = location;
     }
@@ -79,7 +87,7 @@ public class PropertyDTO implements Serializable{
     public BigDecimal getRent() {
         return rent;
     }
-    
+
     public void setRent(BigDecimal rent) {
         this.rent = rent;
     }
@@ -87,7 +95,7 @@ public class PropertyDTO implements Serializable{
     public BigInteger getRoomsNumber() {
         return roomsNumber;
     }
-    
+
     public void setRoomsNumber(BigInteger roomsNumber) {
         this.roomsNumber = roomsNumber;
     }
@@ -95,10 +103,9 @@ public class PropertyDTO implements Serializable{
     public BigInteger getType() {
         return type;
     }
-    
+
     public void setType(BigInteger type) {
         this.type = type;
     }
-    
-    
+
 }
