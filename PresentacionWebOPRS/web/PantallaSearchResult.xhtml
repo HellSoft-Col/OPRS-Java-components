@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <style>
+        .panelGridCenter{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+    <h:head>
+        <title>Propiedades</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <p:commandButton value="Home" action="#{ctrlEventosBP.backHome()}">
+                        </p:commandButton>
+                <p:dataTable id="basicDT" value="#{ctrlEventosBP.properties}" var="item">
+                    <f:facet name="header">
+                        Resultados de la búsqueda
+                    </f:facet>
+                    <p:column headerText="Dirección">
+                        <h:outputText value="#{item.address}"/>
+                    </p:column>
+                    <p:column headerText="Locación">
+                        <h:outputText value="#{item.location}"/>
+                    </p:column>
+                    <p:column headerText="Renta">
+                        <h:outputText value="#{item.rent}"/>
+                    </p:column>
+                    <p:column headerText="No. habitaciones">
+                        <h:outputText value="#{item.roomsNumber}"/>
+                    </p:column>
+                    <p:column headerText="Tipo propiedad">
+                        <h:outputText value="#{ctrlEventosBP.propertyTypeName(item.type)}"/>
+                    </p:column>
+                    <p:column style="text-align: center">
+                        <p:commandButton value="Rentar propiedad" action="#{ctrlEventosBP.rentarP(item)}">
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
