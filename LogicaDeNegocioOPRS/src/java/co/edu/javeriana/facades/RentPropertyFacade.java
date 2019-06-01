@@ -100,8 +100,8 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
                 */
         try {
 
-            //RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
-            //integradorTRentas.sendJMSMessageToTopicoRentas(rental);
+            RentarRequest rental = new RentarRequest(customer.getNdi(), customer.getName(), customer.getLastName(), property.getLocation(), property.getAddress(), params.getRentalTimeStart(), params.getRentalTimeEnd(), params.getRentProperty().longValue());
+            integradorTRentas.sendJMSMessageToTopicoRentas(rental);
 
             MailMessage mailMessageOwner = new MailMessage();
             MailMessage mailMessageCustomer = new MailMessage();
@@ -127,8 +127,8 @@ public class RentPropertyFacade implements RentPropertyFacadeRemote, RentPropert
             mailMessageCustomer.setBody(" El proceso de renta de el/la " + type
                     + " en " + property.getAddress() + " de " + property.getLocation() + " ha sido iniciado y tiene 24 horas para firmarlo desde " + params.getRentalDate().toString() + " si no quiere perder su proceso debe firmar el contrato.");
 
-            integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageOwner);
-            integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageCustomer);
+            //integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageOwner);
+            //integradorColaCorreo.sendJMSMessageToColaCorreo(mailMessageCustomer);
 
             return flag;
 
