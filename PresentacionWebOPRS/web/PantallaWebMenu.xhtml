@@ -4,17 +4,23 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+    <style>
+        .panelGridCenter{
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
     <h:head>
         <title>Menú OPRS</title>
     </h:head>
     <h:body>
-        
-        <h:form>
+
+        <h:form styleClass="panelGridCenter">
             <h1><h:outputText value="MENÚ OPRS HOUSE OF DREAMS"/></h1>
             <h1><h:outputText value="#{ctrlEventosMenu.showCustomerName()}"/></h1>
             <p:menubar>
                 <p:submenu label="Propiedad" icon="pi pi-file">
-                        <p:menuitem value="Buscar" action="#{ctrlEventosMenu.buscarP()}"/>
+                    <p:menuitem value="Buscar" action="#{ctrlEventosMenu.buscarP()}"/>
                 </p:submenu>
 
                 <p:submenu label="Contratos" icon="pi pi-pencil">
