@@ -18,7 +18,7 @@ import javax.jms.MessageListener;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @MessageDriven(activationConfig = {
     @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/colaCorreo"),

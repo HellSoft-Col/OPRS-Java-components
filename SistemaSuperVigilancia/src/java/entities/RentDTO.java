@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 public class RentDTO {
     private Date rentalDate;

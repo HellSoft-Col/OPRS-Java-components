@@ -25,10 +25,11 @@ import javax.ws.rs.PUT;
 /**
  * REST Web Service
  *
- * @author SANTI
+ * @author HellSoft
  */
-    @Path("LeaseByUser")
+@Path("LeaseByUser")
 public class LeaseByUserService {
+
     private FacadeObtenerContratosSinFirmarRemote facadeObtenerContratosSinFirmar = lookupFacadeObtenerContratosSinFirmarRemote();
 
     @Context
@@ -39,7 +40,7 @@ public class LeaseByUserService {
      */
     public LeaseByUserService() {
     }
-    
+
     @GET
     @Path("{id}")
     @Produces("application/json")

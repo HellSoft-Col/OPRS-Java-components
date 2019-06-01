@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 public class RentDTO implements Serializable{
     private Date rentalDate;

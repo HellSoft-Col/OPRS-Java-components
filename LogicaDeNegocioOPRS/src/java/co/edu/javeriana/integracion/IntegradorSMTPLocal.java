@@ -10,7 +10,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Local
 public interface IntegradorSMTPLocal {

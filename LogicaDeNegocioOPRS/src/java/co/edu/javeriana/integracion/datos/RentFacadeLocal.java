@@ -7,6 +7,8 @@ package co.edu.javeriana.integracion.datos;
 
 import co.edu.javeriana.dtos.RentSignDTO;
 import co.edu.javeriana.dtos.RentDTO;
+import co.edu.javeriana.dtos.PropertyDTO;
+import co.edu.javeriana.dtos.RentsCustomerDTO;
 import co.edu.javeriana.entities.Rent;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -48,4 +50,6 @@ public interface RentFacadeLocal {
 
     public List<RentDTO> findRentTransactions();
 
+    List<RentsCustomerDTO> findRentPropertiesByNdi();
+    
 }

@@ -8,6 +8,8 @@ package co.edu.javeriana.integracion;
 import co.edu.javeriana.dtos.MailMessage;
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import javax.jms.JMSConnectionFactory;
 import javax.jms.JMSContext;
@@ -16,9 +18,10 @@ import javax.jms.Queue;
 
 /**
  *
- * @author LICHO
+ * @author HellSoft
  */
 @Stateless
+@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW) 
 public class IntegradorColaCorreo implements IntegradorColaCorreoLocal {
     @Resource(mappedName = "jms/colaCorreo")
     private Queue colaCorreo;

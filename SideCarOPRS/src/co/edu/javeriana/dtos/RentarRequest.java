@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 public class RentarRequest implements Serializable {
     private String ndi;

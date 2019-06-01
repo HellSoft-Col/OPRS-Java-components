@@ -29,7 +29,7 @@ import proxies.ProxyFC;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Named(value = "ctrlEventosFC")
 @ManagedBean
@@ -72,13 +72,9 @@ public class CtrlEventosFC implements Serializable{
         
         if (result.getStatus() != Response.Status.OK.getStatusCode()){
             FacesContext.getCurrentInstance().addMessage("fcForm:fcSubmit", new FacesMessage("El contrato no existe:("));
-            //TODO: Devolver error 
         }else{
             FacesContext.getCurrentInstance().addMessage("fcForm:fcSubmit", new FacesMessage("El contrato ya ha sido firmado, gracias :)"));
         }
-        
-        //TODO: Devolver Todo OK
-        
     }
     
 }

@@ -16,7 +16,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author SANTI
+ * @author HellSoft
  */
 @Stateless
 public class FacadeObtenerContratosSinFirmar implements FacadeObtenerContratosSinFirmarRemote, FacadeObtenerContratosSinFirmarLocal {

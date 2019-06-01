@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 public class LoginDTO implements Serializable{
     private String username;

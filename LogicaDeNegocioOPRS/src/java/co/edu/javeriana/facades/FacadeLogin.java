@@ -14,7 +14,7 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 @Stateless
 public class FacadeLogin implements FacadeLoginRemote, FacadeLoginLocal {

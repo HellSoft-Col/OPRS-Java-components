@@ -10,7 +10,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author sistemas
+ * @author HellSoft
  */
 @Local
 public interface FacadeLoginLocal {

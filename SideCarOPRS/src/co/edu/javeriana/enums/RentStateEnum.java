@@ -41,6 +41,9 @@ public enum RentStateEnum {
     public static String getState(int opc){
         String state = null;
         switch (opc){
+            case 0:  
+                state = "No firmado";
+                break;
             case 1:  
                 state = "Firmado";
                 break;
