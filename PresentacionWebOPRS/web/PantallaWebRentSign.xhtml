@@ -17,6 +17,9 @@
     <h:body>
         <f:view>
             <h:form id="fcForm">
+                <p:commandButton
+                    value= "Home"
+                    action="#{ctrlEventosFC.backHome()}"/>
                 <p:dataTable value="#{ctrlEventosFC.unsigned_rents}" var="item">
                     <f:facet name="header">
                         Lista de contratos sin firmar
@@ -42,15 +45,18 @@
                     <p:column headerText="Costo renta">
                         <h:outputText value="#{item.rentProperty}"/>
                     </p:column>
-                    
+
                     <p:column style="text-align: center">
                         <p:commandButton
-                            id="fcSubmit"
                             value= "Firmar"
                             action="#{ctrlEventosFC.SignContract(item.rent_id)}"/>
-                        <div class="errorMsg"><h:message for="fcSubmit" /></div>
                     </p:column>
                 </p:dataTable>
+                <p:tooltip />
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate />
+                </p:messages>
+                <p:separator />
             </h:form>
         </f:view>
 

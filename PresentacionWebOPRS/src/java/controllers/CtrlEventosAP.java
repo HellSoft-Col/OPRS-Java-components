@@ -141,11 +141,14 @@ public class CtrlEventosAP implements Serializable {
         
         boolean ans = facadeAgregarPropiedad.addProperty(property);
         if (!ans) {
-            FacesContext.getCurrentInstance().addMessage("apForm:pSubmit", new FacesMessage("Algo salió mal :("));
+            this.infoMessage("Algo salió mal :(");
         } else {
-            FacesContext.getCurrentInstance().addMessage("apForm:pSubmit", new FacesMessage("Se le notificará al correo el resultado de la operación"));
+            this.infoMessage("Se le notificará al correo el resultado de la operación");
         }
 
+    }
+    public void infoMessage(String message){
+        FacesContext.getCurrentInstance().addMessage("messages", new FacesMessage(FacesMessage.SEVERITY_INFO,"",message));
     }
 
     private FacadeAgregarPropiedadRemote lookupFacadeAgregarPropiedadRemote() {
@@ -163,4 +166,8 @@ public class CtrlEventosAP implements Serializable {
             throw new RuntimeException(ne);
         }
     }
+    public String backHome(){
+        return "PantallaWebMenuOwner";
+    }
+    
 }

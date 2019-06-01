@@ -39,5 +39,17 @@ public class CtrlEventosMenu implements Serializable{
     public String rentSign(){
         return "PantallaWebRentSign";
     }
+    public String logOut(){
+        return "index";
+    }
+    public String showCustomerName(){
+       ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+       Map sessionMap = externalContext.getSessionMap();
+       LoginDTO currentUser = (LoginDTO) sessionMap.get("user"); 
+       String nameCustom = currentUser.getName();
+       String lastCustom = currentUser.getLastName();
+       String completeName = "Bienvenido: " + " "+nameCustom + " " + lastCustom;
+       return completeName;
+    }
     
 }

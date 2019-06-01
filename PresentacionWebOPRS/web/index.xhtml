@@ -13,7 +13,7 @@
     <h:head>
         <title>Iniciar sesión</title>
     </h:head>
-     <h1><h:outputText value="OPRS HOUSE OF DREAMS" style="margin-top:0"/></h1>
+    <h1><h:outputText value="OPRS HOUSE OF DREAMS" style="margin-top:0"/></h1>
     <h:body>
         <f:view>
             <h:form id="loginForm" styleClass="formPosition">
@@ -30,8 +30,12 @@
                         <br></br>
                     </h:panelGrid>
                     <p:commandButton id="loginSubmit" value="Login" action ="#{ctrlEventosLogin.createLoginDto()}"/>
-                    <div class="errorMsg"><h:message for="loginSubmit"></h:message></div>
                 </p:panel>
+                <p:tooltip />
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate />
+                </p:messages>
+                <p:separator />
             </h:form>
         </f:view>
     </h:body>

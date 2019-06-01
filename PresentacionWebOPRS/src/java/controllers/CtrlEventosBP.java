@@ -127,5 +127,7 @@ public class CtrlEventosBP implements Serializable{
         sessionMap.put("property", property);
         return "PantallaWebRP";
     }
-
+    public String backHome(){
+        return "PantallaWebMenu";
+    }
 }

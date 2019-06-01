@@ -31,14 +31,17 @@ public class CtrlEventosMenuOwner implements Serializable{
     public String agregarP(){        
         return "PantallaWebAP";
     }
-    /*public String showOwnerName(){
+    public String logOut(){
+        return "index";
+    }
+    public String showOwnerName(){
        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
        Map sessionMap = externalContext.getSessionMap();
        LoginDTO currentUser = (LoginDTO) sessionMap.get("user"); 
        String nameOwner = currentUser.getName();
        String lastName = currentUser.getLastName();
-       String completeName = "Bienvenido señor propietario/a " + " "+nameOwner + " " + lastName;
+       String completeName = "Bienvenido señor propietario/a: " + " "+nameOwner + " " + lastName;
        return completeName;
-    }*/
+    }
     
 }
