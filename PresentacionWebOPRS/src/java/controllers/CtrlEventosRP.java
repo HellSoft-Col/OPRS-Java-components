@@ -98,7 +98,7 @@ public class CtrlEventosRP implements Serializable {
         BigInteger customerId = userId.toBigInteger();
 
         SimpleDateFormat dtf = new SimpleDateFormat("dd-MM-yyyy");
-        LocalDateTime now = LocalDateTime.now();
+        Date now = new Date();
         String rentalDate = dtf.format(now);
 
         String rentalTimeStart = dtf.format(this.rentalTimeStart);
@@ -123,7 +123,7 @@ public class CtrlEventosRP implements Serializable {
             result_string = result.readEntity(String.class);
             PaymentResponseDTO dto = gson.fromJson(result_string, PaymentResponseDTO.class);
             //TODO : Mostrar en pantalla mensaje
-            FacesContext.getCurrentInstance().addMessage("rpForm:rSubmit", new FacesMessage("Su solicitud de rentar propiedad esta en proceso, por favor revise su correo para seguir las instrucciones :). Datos bancarios: No. Confirmacion: "+ dto.getNumAprobacion() + " y se aprono el "+ dto.getAprobacion()));
+            FacesContext.getCurrentInstance().addMessage("rpForm:rSubmit", new FacesMessage("Su solicitud de rentar propiedad esta en proceso, por favor revise su correo para seguir las instrucciones :). Datos bancarios: No. Confirmacion: "+ dto.getNumAprobacion() + " y se aprobo el "+ dto.getAprobacion()));
         }
 
     }
