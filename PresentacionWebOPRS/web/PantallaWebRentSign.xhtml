@@ -17,9 +17,7 @@
     <h:body>
         <f:view>
             <h:form id="fcForm">
-                <p:commandButton
-                    value= "Home"
-                    action="#{ctrlEventosFC.backHome()}"/>
+                <p:commandButton value= "Home" action="#{ctrlEventosFC.backHome()}"/>
                 <p:dataTable value="#{ctrlEventosFC.unsigned_rents}" var="item">
                     <f:facet name="header">
                         Lista de contratos sin firmar
@@ -31,16 +29,19 @@
                         <h:outputText value="#{item.propertyLocation}"/>
                     </p:column>
                     <p:column headerText="Fecha creación contrato">
-                        <h:outputText value="#{item.rentalDate}"/>
-                        <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        <h:outputText value="#{item.rentalDate}">
+                             <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        </h:outputText>
                     </p:column>
                     <p:column headerText="Fecha inicio">
-                        <h:outputText value="#{item.rentalTimeStart}"/>
-                        <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        <h:outputText value="#{item.rentalTimeStart}">
+                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        </h:outputText>
                     </p:column>
                     <p:column headerText="Fecha de finalización">
-                        <h:outputText value="#{item.rentalTimeEnd}"/>
-                        <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        <h:outputText value="#{item.rentalTimeEnd}">
+                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        </h:outputText>
                     </p:column>
                     <p:column headerText="Costo renta">
                         <h:outputText value="#{item.rentProperty}"/>
