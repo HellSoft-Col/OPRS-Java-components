@@ -112,7 +112,7 @@ public class CtrlEventosRP implements Serializable {
         Gson gson = new Gson();
 
         String dtoJson = gson.toJson(rentP);
-        System.out.println("--->" + dtoJson);
+        
         ProxyRP proxyRP = new ProxyRP();
         Response result = proxyRP.createNewRent(dtoJson);
 
@@ -127,7 +127,7 @@ public class CtrlEventosRP implements Serializable {
 
     }
     public void infoMessage(String message){
-        FacesContext.getCurrentInstance().addMessage("messages", new FacesMessage(FacesMessage.SEVERITY_INFO,"",message));
+        FacesContext.getCurrentInstance().addMessage("messages", new FacesMessage(FacesMessage.SEVERITY_INFO,"Info",message));
     }
     public String backHome(){
         return "PantallaWebMenu";

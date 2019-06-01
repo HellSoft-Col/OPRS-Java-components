@@ -30,9 +30,7 @@ public class CtrlEventosMenu implements Serializable{
      */
     public CtrlEventosMenu() {
     }
-    public String rentarP(){        
-        return "PantallaWebRP";
-    }
+    
     public String buscarP(){
         return "PantallaWebBP";
     }

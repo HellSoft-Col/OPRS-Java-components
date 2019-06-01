@@ -5,38 +5,38 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <script type="text/javascript">
-    PrimeFaces.locales['es'] = {
-        closeText: 'Cerrar',
-        prevText: 'Anterior',
-        nextText: 'Siguiente',
-        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
-        weekHeader: 'Semana',
-        firstDayOfWeek: 1,
-        isRTL: false,
-        showMonthAfterYear: false,
-        yearSuffix: '',
-        timeOnlyTitle: 'Sólo hora',
-        timeText: 'Tiempo',
-        hourText: 'Hora',
-        minuteText: 'Minuto',
-        secondText: 'Segundo',
-        currentText: 'Fecha actual',
-        ampm: false,
-        month: 'Mes',
-        week: 'Semana',
-        day: 'Día',
-        allDayText: 'Todo el día'
-    };
-</script>
-<style type="text/css">
-    .value {
-        font-weight: bold;
-    }
-</style>
+        PrimeFaces.locales['es'] = {
+            closeText: 'Cerrar',
+            prevText: 'Anterior',
+            nextText: 'Siguiente',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+            weekHeader: 'Semana',
+            firstDayOfWeek: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            timeOnlyTitle: 'Sólo hora',
+            timeText: 'Tiempo',
+            hourText: 'Hora',
+            minuteText: 'Minuto',
+            secondText: 'Segundo',
+            currentText: 'Fecha actual',
+            ampm: false,
+            month: 'Mes',
+            week: 'Semana',
+            day: 'Día',
+            allDayText: 'Todo el día'
+        };
+    </script>
+    <style type="text/css">
+        .value {
+            font-weight: bold;
+        }
+    </style>
     <style>
         .panelGridCenter{
             margin: 0 auto;
@@ -67,6 +67,7 @@
                     </h:panelGrid>
                     <h:commandButton id="rSubmit" value="Enviar" action="#{ctrlEventosRP.sendPaymentForm()}"/>
                 </p:panel>
+                <p:commandButton value="Home" action="#{ctrlEventosRP.backHome()}"></p:commandButton>
                 <p:tooltip />
                 <p:messages id="messages" showDetail="true" closable="true">
                     <p:autoUpdate />
