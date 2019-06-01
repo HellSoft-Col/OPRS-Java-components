@@ -18,6 +18,7 @@ import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -40,8 +41,8 @@ public class CtrlEventosRP implements Serializable {
     private String ndi/* PANTALLA */;
     private String account_password /* PANTALLA */;
     private int type;
-    private String rentalTimeEnd/* PANTALLA */;
-    private String rentalTimeStart/* PANTALLA */;
+    private Date rentalTimeEnd/* PANTALLA */;
+    private Date rentalTimeStart/* PANTALLA */;
 
     public CtrlEventosRP() {
     }
@@ -70,19 +71,19 @@ public class CtrlEventosRP implements Serializable {
         this.type = type;
     }
 
-    public String getRentalTimeEnd() {
+    public Date getRentalTimeEnd() {
         return rentalTimeEnd;
     }
 
-    public void setRentalTimeEnd(String rentalTimeEnd) {
+    public void setRentalTimeEnd(Date rentalTimeEnd) {
         this.rentalTimeEnd = rentalTimeEnd;
     }
 
-    public String getRentalTimeStart() {
+    public Date getRentalTimeStart() {
         return rentalTimeStart;
     }
 
-    public void setRentalTimeStart(String rentalTimeStart) {
+    public void setRentalTimeStart(Date rentalTimeStart) {
         this.rentalTimeStart = rentalTimeStart;
     }
 

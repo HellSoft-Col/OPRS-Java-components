@@ -61,9 +61,9 @@
                         <h:outputLabel value="Contraseña de la cuenta: " for="account_password" />
                         <h:inputText id="account_password" value="#{ctrlEventosRP.account_password}" title="Account_password" />
                         <h:outputLabel value="Fecha de inicio renta:" for="rental_time_start" />
-                        <p:datePicker id="rental_time_start" value="#{ctrlEventosRP.rentalTimeStart}" title="Rental_time_start" showIcon="true"/>
+                        <p:datePicker pattern="dd-MM-yyyy" id="rental_time_start" value="#{ctrlEventosRP.rentalTimeStart}" title="Rental_time_start" showIcon="true"/>
                         <h:outputLabel value="Fecha de finalización de renta:" for="rental_time_end" />
-                        <p:datePicker id="rental_time_end" value="#{ctrlEventosRP.rentalTimeEnd}" title="Rental_time_end" showIcon="true"/>
+                        <p:datePicker pattern="dd-MM-yyyy" id="rental_time_end" value="#{ctrlEventosRP.rentalTimeEnd}" title="Rental_time_end" showIcon="true"/>
                     </h:panelGrid>
                     <h:commandButton id="rSubmit" value="Enviar" action="#{ctrlEventosRP.sendPaymentForm()}"/>
                     <div class="errorMsg"><h:message for="rSubmit" /></div>
