@@ -117,15 +117,21 @@ public class CtrlEventosRP implements Serializable {
         Response result = proxyRP.createNewRent(dtoJson);
 
         if (result.getStatus() != Response.Status.OK.getStatusCode()) {
-            FacesContext.getCurrentInstance().addMessage("rpForm:rSubmit", new FacesMessage("Su solicitud ha sido rechazada :( probablemente por problemas en el pago."));
+            this.infoMessage("Su solicitud ha sido rechazada :( probablemente por problemas en el pago.");
         } else {
             String result_string = new String();
             result_string = result.readEntity(String.class);
             PaymentResponseDTO dto = gson.fromJson(result_string, PaymentResponseDTO.class);
             //TODO : Mostrar en pantalla mensaje
-            FacesContext.getCurrentInstance().addMessage("rpForm:rSubmit", new FacesMessage("Su solicitud de rentar propiedad esta en proceso, por favor revise su correo para seguir las instrucciones :). Datos bancarios: No. Confirmacion: "+ dto.getNumAprobacion() + " y se aprono el "+ dto.getAprobacion()));
+            this.infoMessage("Su solicitud de rentar propiedad esta en proceso, por favor revise su correo para seguir las instrucciones :). Datos bancarios: No. Confirmacion: "+ dto.getNumAprobacion() + " y se aprobó el "+ dto.getAprobacion());
         }
 
+    }
+    public void infoMessage(String message){
+        FacesContext.getCurrentInstance().addMessage("messages", new FacesMessage(FacesMessage.SEVERITY_INFO,"",message));
+    }
+    public String backHome(){
+        return "PantallaWebMenu";
     }
 
 }

@@ -73,16 +73,16 @@ public class CtrlEventosLogin implements Serializable{
         sessionMap.put("user", user);
 
         if (user.getUsername() == null || user.getPassword() == null) {
-            FacesContext.getCurrentInstance().addMessage("loginForm:loginSubmit", new FacesMessage("Lo sentimos, el usuario no existe"));
+            this.infoMessage("Lo sentimos, el usuario no existe");
             if (user.getUsername() != this.username && (user.getPassword() == this.password)) {
-                FacesContext.getCurrentInstance().addMessage("loginForm:usernameSubmit", new FacesMessage("El usuario no coincide"));
+                this.infoMessage("El usuario no coincide");
             } else {
-                FacesContext.getCurrentInstance().addMessage("loginForm:passSubmit", new FacesMessage("La contraseña no coincide"));
+                this.infoMessage("La contraseña no coincide");
 
             }
             return null;
-
         }
+        
         //TODO: Agregar Funcionalidad a los botones
         if (user.getUser_type() == UserTypeEnum.OWNER.getValue()) {
             return "PantallaWebMenuOwner";
@@ -90,5 +90,8 @@ public class CtrlEventosLogin implements Serializable{
             return "PantallaWebMenu";
         }
 
+    }
+    public void infoMessage(String message){
+        FacesContext.getCurrentInstance().addMessage("messages", new FacesMessage(FacesMessage.SEVERITY_INFO,"",message));
     }
 }

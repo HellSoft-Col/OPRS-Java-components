@@ -16,6 +16,8 @@
     <h:body>
         <f:view>
             <h:form>
+                <p:commandButton value="Home" action="#{ctrlEventosBP.backHome()}">
+                        </p:commandButton>
                 <p:dataTable id="basicDT" value="#{ctrlEventosBP.properties}" var="item">
                     <f:facet name="header">
                         Resultados de la búsqueda

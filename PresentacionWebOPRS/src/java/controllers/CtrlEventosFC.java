@@ -71,10 +71,16 @@ public class CtrlEventosFC implements Serializable{
         Response result = proxie.signLease(json);
         
         if (result.getStatus() != Response.Status.OK.getStatusCode()){
-            FacesContext.getCurrentInstance().addMessage("fcForm:fcSubmit", new FacesMessage("El contrato no existe:("));
+            this.infoMessage("El contrato no existe:(");
         }else{
-            FacesContext.getCurrentInstance().addMessage("fcForm:fcSubmit", new FacesMessage("El contrato ya ha sido firmado, gracias :)"));
+            this.infoMessage("El contrato ya ha sido firmado, gracias :)");
         }
+    }
+    public void infoMessage(String message){
+        FacesContext.getCurrentInstance().addMessage("messages", new FacesMessage(FacesMessage.SEVERITY_INFO,"",message));
+    }
+    public String backHome(){
+        return "PantallaWebMenu";
     }
     
 }
